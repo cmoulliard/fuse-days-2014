@@ -338,7 +338,25 @@ image::camel/components.png[width="85%"]
 
 // ************** Karaf ************
 
-== Apache Karaf
+== Apache Karaf image:integration/karaf-logo.png[float="right"]
+
+* Java Micro-Container
+* OSGI Runtime
+* Offer 'modularity' for Services
+* Multi-Technology platform
+
+image::integration/ship-containers.png[]
+
+// ************** Karaf ************
+
+== Apache Karaf -con't
+
+* SSH server
+* Administration platform (local, remote, web, jmx)
+* Provisioning system (features)
+* Hot deployment and configuration management
+* Instances management
+* Security integration (JAAS)
 
 
 // ************** ActiveMQ ************
@@ -413,6 +431,27 @@ image:fuse/fabric-2.png[]
 
 image::fuse/fabric-5.png[width="80%",height="80%"]
 
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+* Virtualization +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Create “indirection” points
+* Load balancing and failover
+* Easy elastic scaling of services
+* High-availability, Replication
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+image::fuse/fabric-camel.png[]
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+image::fuse/fabric-activemq.png[]
+
 // ************ Hawtio *************
 
 == Hawtio
@@ -434,7 +473,7 @@ image:fuse/jolokia.png[150,150]|
 
 * Extend the dashboard & plugins
 
-
+* TODO
 
 // ************ Hawtio *************
 
