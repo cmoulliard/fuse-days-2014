@@ -43,140 +43,38 @@ Architect, Engineer & Committer
 * Architectures design
 * Demos
 
-// *********************************
-== Projects timeline
+// ************** Projects timeline ********
 
-[cols="40,60"]
-|===
-| .2+| image:web2/concept.jpg[500,400,float="right"]
-a| * Web 2.0 “Revolution”, User is an actor *collaborating* 
-* Consequences :
-** HTTPs requests image:web2/increase.png[350,350]
-** Volume of **data exchanged** |
-|===
+// ************** Fuse overview ************
+
+== JBoss overview
+
+image::fuse/basics-1.png[]
+
+image::fuse/fuse.jpg[150,150,float="right"]
 
 // *********************************
-== Introduction - con't
+== JBoss overview - con't
 
-[cols="60,40"]
-|===
-| .2+| image:web2/html5.png[150, 150, float="right"]
-image:web2/ajax1.png[150, 150, float="right"]
-image:web2/ajax2.png[150, 150, float="right"]
+image::fuse/basics-2.png[]
 
-a| * Technology Transformation
-** **HTML5**
-** **J**ava**S**cript / JSon / NoSQL
-** **Push** +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Ajax - WebSocket |
-|===
-
-image::web2/ajax.png[350, 350, float="left"]
-image::web2/websocket.png[270, 270, float="left"]
-image::web2/nosql.jpeg[220, 220, float="left"]
-
-
-// ****** Social Media Hype  ********
-== Agenda
-
-* Introduction
-* *Social Media Hype*
-* Use cases covered
-* Integration & Camel
-* Technology
-* What JBoss Fuse can offer
-* Conclusion
+image::fuse/fuse.jpg[150,150,float="right"]
 
 // *********************************
-== Social Media Hype
+== JBoss overview - con't
 
-[cols="60,40"]
-|===
-| .2+| image:web2/Social-network.png[width="180",height="180", float="left"]
-       image:web2/ilike.jpeg[width="180",height="180",float="left"]
-       image:web2/Social-Media-Marketing.jpg[width="180",height="180",float="left"]
+image::fuse/advances-1.png[]
 
-a|
-* **Business - Companies**
-** Marketing Strategy,
-** Product Promotion,
-** Launch or Campaign annoucement
-** Seeking candidates
-** ...
-
-* Use Web2.0 but **Social Medias** |
-|===
+image::fuse/fuse.jpg[150,150,float="right"]
 
 // *********************************
-== Social Media Hype - con't
+== Technology - con't
 
-**Why** +++&nbsp;<i class="fa fa-question"></i>&nbsp;+++ To create **content** that **attracts** attention &
-encourages readers to **share** it with their social networks
+image::fuse/advances-2.png[]
 
-image::web2/Social-Media.jpg[width="400",height="300",float="left"]
-image::web2/social-solutions.jpg[width="400",height="300",float="right"]
+image::fuse/fuse.jpg[150,150,float="right"]
 
-// ******** Use cases covered ********
-== Agenda
-
-* Introduction
-* Social Media Hype
-* *Use cases covered*
-* Integration & Camel
-* Technology
-* What JBoss Fuse can offer
-* Conclusion
-
-// *********************************
-== Use cases covered - demo1
-
-* **Pattern** : Real Time & Broadcasting
-
-[.newline]
-* **Definition** : Collect data in real time from different providers (twitter, facebook, ...)
- and broadcast/multicast data to subscribed channels
-
-[.newline]
-* **Business** : Event, conference, meeting room
-
-image::fuse/websocket.png[550,550,float="right"]
-
-// *********************************
-== Use cases covered - demo2
-
-* **Pattern** : Collect Data Metrics/Statistics
-
-[.newline]
-* **Definition** : Retrieve data from Social Media and store them in order to query the data to
-analyze the results
-
-[.newline]
-* **Business** : Measure performances of a campaign, product launch, analyze data to design marketing strategies
-
-image::web2/google_analyt.jpeg[300,300,float="right"]
-
-// *********************************
-== Use cases covered - demo3
-
-* **Pattern** : Business Activity Monitoring
-
-[.newline]
-* **Definition** : Monitor activities, operational days using reporting, dashboard tools.
-
-[.newline]
-* **Business** : Measure performances, rentability, return of investment
-
-image::fuse/analyze-blog-content.jpg[float="right"]
-
-// ********** INTEGRATION ********
-== Agenda
-
-* Introduction
-* Social Media Hype
-* Use cases covered
-* *Integration & Camel*
-* Technology
-* What JBoss Fuse can offer
-* Conclusion
+// ************** High Level ***************
 
 // *********************************
 == Integration
@@ -385,6 +283,66 @@ include::{resourcesdir}/META-INF/org/devnation/camel/example.xml[]
 
 image::camel/components.png[width="85%"]
 
+// ************ Hawtio *************
+
+image:fuse/hawtio-logo.png[80,80] Hawtio
+
+* Lightweight & **modular** HTML5 **web console** with **plugins** for managing Java **MBeans**
+* Javascript / **REST** front end +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ **jolokia** JMX translator
+
+image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++
+image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++
+image:fuse/jolokia.png[150,150]
+
+* Heart of the **new** **F**use **M**anagement **C**onsole
+
+
+// ************* Architecture design *******
+
+
+
+// *********************************
+== Use cases covered - demo1
+
+* **Pattern** : Real Time & Broadcasting
+
+[.newline]
+* **Definition** : Collect data in real time from different providers (twitter, facebook, ...)
+ and broadcast/multicast data to subscribed channels
+
+[.newline]
+* **Business** : Event, conference, meeting room
+
+image::fuse/websocket.png[550,550,float="right"]
+
+// *********************************
+== Use cases covered - demo2
+
+* **Pattern** : Collect Data Metrics/Statistics
+
+[.newline]
+* **Definition** : Retrieve data from Social Media and store them in order to query the data to
+analyze the results
+
+[.newline]
+* **Business** : Measure performances of a campaign, product launch, analyze data to design marketing strategies
+
+image::web2/google_analyt.jpeg[300,300,float="right"]
+
+// *********************************
+== Use cases covered - demo3
+
+* **Pattern** : Business Activity Monitoring
+
+[.newline]
+* **Definition** : Monitor activities, operational days using reporting, dashboard tools.
+
+[.newline]
+* **Business** : Measure performances, rentability, return of investment
+
+image::fuse/analyze-blog-content.jpg[float="right"]
+
+
 // ******* ********
 == Agenda
 
@@ -393,7 +351,7 @@ image::camel/components.png[width="85%"]
 * Use cases covered
 * Integration & Camel
 * *Technology*
-* What JBoss Fuse can offer
+* JBoss overview
 * Conclusion
 
 // *********************************
@@ -767,7 +725,7 @@ include::{resourcesdir}/searchtweets.html[]
 
 image::fuse/plugin-query.png[]
 
-// ****** What JBoss Fuse can offer ********
+// ****** JBoss overview ********
 == Agenda
 
 * Introduction
@@ -775,25 +733,25 @@ image::fuse/plugin-query.png[]
 * Use cases covered
 * Integration & Camel
 * Technology
-* *What JBoss Fuse can offer*
+* *JBoss overview*
 * Conclusion
 
 // *********************************
-== What JBoss Fuse can offer
+== JBoss overview
 
 image::fuse/basics-1.png[]
 
 image::fuse/fuse.jpg[150,150,float="right"]
 
 // *********************************
-== What JBoss Fuse can offer - con't
+== JBoss overview - con't
 
 image::fuse/basics-2.png[]
 
 image::fuse/fuse.jpg[150,150,float="right"]
 
 // *********************************
-== What JBoss Fuse can offer - con't
+== JBoss overview - con't
 
 image::fuse/advances-1.png[]
 
@@ -814,7 +772,7 @@ image::fuse/fuse.jpg[150,150,float="right"]
 * Integration & Camel
 * Use cases covered
 * Technology
-* What JBoss Fuse can offer
+* JBoss overview
 * *Conclusion*
 
 // *********************************
