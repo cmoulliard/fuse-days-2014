@@ -349,7 +349,7 @@ image::integration/ship-containers.png[]
 
 // ************** Karaf ************
 
-== Apache Karaf -con't
+== Apache Karaf - con't
 
 * SSH server
 * Administration platform (local, remote, web, jmx)
@@ -358,11 +358,46 @@ image::integration/ship-containers.png[]
 * Instances management
 * Security integration (JAAS)
 
+// ************** Karaf ************
+
+== Apache Karaf - con't
+
+image:integration/karaf-runtime.png[]
+
+* Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Camel, CXF, ActiveMQ, Spring, Fabric, ...
+* Modular platform (deploy or remove container/libraries)
 
 // ************** ActiveMQ ************
 
 == Apache ActiveMQ
 
+* High performance, reliable JMS messaging fabric
+* Supporting JMS, C, C++, .Net, Stomp clients
+
+image:activemq/broker-architecture.png[]
+
+// ************** ActiveMQ ************
+
+== Apache ActiveMQ - con't
+
+* Point to Point
+ - Producer sends messages to a queue.
+ - Consumer listens for messages from the queue
+ - Messages are stored until read (or expired)
+ - Messages can be persisted, are read only once.
+
+image::activemq/point-to-point.png[]
+
+// ************** ActiveMQ ************
+
+== Apache ActiveMQ - con't
+
+* Publish To Subscribe
+  - A JMS client sends message to the topic.
+  - JMS broker sends message to all subscribers that are currently alive.
+  - Messages are consumed x times (relation 1 to many)
+
+image::activemq/publish-subscribe.png[]
 
 // ************** Fabric ************
 
