@@ -330,11 +330,74 @@ include::{resourcesdir}/META-INF/org/devnation/camel/example.xml[]
 
 image::camel/components.png[width="85%"]
 
-
 // ************** Cxf ************
 
 == Apache CXF
 
+* Simplify 'creation & deployment of web/REST services'
+* 2 approaches “java +++<i class="fa fa-arrow-right"></i>+++ wsdl” or “wsdl +++<i class="fa fa-arrow-right"></i>+++ java”
+* Support :
+ - JAX-WS : Web Services (XML/SOAP)
+ - JAX-RS : REST service (JSON)
+ - SOAP 1.1, 1.2, WSDL 1.1, WS-Security, WS-Addressing, WS-RM
+
+image::fuse/fabric-cxf.png[]
+
+// ************** Cxf ************
+
+== Apache CXF - con't
+
+[source, xml]
+----
+<plugin>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-codegen-plugin</artifactId>
+    <version>${cxf.version}</version>
+    <executions>
+        <execution>
+            <id>generate-sources</id>
+            <phase>generate-sources</phase>
+            <configuration>
+                <sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
+                <wsdlOptions>
+                    <wsdlOption>
+                        <wsdl>${basedir}/src/main/resources/myService.wsdl</wsdl>
+                    </wsdlOption>
+                </wsdlOptions>
+            </configuration>
+            <goals>
+                <goal>wsdl2java</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+----
+
+// ************** Cxf ************
+
+== Apache CXF - con't
+
+[source, xml]
+----
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+...
+
+<cxf:cxfEndpoint id="reportIncident"
+    address="http://localhost:{{port}}/camel-example/webservices/incident"
+    wsdlURL="etc/report_incident.wsdl"
+    serviceClass="org.apache.camel.example.ReportIncidentEndpoint"/>
+...
+
+<route>
+      <from uri="cxf:bean:reportIncident"/>
+      <convertBodyTo type="org.apache.camel.example.reportincident.InputReportIncident"/>
+      <transform>
+        <method bean="responseBean" method="getOK"/>
+      </transform>
+----
 
 // ************** Karaf ************
 
@@ -539,18 +602,27 @@ image:fuse/hawtio-5.png[width="65%",height="65%"]
 
 == Messaging
 
+* The BUS operates the exchanges between the endpoints using Camel (local) or NMR (global)
+
+image::fuse/messaging.png[]
+
 // ************* Architecture design *******
 
-== Java using PoJo / Beans
+== Using Simple Java Beans
+
+image::fuse/java-beans.png[]
 
 // ************* Architecture design *******
 
 == Combine Java & Messaging
 
+image::fuse/messaging-java.png[]
+
 // ************* Architecture design *******
 
 == Combine Java & Messaging & Web
 
+image::fuse/messaging-java-web.png[]
 
 // ************ AGENDA ************
 == Agenda
