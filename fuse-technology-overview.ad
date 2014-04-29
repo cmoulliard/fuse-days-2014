@@ -350,38 +350,132 @@ image::camel/components.png[width="85%"]
 
 == Fabric8
 
+* Opensource integration project : http://fabric8.io/
+* Goals :
+   - Configuring, provisioning & running Fuse on any machines
+physical, virtual, private, public, cloud ...
+   - Virtualize services (endpoints), processes
+   - Propose ElasticSearch Storage engine (insight)
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+[cols="50,50"]
+|===
+| .2+|image:fuse/fabric-3.png[]
+a|* Karaf can create new instances (locally) & administrate them (locally or remotely)
+
++++&nbsp;<i class="fa fa-exclamation-triangle"></i>&nbsp;+++
+
+* Instances are not “cloned”
+* Configurations must be updated (manually)|
+|===
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+* Fabric extend the possibilities
+
+image:fuse/fabric-4.png[]
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+* Management rely on +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+Zookeeper server (ensemble of 1,3, 5 or servers) +++&nbsp;<i class="fa fa-cloud"></i>&nbsp;+++
+
+image:fuse/fabric-1.png[]
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+& Fabric Agents
+
+image:fuse/fabric-2.png[]
+
+* They will communicate with Zk server to :
+
++++&nbsp;<i class="fa fa-arrow-left"></i>&nbsp;+++ register container info (ports, services, endpoints, processes)
+
++++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ get their provisioning
+
+// ************** Fabric ************
+
+== Fabric8 - con't
+
+* Provisioning = Behavior of a container, achieved with 'Profiles'
+* Enveloppe(s) containing artifacts to be deployed or parameters to be configured
+* Can be versioned, facilitate mngt - rollback
+
+image::fuse/fabric-5.png[width="80%",height="80%"]
 
 // ************ Hawtio *************
 
 == Hawtio
 
-image:fuse/hawtio-logo.png[80,80] Hawtio
-
-* Lightweight & **modular** HTML5 **web console** with **plugins** for managing Java **MBeans**
+[cols="85,15"]
+|===
+| .2+|image:fuse/hawtio-logo-bigger.png[,float="right"]
+a|* Lightweight & **modular** HTML5 **web console** with **plugins** for managing Java **MBeans**
 * Javascript / **REST** front end +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ **jolokia** JMX translator
-
+* Heart of the **new** **F**use **M**anagement **C**onsole
 image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++
 image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++
-image:fuse/jolokia.png[150,150]
+image:fuse/jolokia.png[150,150]|
+|===
 
-* Heart of the **new** **F**use **M**anagement **C**onsole
+// ************ Hawtio *************
 
+== Hawtio - con't
+
+* Extend the dashboard & plugins
+
+
+
+// ************ Hawtio *************
+
+== Hawtio - con't
+
+image:fuse/hawtio-1.png[]
+
+// ************ Hawtio *************
+
+== Hawtio - con't
+
+image:fuse/hawtio-2.png[]
+
+// ************ Hawtio *************
+
+== Hawtio - con't
+
+image:fuse/hawtio-3.png[]
+
+// ************ Hawtio *************
+
+== Hawtio - con't
+
+image:fuse/hawtio-4.png[width="65%",height="65%"]
+image:fuse/hawtio-5.png[width="65%",height="65%"]
 
 // ************* Architecture design *******
 
-* Messaging
+== Messaging
 
 // ************* Architecture design *******
 
-* Java using PoJo / Beans
+== Java using PoJo / Beans
 
 // ************* Architecture design *******
 
-* Combine Java & Messaging
+== Combine Java & Messaging
 
 // ************* Architecture design *******
 
-* Combine Java & Messaging & Web
+== Combine Java & Messaging & Web
 
 
 // ************ AGENDA ************
