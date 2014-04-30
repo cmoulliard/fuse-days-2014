@@ -18,7 +18,7 @@
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
 :revealjs_theme: conference-redhat
 :revealjs_vertical_alignment: false
-:revealjs_history: true
+:revealjs_history: false
 :sourcesdir: /Users/chmoulli/MyProjects/conferences/devnation-2014-slideshow/snippet/src/main/java/
 :source-highlighter: highlightjs
 //:source-highlighter: coderay, highlightjs, pygments
@@ -42,7 +42,6 @@ Architect, Engineer & Committer
 
 // ************ AGENDA ************
 
-[.rhheader]
 == Agenda
 
 * *Projects timeline*

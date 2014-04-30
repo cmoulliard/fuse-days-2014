@@ -1,0 +1,62 @@
+:allow-uri-read:
+:author: Charles Moulliard (@cmoulliard)
+:backend: revealjs
+:blog: http://cmoulliard.github.io
+:data-uri!:
+//:footer_copyright: Powered by http://asciidoctor.org[Asciidoctor], RevealJS and Hyla
+//:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
+:footer_copyright: Copyright ©2014 Red Hat, Inc.
+:header_image_path: redhat-logo.jpg
+
+:icons: font
+:idprefix:
+:imagesdir: images/
+:linkattrs:
+:linkcss:
+:project_dir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014
+:resourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/snippet/src/main/resources
+// Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
+:revealjs_theme: conference-redhat
+:revealjs_vertical_alignment: false
+:revealjs_history: false
+:sourcesdir: /Users/chmoulli/MyProjects/conferences/devnation-2014-slideshow/snippet/src/main/java/
+:source-highlighter: highlightjs
+//:source-highlighter: coderay, highlightjs, pygments
+:stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles
+:title-author: {title} {author}
+:title-speaker: Architect Engineer Committer
+:twitter: cmoulliard
+
+[data-background="images/redhat-logo-background-1024-768.png"]
+// [data-background="images/redhat-logo-background-1280-800.png"]
+== *Fuse and BRMS*
+
+[.newline]
+Red Hat JBoss Fuse Integration Partner Day
+
+[.newline]
+{author} +
+Architect, Engineer & Committer
+[.newline]
+13th of May - 2014
+
+// ************ AGENDA ************
+
+== Agenda
+
+* Technology overview
+* Demos
+
+// *********************************
+== Questions
+
+[cols="45,.<55"]
+|===
+
+.2+|image:questions.png[]
+a|* Twitter : @cmoulliard
+|===
+
+* More info +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+  - www.jboss.org/products/fuse.html
+  - www.redhat.com/products/jbossenterprisemiddleware/fuse/
