@@ -1,12 +1,13 @@
 :allow-uri-read:
-:author: Charles Moulliard
+:author: Charles Moulliard (@cmoulliard)
 :backend: revealjs
 :blog: http://cmoulliard.github.io
 :data-uri!:
-:demo-git: https://github.com/cmoulliard/devnation-2014-demos
-:fa-ellipsis: #&nbsp;#[fa fa-ellipsis-h]#&nbsp;#
 //:footer_copyright: Powered by http://asciidoctor.org[Asciidoctor], RevealJS and Hyla
-:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
+//:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
+:footer_copyright: Copyright ©2014 Red Hat, Inc.
+:header_image_path: redhat-logo2.jpg
+
 :icons: font
 :idprefix:
 :imagesdir: images/
@@ -15,7 +16,7 @@
 :project_dir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014
 :resourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/snippet/src/main/resources
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
-:revealjs_theme: conference
+:revealjs_theme: conference-redhat
 :revealjs_vertical_alignment: false
 :revealjs_history: true
 :sourcesdir: /Users/chmoulli/MyProjects/conferences/devnation-2014-slideshow/snippet/src/main/java/
@@ -26,25 +27,30 @@
 :title-speaker: Architect Engineer Committer
 :twitter: cmoulliard
 
-== *Fuse Technology Overview*
-
-Fuse Integration Days / 13th of May - 2014
+[data-background="images/TitleBackground.png"]
+== *JBoss Fuse Technology Overview*
 
 [.newline]
-http://twitter.com/{twitter}[{author}] +
+Red Hat JBoss Fuse Integration Partner Day
+[.newline]
+13th of May - 2014
+
+[.newline]
+{author} +
 Architect, Engineer & Committer
 
 // ************ AGENDA ************
+
+[.rhheader]
 == Agenda
 
 * *Projects timeline*
-* Fuse overview
+* Technology overview
 * High level presentation
 * Architectures design
 * Demos
 
 // ************** Projects timeline ********
-
 == Projects timeline
 
 * A few things about Fuse & OpenSource
@@ -55,12 +61,12 @@ image::fuse/HistoryOfFuse.png[]
 == Agenda
 
 * Projects timeline
-* *Fuse overview*
+* *Technology overview*
 * High level presentation
 * Architectures design
 * Demos
 
-// ************** Fuse overview ************
+// ************** Technology overview ************
 
 == JBoss Fuse
 
@@ -73,53 +79,43 @@ image::fuse/HistoryOfFuse.png[]
   - Fabric8,
   - Hawtio
 
-// ************** Fuse overview ************
+// ************** Technology overview ************
 
-== Fuse overview
+== Technology overview
 
 image::fuse/jboss-fuse.png[width="80%",height="80%"]
 
-// ************** Fuse overview ************
+// ************** Technology overview ************
 
-== Fuse overview
+== Technology overview
 
 image::fuse/jboss-amq.png[width="80%",height="80%"]
 
-// ************** Fuse overview ************
+// ************** Technology overview ************
 
-== Fuse overview - con't
+== Technology overview - con't
 
 image::fuse/basic-1.png[]
 
-image::fuse/fuse.jpg[150,150,float="right"]
-
 // *********************************
-== Fuse overview - con't
+== Technology overview - con't
 
 image::fuse/basic-2.png[]
 
-image::fuse/fuse.jpg[150,150,float="right"]
-
 // *********************************
-== Fuse overview - con't
+== Technology overview - con't
 
 image::fuse/basic-3.png[]
 
-image::fuse/fuse.jpg[150,150,float="right"]
-
 // *********************************
-== Fuse overview - con't
+== Technology overview - con't
 
 image::fuse/advanced-1.png[]
-
-image::fuse/fuse.jpg[150,150,float="right"]
 
 // *********************************
 == Technology - con't
 
 image::fuse/advanced-2.png[]
-
-image::fuse/fuse.jpg[150,150,float="right"]
 
 
 // ************** High Level ***************
@@ -559,11 +555,11 @@ image::fuse/fabric-activemq.png[]
 | .2+|image:fuse/hawtio-logo-bigger.png[,float="right"]
 a|* Lightweight & **modular** HTML5 **web console** with **plugins** for managing Java **MBeans**
 * Javascript / **REST** front end +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ **jolokia** JMX translator
-* Heart of the **new** **F**use **M**anagement **C**onsole
-image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++
-image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++
-image:fuse/jolokia.png[150,150]|
+* Heart of the **new** **F**use **M**anagement **C**onsole|
 |===
+
+[.newline]
+* image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/rest-api.png[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:fuse/jolokia.png[150,150]
 
 // ************ Hawtio *************
 
@@ -604,31 +600,31 @@ image:fuse/hawtio-5.png[width="65%",height="65%"]
 
 * The BUS operates the exchanges between the endpoints using Camel (local) or NMR (global)
 
-image::fuse/messaging.png[]
+image::integration/messaging.png[]
 
 // ************* Architecture design *******
 
 == Using Simple Java Beans
 
-image::fuse/java-beans.png[]
+image::integration/java-beans.png[]
 
 // ************* Architecture design *******
 
 == Combine Java & Messaging
 
-image::fuse/messaging-java.png[]
+image::integration/messaging-java.png[]
 
 // ************* Architecture design *******
 
 == Combine Java & Messaging & Web
 
-image::fuse/messaging-java-web.png[]
+image::integration/messaging-java-web.png[]
 
 // ************ AGENDA ************
 == Agenda
 
 * *Projects timeline*
-* Fuse overview
+* Technology overview
 * High level presentation
 * Architectures design
 * *Demos*
@@ -653,6 +649,5 @@ a|* Twitter : http://twitter.com/cmoulliard[@cmoulliard]
 a|* More info : http://camel.apache.org[Apache Camel], http://hawt.io[Hawtio], http://fabric8.io[fabric8]
 |===
 
-* Code of demos :
-  {demo-git}
+
 
