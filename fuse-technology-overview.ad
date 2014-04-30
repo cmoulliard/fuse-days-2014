@@ -27,7 +27,7 @@
 :title-speaker: Architect Engineer Committer
 :twitter: cmoulliard
 
-[data-background="images/TitleBackground.png"]
+[data-background="images/TitleBackground.png", data-background-size="100%"]
 == *JBoss Fuse Technology Overview*
 
 [.newline]
