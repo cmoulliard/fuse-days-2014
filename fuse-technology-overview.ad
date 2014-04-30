@@ -27,8 +27,8 @@
 :title-speaker: Architect Engineer Committer
 :twitter: cmoulliard
 
-// [data-background="images/redhat-logo-background-1034-768.png"]
-[data-background="images/redhat-logo-background-1280-800.png"]
+[data-background="images/redhat-logo-background-1024-768.png"]
+// [data-background="images/redhat-logo-background-1280-800.png"]
 == *JBoss Fuse Technology Overview*
 
 [.newline]
