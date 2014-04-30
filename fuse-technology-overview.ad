@@ -6,7 +6,7 @@
 //:footer_copyright: Powered by http://asciidoctor.org[Asciidoctor], RevealJS and Hyla
 //:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
 :footer_copyright: Copyright ©2014 Red Hat, Inc.
-:header_image_path: redhat-logo2.jpg
+:header_image_path: redhat-logo.jpg
 
 :icons: font
 :idprefix:
@@ -27,17 +27,17 @@
 :title-speaker: Architect Engineer Committer
 :twitter: cmoulliard
 
-[data-background="images/TitleBackground.png"]
+[.newline, data-background="images/redhat-logo-background.png"]
 == *JBoss Fuse Technology Overview*
 
 [.newline]
 Red Hat JBoss Fuse Integration Partner Day
-[.newline]
-13th of May - 2014
 
 [.newline]
 {author} +
 Architect, Engineer & Committer
+[.newline]
+13th of May - 2014
 
 // ************ AGENDA ************
 
