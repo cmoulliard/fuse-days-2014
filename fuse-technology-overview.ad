@@ -640,13 +640,17 @@ image::integration/messaging-java-web.png[width="70%",height="70%"]
 // *********************************
 == Questions
 
-[cols="35,.<65"]
+[cols="45,.<55"]
 |===
 
-.2+|image:questions.png[width="95%"]
-a|* Twitter : http://twitter.com/cmoulliard[@cmoulliard]
-a|* More info : http://camel.apache.org[Apache Camel], http://hawt.io[Hawtio], http://fabric8.io[fabric8]
+.2+|image:questions.png[]
+a|* Twitter : @cmoulliard
 |===
+
+* More info +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+
+https://www.jboss.org/products/fuse.html
+http://www.redhat.com/products/jbossenterprisemiddleware/fuse/
 
 
 

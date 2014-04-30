@@ -25,7 +25,8 @@ body {
     font-size: 32px;
     font-weight: normal;
     letter-spacing: -0.02em;
-/*    color: black;*/
+    /* Color used within paragraphs - text */
+    color: #4E4E4E;
 }
 
 /*.reveal .slides {
@@ -214,9 +215,11 @@ th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middl
 
 /*
  Used for <strong>text</strong> enclosed in <li> tag
+ & color
 */
 li strong {
-    color: #268bd2;
+/*    color: #268bd2;*/
+    color: #C1100C;
     font-weight: bold;
 }
 
