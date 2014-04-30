@@ -600,25 +600,24 @@ image:fuse/hawtio-5.png[width="65%",height="65%"]
 
 * The BUS operates the exchanges between the endpoints using Camel (local) or NMR (global)
 
-image::integration/messaging.png[]
+image::integration/messaging.png[width="70%",height="70%"]
 
 // ************* Architecture design *******
 
-== Using Simple Java Beans
+== Combine messaging with Java Beans
 
-image::integration/java-beans.png[]
+* Decoupling "services" from integration layer
 
-// ************* Architecture design *******
-
-== Combine Java & Messaging
-
-image::integration/messaging-java.png[]
+image::integration/messaging-java.png[width="70%",height="70%"]
 
 // ************* Architecture design *******
 
 == Combine Java & Messaging & Web
 
-image::integration/messaging-java-web.png[]
+* Karaf runs Jetty Web Server
+* Web Project can be registered using OSGI HTTP Service
+
+image::integration/messaging-java-web.png[width="70%",height="70%"]
 
 // ************ AGENDA ************
 == Agenda
