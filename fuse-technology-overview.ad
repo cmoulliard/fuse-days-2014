@@ -27,7 +27,7 @@
 :title-speaker: Architect Engineer Committer
 :twitter: cmoulliard
 
-[data-background="images/TitleBackground.png", data-background-size="100%"]
+[data-background="images/TitleBackground.png"]
 == *JBoss Fuse Technology Overview*
 
 [.newline]
@@ -462,7 +462,7 @@ image::activemq/publish-subscribe.png[]
 
 == Fabric8
 
-* Opensource integration project : http://fabric8.io/
+* Opensource integration project - http://fabric8.io
 * Goals :
    - Configuring, provisioning & running Fuse on any machines
 physical, virtual, private, public, cloud ...
@@ -548,7 +548,7 @@ image::fuse/fabric-activemq.png[]
 
 // ************ Hawtio *************
 
-== Hawtio
+== http://hawt.io[Hawtio]
 
 [cols="85,15"]
 |===
@@ -648,9 +648,9 @@ a|* Twitter : @cmoulliard
 |===
 
 * More info +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+  - www.jboss.org/products/fuse.html
+  - www.redhat.com/products/jbossenterprisemiddleware/fuse/
 
-https://www.jboss.org/products/fuse.html
-http://www.redhat.com/products/jbossenterprisemiddleware/fuse/
 
 
 
