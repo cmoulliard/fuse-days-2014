@@ -1,5 +1,5 @@
-source: .
-destination: generated # or . or ~/Hyla or generated_content
+source: hands-on-lab
+destination: hands-on-lab/generated # or . or ~/Hyla or generated_content
 
 #
 # Styles

@@ -1,0 +1,8 @@
+Slideshow
+
+hyla generate -c slideshow/conference-redhat.yaml
+
+
+Hans on lab
+
+hyla generate -c hands-on-lab/content.yaml
