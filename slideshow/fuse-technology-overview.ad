@@ -14,12 +14,12 @@
 :linkattrs:
 :linkcss:
 :project_dir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014
-:resourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/snippet/src/main/resources
+:resourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/slideshow/snippet/src/main/resources
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
 :revealjs_theme: conference-redhat
 :revealjs_vertical_alignment: false
 :revealjs_history: true
-:sourcesdir: /Users/chmoulli/MyProjects/conferences/devnation-2014-slideshow/snippet/src/main/java/
+:sourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/slideshow/snippet/src/main/java/
 :source-highlighter: highlightjs
 //:source-highlighter: coderay, highlightjs, pygments
 :stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles
@@ -70,7 +70,7 @@ image::fuse/HistoryOfFuse.png[]
 
 == High level presentation
 
-2 products +++<i class="fa fa-arrow-right"></i>+++ JBoss Fuse & AMQ
+* 2 products +++<i class="fa fa-arrow-right"></i>+++ JBoss Fuse & AMQ
 * Designed around Multi-Technology OSGI Container
 * Packaging of Open Sources projects :
   - Camel,
