@@ -1,0 +1,62 @@
+09:30 - Session 1 : Fuse Development - 90min
+- Session will start with verification of these prerequisites :
+Apache Maven, JDK 6-7, SOAPUi
+JBDS and integration module
+JBoss Fuse 6.1 & JBoss A-MQ 6.1
+Download and installation of the DEMO/QuickStarts code
+- Will continue with the Presentation of Fuse IDE plugin in JBoss Developer Studio, a graphical tool to design Camel routes... (Slides - 10 minutes)
+- Demo :
+We start to design a Camel project (combination of CXF, JMS endpoints with CBR Pattern) using maven camel - fuse archetype(s) in Fuse IDE
+Example could be extended to integrate Drools rules doing some calculation required for the routing, ...
+Next, we launch/run/debug the project locally and demonstrate what JBoss Dev Studio Integration let to do.
+Connect to JMX Explorer and show Routes, Endpoints, Processors, add a message on a queue/endpoint.
+Drag and drop messages, collect the metrics/stats
+Add unit test to cover camel route testing
+
+11:00 - Coffee break
+
+11:15 - Session 2 : Packaging and deployment in JBoss Fuse - 90min
+- Presentation of JBoss Fuse & AMQ 6.1
+- Demo :
+Start JBoss Fuse
+Show Karaf commands, logs, ...
+How to tailor karaf according to your needs (remove non required features)
+Deploy the project designed during session 1 using feature(s) in a new Karaf container.
+Idem but using hot deploy approach.
+Access to the web services, queues and publish messages
+Display camel metrics within JBoss Fuse
+
+12:30 - Lunch
+
+13:30 - Session 3 : Management & Monitoring - 60min
+- Presentation of Fuse Management Console - Hawtio
+- Demo 1 :
+What FMC/Hawtio propose - overall presentation : wiki, maven, jmx, cpu, dashboard, ...
+Use hawtio to manage and discover your camel routes, endpoints,
+Publish messages to queues, ...
+- Demo 2 :
+Create a dashboard for your project to monitor specifically a camel route
+Edit a Camel Route and debug
+Trace a camel route
+- Demo 3:
+Install Insight + elasticsearch to collect statistics/metrics of the camel routes.
+Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes (using Message ID)
+
+14:30 - Coffee break
+
+14:45 - Session 4 :  Fabric, HA & Load Balancing - 60min
+- Presentation of Fuse Fabric & A-MQ
+- Demo :
+Deploy project of scenario 1 using fabric/profile in 2 containers
+Setup a Network of Brokers Topology and show how messages are persisted/processed (to support HA scenario)
+Turn on your Fabric/Fuse container into a load balancing platform to distribute workload (Web Services)
+
+15:45 - Session 5 : Complex Business Processing - 90 min
+- Presentation of Drools Rule Language and Drools plugin in JBoss Developer Studio
+- Demo :
+Creation of a knowledge project with Rules using JBoss Developer Studio
+Add unit testing
+Run an debug the project locally
+Combine Drools calculation rules within a camel project
+Setup a JBoss Fuse - Fabric server and deploy the Drools project using a profile and fabric8:deploy plugin
+Review the project, analyze the metrics

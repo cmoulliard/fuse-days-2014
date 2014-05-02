@@ -1,0 +1,45 @@
+source: .
+destination: generated # or . or ~/Hyla or generated_content
+
+#
+# Styles
+# Supported :  liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
+#
+style: liberation
+
+backend: html5
+attributes:
+   source-highlighter: coderay
+   linkcss!: true
+   data-uri: true
+   stylesdir: /Users/chmoulli/hyla/resources/styles
+   footer_copyright: Copyright ©2014 Red Hat, Inc. # Copyright Text
+   header_image_path: /Users/chmoulli/hyla/resources/images/rhheader_thin.png # image path location
+   nofooter: true
+   showscript: true # Co(Un)mment this line when you want to display scripts for instructors
+   # noheader: true # Co(Un)mment this line when you don't want to see the header section
+
+#
+# Generate command
+#
+rendering: adoc2html           # Render asciidoc, asciidoctor files to HTML using backend HTML5, Revealjs or Deckjs
+# rendering: index2html        # Render an asciidoc file with extension .txt which is an index of files (include::) a HTML file (= sum of the included files)
+# rendering: html2pdf          # Generate pdf from a HTML file
+# rendering: toc2adoc          # Using an asciidoc file which is a Table Of Content a collection of directories (title level 1) and files (title level 2, 3)
+
+#
+# Serve command
+#
+port: 4000 # HTTP Local port number
+host: localhost # Your local machine http://localhost
+baseurl: /hyla/ # Used to map destination directory with base url to access content --> http://localhost:4000/hyla/
+
+#
+# PDF options
+#
+# file: file_name.html # If empty, then the content of the source directory will be used
+# cover_path: # Co(Un)mment this line to use it and Path to the HTML file containing the cover page
+# header_html_path: # Co(Un)mment this line to use it and add Path to the HTML file containing header/banner
+# footer_text:  # Co(Un)mment this line to use it and add Copyright Text
+
+# end hyla options
