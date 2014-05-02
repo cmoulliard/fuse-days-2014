@@ -18,7 +18,7 @@
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
 :revealjs_theme: conference-redhat
 :revealjs_vertical_alignment: false
-:revealjs_history: false
+:revealjs_history: true
 :sourcesdir: /Users/chmoulli/MyProjects/conferences/devnation-2014-slideshow/snippet/src/main/java/
 :source-highlighter: highlightjs
 //:source-highlighter: coderay, highlightjs, pygments
@@ -45,8 +45,8 @@ Architect, Engineer & Committer
 == Agenda
 
 * *Projects timeline*
-* Technology overview
 * High level presentation
+* Technology overview
 * Architectures design
 * Demos
 
@@ -61,16 +61,16 @@ image::fuse/HistoryOfFuse.png[]
 == Agenda
 
 * Projects timeline
-* *Technology overview*
-* High level presentation
+* *High level presentation*
+* Technology overview
 * Architectures design
 * Demos
 
-// ************** Technology overview ************
+// ************** High level presentation ************
 
-== JBoss Fuse
+== High level presentation
 
-* 2 products +++<i class="fa fa-arrow-right"></i>+++ JBoss Fuse & AMQ
+2 products +++<i class="fa fa-arrow-right"></i>+++ JBoss Fuse & AMQ
 * Designed around Multi-Technology OSGI Container
 * Packaging of Open Sources projects :
   - Camel,
@@ -79,47 +79,54 @@ image::fuse/HistoryOfFuse.png[]
   - Fabric8,
   - Hawtio
 
-// ************** Technology overview ************
+// ************** High level presentation ************
 
-== Technology overview
+== High level presentation
 
 image::fuse/jboss-fuse.png[width="80%",height="80%"]
 
-// ************** Technology overview ************
+// ************** High level presentation ************
 
-== Technology overview
+== High level presentation
 
 image::fuse/jboss-amq.png[width="80%",height="80%"]
 
-// ************** Technology overview ************
+// ************** High level presentation ************
 
-== Technology overview - con't
+== High level presentation - con't
 
 image::fuse/basic-1.png[]
 
 // *********************************
-== Technology overview - con't
+== High level presentation - con't
 
 image::fuse/basic-2.png[]
 
 // *********************************
-== Technology overview - con't
+== High level presentation - con't
 
 image::fuse/basic-3.png[]
 
 // *********************************
-== Technology overview - con't
+== High level presentation - con't
 
 image::fuse/advanced-1.png[]
 
 // *********************************
-== Technology - con't
+== High level presentation - con't
 
 image::fuse/advanced-2.png[]
 
+// ************ AGENDA ************
+== Agenda
 
-// ************** High Level ***************
+* Projects timeline
+* High level presentation
+* *Technology overview*
+* Architectures design
+* Demos
 
+// ************ Technology overview ************
 == Integration
 
 |===
@@ -133,7 +140,7 @@ a| * Integration is +++&nbsp;<i class="fa fa-ellipsis-h"></i>&nbsp;+++ really ha
 * Long story since **C**ommon **O**bject **R**equest **B**roker **A**rchitecture
 |===
 
-// *********************************
+// ************ Technology overview ***********
 == Integration - con't
 
 |===
@@ -144,7 +151,7 @@ a| * Concept
 ** +++<i class="fa fa-arrow-right"></i>+++ Message transport information |
 |===
 
-// *********************************
+// ************ Technology overview ***********
 == Integration - con't
 
 |===
@@ -546,6 +553,81 @@ image::fuse/fabric-camel.png[]
 
 image::fuse/fabric-activemq.png[]
 
+// ************** Fabric ***********
+
+== Fabric8 - con't
+
+* Insight Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+* NoSQL storage for JSon documents
+* Designed around ElasticSearch
+
+image::fuse/elasticsearch1.png[float="left"]
+image::fuse/nosql.jpeg[float"right"]
+
+// ************** Fabric ***********
+
+== Fabric8 - con't
+
+* Dashboard
+
+image::fuse/kibana3.png[]
+
+* Full Text Search features
+
+image::fuse/lucene_logo.png[]
+
+// ************** Fabric ***********
+
+== Fabric8 - con't
+
+* Collect
+  - Logs,
+  - Camel metrics,
+  - JMX metrics,
+  - Own data metrics
+
+// ************** Fabric ***********
+
+== Fabric8 - insight
+
+image::fuse/elasticsearch2.png[400,600]
+
+// ************** Fabric ***********
+
+== Fabric8 - insight
+
+image::fuse/elasticsearch.png[80%,80%]
+
+// ************** Fabric ***********
+
+== Fabric8 - insight
+
+image::fuse/es-camel.png[80%,80%]
+
+// ************** Fabric ***********
+
+== Fabric8 - insight
+
+* Create a bean recuperating **Message/Exchange** using @Header, @Body
+* Store it using **org.fusesource.insight.storage.StorageService**
+
+[source, java]
+----
+import org.apache.camel.Header;
+import org.fusesource.insight.storage.StorageService;
+import java.sql.Timestamp;
+import java.util.Date;
+
+public class StoreService {
+
+    private static String ES_TYPE = "insight-tweet";
+    private static StorageService storageService;
+
+    public static void store(@Header("tweet-full") String data) {
+        storageService.store(ES_TYPE, generateTimeStamp(), data);
+    }
+----
+
 // ************ Hawtio *************
 
 == http://hawt.io[Hawtio]
@@ -594,6 +676,15 @@ image:fuse/hawtio-3.png[]
 image:fuse/hawtio-4.png[width="65%",height="65%"]
 image:fuse/hawtio-5.png[width="65%",height="65%"]
 
+// ************ AGENDA ************
+== Agenda
+
+* Projects timeline
+* High level presentation
+* Technology overview
+* *Architectures design*
+* Demos
+
 // ************* Architecture design *******
 
 == Messaging
@@ -604,7 +695,7 @@ image::integration/messaging.png[width="70%",height="70%"]
 
 // ************* Architecture design *******
 
-== Combine messaging with Java Beans
+== Messaging & Java Beans
 
 * Decoupling "services" from integration layer
 
@@ -612,19 +703,25 @@ image::integration/messaging-java.png[width="70%",height="70%"]
 
 // ************* Architecture design *******
 
-== Combine Java & Messaging & Web
+== Messaging & Java & Web
 
 * Karaf runs Jetty Web Server
 * Web Project can be registered using OSGI HTTP Service
 
 image::integration/messaging-java-web.png[width="70%",height="70%"]
 
+// ************* Architecture design *******
+
+== Distributed
+
+image::integration/distributed.png[]
+
 // ************ AGENDA ************
 == Agenda
 
-* *Projects timeline*
-* Technology overview
+* Projects timeline
 * High level presentation
+* Technology overview
 * Architectures design
 * *Demos*
 
