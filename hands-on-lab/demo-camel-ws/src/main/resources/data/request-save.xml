@@ -3,7 +3,7 @@
     <soapenv:Body>
         <exam:saveCustomerRequest>
             <exam:customer>
-                <exam:name>RedHat1</exam:name>
+                <exam:name>RedHat</exam:name>
                 <exam:address>Sao Paulo, Brazil</exam:address>
                 <exam:numOrders>22</exam:numOrders>
                 <exam:revenue>1000.0</exam:revenue>

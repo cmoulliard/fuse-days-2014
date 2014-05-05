@@ -90,7 +90,9 @@ Remark : SOAPUI can be also installed within JBDS
 
 Remark : you can also use curl to send request and get the result
 
-curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/saveCustomerRequest" -T request-save.xml http://localhost:9090/training/WebService  | xmllint --format -
+curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getCustomerByName" -T hands-on-lab/demo-camel-ws/src/main/resources/data/request.xml  http://localhost:9090/training/WebService | xmllint --format -
+curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/saveCustomerRequest" -T hands-on-lab/demo-camel-ws/src/main/resources/data/request-save.xml http://localhost:9090/training/WebService  | xmllint --format -
+curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T hands-on-lab/demo-camel-ws/src/main/resources/data/request-all.xml http://localhost:9090/training/WebService | xmllint --format -
 
 * Steps - DEMO3 - Unit Test
 
@@ -222,6 +224,9 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
   osgi:restart id_of_the_bundle
 
 - Verify if th web service is working.
+- Remove the jar/bundle deployed
+
+  rm -rf ../deploy/demo-camel-ws-1.0.jar
 
 * Steps - Demo 5 - Package the project using a features file
 
@@ -342,15 +347,33 @@ Remark : Check on the command line the result of that installation process
 == Session 3 : Management & Monitoring - 60min
 
 - Presentation of Fuse Management Console - Hawtio
-- Demo 1 :
-What FMC/Hawtio propose - overall presentation : wiki, maven, jmx, cpu, dashboard, ...
+
+* Steps - DEMO 1 - Use Fuse Management Console / Hawtio
+
+- Open you web browser and point to the following URL address
+
+  http://localhost:8181/
+
+Remark : The login/password 'admin/admin' should be commentted in the file etc/users.propoerties prior to start JBoss Fuse
+
+- Add you login/password - admin/admin
+- Verify that 'camel' plugin is there
+- Check content of the different plugins 'log', 'osgi', 'threads', 'dashboard'
+- Open the camelContext, next the route-1 and click on diagram
+- Send a SOAP Message 'saveCustomerRequest, getAllCustomers' and check the counters changing within the route diagram
+-
+
+
 Use hawtio to manage and discover your camel routes, endpoints,
 Publish messages to queues, ...
-- Demo 2 :
+
+* Steps - Demo 2 :
+
 Create a dashboard for your project to monitor specifically a camel route
 Edit a Camel Route and debug
 Trace a camel route
-- Demo 3:
+
+* Steps - Demo 3:
 Install Insight + elasticsearch to collect statistics/metrics of the camel routes.
 Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes (using Message ID)
 

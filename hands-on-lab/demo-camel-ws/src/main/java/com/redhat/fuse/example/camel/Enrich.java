@@ -22,7 +22,7 @@ public class Enrich {
 
     private void generateCustomer() {
         Customer customer = new Customer();
-        customer.setName("Fuse");
+        customer.setName("RedHat");
         customer.setNumOrders(randomGenerator.nextInt(100));
         customer.setRevenue(randomGenerator.nextInt(10000));
         customer.setType(CustomerType.BUSINESS);
