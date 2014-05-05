@@ -141,37 +141,6 @@
 
     <build>
         <plugins>
-            <!-- to generate the MANIFEST-FILE required by the bundle -->
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>${maven.bundle.plugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Import-Package>
-                            !com.redhat.fuse.example.camel,
-                            javax.jws,
-                            javax.jws.soap,
-                            javax.xml.bind,
-                            javax.xml.bind.annotation,
-                            javax.xml.datatype,
-                            javax.xml.namespace,
-                            javax.xml.ws,
-                            org.apache.camel;version="[2.10,3)",
-                            org.apache.camel.builder;version="[2.10,3)",
-                            org.apache.camel.model;version="[2.10,3)",
-                            org.apache.cxf.interceptor;version="[2.6,3)",
-                            org.apache.cxf.message;version="[2.6,3)",
-                            org.slf4j;version="[1.6,2)"
-                        </Import-Package>
-                        <DynamicImport-Package>
-                            org.apache.cxf.*
-                        </DynamicImport-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
 
             <!-- CXF wsdl2java generator, will plugin to the compile goal -->
             <plugin>

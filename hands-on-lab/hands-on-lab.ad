@@ -29,9 +29,11 @@ Remark : SOAPUI can be also installed within JBDS
 
 - https://www.jboss.org/products/fuse.html[JBoss Fuse 6.1 & JBoss A-MQ 6.1]
 
-* Download and installation of the DEMO/QuickStarts code
+* Download and installation of the code for the demos
+  - https://github.com/cmoulliard/fuse-days-2014/tree/master/hands-on-lab[GitHub]
+  - USB key
 
-* Steps - DEMO1
+* Steps - DEMO1 - Using Archetype
 
 - Start JBDS 7.1. GA
 - Create in your home directory a workspace wih the name `workspace-lab`
@@ -53,7 +55,7 @@ Remark : SOAPUI can be also installed within JBDS
 
 - Create a unit test and run it locally
 
-* Steps - DEMO2
+* Steps - DEMO2 - Import project - CXF
 
 - Start JBDS 7.1. GA
 - Select the `workspace-lab`
@@ -90,26 +92,252 @@ Remark : you can also use curl to send request and get the result
 
 curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/saveCustomerRequest" -T request-save.xml http://localhost:9090/training/WebService  | xmllint --format -
 
+* Steps - DEMO3 - Unit Test
 
+- Use project created for my cool demo
+- Select in the File menu bar `camel test case`
+- Package name should be `my.cool.demo`
+- Browse to select the camel xml file located under your src/main/resources/META-INF/spring directory
+- Keep by default endpoints selected and click on 'finish' button
+- Run the unit test using Junit
+- Check result
 
-We start to design a Camel project (combination of CXF, JMS endpoints with CBR Pattern) using maven camel - fuse archetype(s) in Fuse IDE
-Example could be extended to integrate Drools rules doing some calculation required for the routing, ...
-Next, we launch/run/debug the project locally and demonstrate what JBoss Dev Studio Integration let to do.
-Connect to JMX Explorer and show Routes, Endpoints, Processors, add a message on a queue/endpoint.
-Drag and drop messages, collect the metrics/stats
-Add unit test to cover camel route testing
 
 == Session 2 : Packaging and deployment in JBoss Fuse - 90min
 
 - Presentation of JBoss Fuse & AMQ 6.1
-- Demo :
-Start JBoss Fuse
-Show Karaf commands, logs, ...
-How to tailor karaf according to your needs (remove non required features)
-Deploy the project designed during session 1 using feature(s) in a new Karaf container.
-Idem but using hot deploy approach.
-Access to the web services, queues and publish messages
-Display camel metrics within JBoss Fuse
+
+* Steps - Demo1 - Cleanup JBoss Fuse
+
+- Edit file 'etc/org.apache.karaf.features.cfg' located under /etc directory
+- Comment the line starting with the key 'featruesBoot' and add the following features
+
+  featuresBoot=jasypt-encryption,config,management,fabric,fabric-bundle,fabric-maven-proxy,patch,war,hawtio
+
+- (Re)Start 'fuse' with the command `/fuse clean`
+- Check on the console that the number of bundles just correspond to what has been defined
+- Was before `250` and now `128`
+
+  ...
+  [ 126] [Active     ] [            ] [   60] JLine (2.11.0)
+  [ 127] [Active     ] [Created     ] [   60] hawtio :: Karaf terminal plugin (1.2.0.redhat-379)
+  [ 128] [Active     ] [Created     ] [   60] hawtio :: hawtio-maven-indexer (1.2.0.redhat-379)
+
+- Add a new 'features' like camel, camel-cxf
+
+  features:install camel
+  features:install camel-cxf
+
+- Verify bundles deployed
+
+  [ 199] [Active     ] [            ] [       ] [   50] Apache CXF Compatibility Bundle Jar (2.7.0.redhat-610379)
+  [ 200] [Active     ] [Created     ] [       ] [   50] camel-cxf-transport (2.12.0.redhat-610379)
+  [ 201] [Active     ] [Created     ] [       ] [   50] camel-cxf (2.12.0.redhat-610379)
+
+Remark : A new Karaf command has been added 'cxr'
+
+cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpoint
+
+* Steps - Demo2 - Review JBoss Fuse commands
+
+- Type on the keyboard 'tab' key --> Display all 311 possibilities? (y or n)
+- Answer 'yes'
+- Type 'log:' tab to see the commands belonging to 'log' family
+- Repeat with 'OSGI','features','admin','log' and dicuss with instructor purpose of the command
+
+* Steps - Demo 3 - Transform project into a bundle
+
+- Change pom packaging of the camel cxf demo to bundle
+
+  <packaging>bundle</packaging>
+
+- Add Apache Felix Bundle plugin to generate METADA required by OSGI runtime
+
+  <!-- to generate the MANIFEST-FILE required by the bundle -->
+  <plugin>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>maven-bundle-plugin</artifactId>
+      <version>${maven.bundle.plugin.version}</version>
+      <extensions>true</extensions> <!-- Used in combination with bundle packaging to extend generate process -->
+      <configuration>
+          <instructions>
+              <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+              <Import-Package>
+                  !com.redhat.fuse.example.camel,
+                  javax.jws,
+                  javax.jws.soap,
+                  javax.xml.bind,
+                  javax.xml.bind.annotation,
+                  javax.xml.datatype,
+                  javax.xml.namespace,
+                  javax.xml.ws,
+                  org.apache.camel;version="[2.10,3)",
+                  org.apache.camel.builder;version="[2.10,3)",
+                  org.apache.camel.model;version="[2.10,3)",
+                  org.apache.cxf.interceptor;version="[2.6,3)",
+                  org.apache.cxf.message;version="[2.6,3)",
+                  org.slf4j;version="[1.6,2)"
+              </Import-Package>
+          </instructions>
+      </configuration>
+  </plugin>
+
+- Build project 'mvn clean install'
+- Deploy the project on JBoss Fuse
+
+  osgi:install -s mvn:com.redhat.fuse/demo-camel-ws/1.0
+
+- Verify that the bundle is deployed and status equals to 'start'
+- Verify also that we have a CXF endpoint exposed (web browser --> 'http://localhost:9090/training/WebService?wsdl') but also using cxf command
+
+    cxf:list-endpoints
+    Name                      State      Address                                                      BusID
+    [CustomerServicePort    ] [Started ] [http://localhost:9090/training/WebService                 ] [demo-camel-ws-cxf1991170407           ]
+
+- Using 'soapui', send a SOAPUI request 'getAllCustomers'
+- Look to the log file 'log:display' or 'ld' which is a shortcut
+
+* Steps - Demo4 - Deploy to
+
+- Add the JBoss Fuse 6.1 server and deploy folder
+- Select 'DeployTo' and 'Deploy Folder configuration'
+- When the screen 'Deploy Folders' appear, add the name 'jbossfuse6.1', point to your 'deploy' folder
+
+  /Users/chmoulli/Fuse/Fuse-servers/jboss-fuse-6.1.0.redhat-379/deploy
+
+- Description should be the same as 'name'
+- Add this config and click on 'ok' button
+
+- Select from the pom.xml file the option, deploy to --> 'jbossfuse6.1'
+- mvn build will take place and deploy the jar file created under the 'deploy' directory of your server
+- List the bundles deployed on the console and consult the log file
+- Do you something strange ? Have we missed to deploy something (camel, ...) ?
+- Add the missing features
+
+  features:install camel
+  features:install camel-cxf
+
+- Restart the bundle of your 'cool-demo'
+
+  osgi:restart id_of_the_bundle
+
+- Verify if th web service is working.
+
+* Steps - Demo 5 - Package the project using a features file
+
+- To achieve this goal, we will create a feature xml file containing our bundle
+- Create the file features.xml under src/main/resources/respository directory
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <features name="my-cool-demo-${project.version}"
+            xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0 http://karaf.apache.org/xmlns/features/v1.0.0">
+
+      <feature name="cool-camel-cxf-demo" version="${project.version}">
+          <bundle>mvn:com.redhat.fuse/demo-camel-ws/${project.version}</bundle>
+      </feature>
+
+   </features>
+
+- Next we will do some maven modifications to add this file during the build process into the maven repository
+
+         <resources>
+              <resource>
+                  <directory>${project.basedir}/src/main/resources</directory>
+                  <filtering>true</filtering>
+              </resource>
+          </resources>
+
+          <plugins>
+              <plugin>
+                  <groupId>org.codehaus.mojo</groupId>
+                  <artifactId>build-helper-maven-plugin</artifactId>
+                  <version>1.8</version>
+                  <executions>
+                      <execution>
+                          <id>attach-artifacts</id>
+                          <phase>package</phase>
+                          <goals>
+                              <goal>attach-artifact</goal>
+                          </goals>
+                          <configuration>
+                              <artifacts>
+                                  <artifact>
+                                      <file>${project.build.outputDirectory}/repository/features.xml</file>
+                                      <type>xml</type>
+                                      <classifier>features</classifier>
+                                  </artifact>
+                              </artifacts>
+                          </configuration>
+                      </execution>
+                  </executions>
+              </plugin>
+
+- Build the project 'mvn clean install'
+
+- Shutdown JBoss Fuse 'ctrl-d' and restart it by doing a cleanup './fuse clean'
+- install the features xml file
+
+  features:addurl mvn:com.redhat.fuse/demo-camel-ws/1.0/xml/features
+
+- Check that the file is well installed
+
+  listurl
+
+- Grep the 'demo' feature
+
+  features:list | grep -i my-cool
+  [uninstalled] [1.0                    ] cool-camel-cxf-demo                     my-cool-demo-1.0
+
+- Install the feature
+
+  features:install cool-camel-cxf-demo
+
+Remark : Check on the command line the result of that installation process
+  Error executing command: Could not start bundle mvn:com.redhat.fuse/demo-camel-ws/1.0 in feature(s) cool-camel-cxf-demo-1.0: Unresolved constraint in bundle demo-camel-ws [129]: Unable to resolve 129.0: missing requirement [129.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.camel)(version>=2.10.0)(!(version>=3.0.0)))
+
+- To solve the problem, issue the missing features should be added to the features file
+- Edit the file and replace the existing feature defintion by this one
+
+        <feature name="cool-camel-cxf-demo" version="${project.version}">
+            <feature version="{camel.version}">camel</feature>
+            <feature version="{camel.version}">camel-cxf</feature>
+            <bundle>mvn:com.redhat.fuse/demo-camel-ws/${project.version}</bundle>
+        </feature>
+
+- Build again 'mvn clean install'
+- Refresh features definitions using this command on JBoss Fuse
+
+  refreshurl
+
+- Reinstall the project and test it (see previous demo)
+- Analyze the camel statistics (command line)
+
+  camel:endpoint-list
+  camel:context-list
+  camel:route-list
+
+  camel:route-profile route1
+
+- Execute some curl or soapui request, chck the statistics
+
+  camel:route-profile route1
+
+  Profile
+  	Camel Context: camel-1
+  Id                                  Count    Last (ms)   Delta (ms)    Mean (ms)     Min (ms)     Max (ms)   Total (ms)    Self (ms)
+  route1                                 14            1           -1            2            1           11           33            0
+    setExchangePattern1                  14            0            0            0            0            0           46            0
+    choice1                              14            1           -1            2            1            9           46           29
+    log1                                  0            0            0            0            0            0           17            0
+    bean1                                 0            0            0            0            0            0           17            0
+    log2                                 14            0           -1            0            0            1           17            5
+    bean2                                14            1            0            0            0            2           12           12
+    log3                                  0            0            0            0            0            0            0            0
+    bean3                                 0            0            0            0            0            0            0            0
+
+
 
 == Session 3 : Management & Monitoring - 60min
 
