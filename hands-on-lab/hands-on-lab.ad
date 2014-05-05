@@ -104,7 +104,6 @@ curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T 
 - Run the unit test using Junit
 - Check result
 
-
 == Session 2 : Packaging and deployment in JBoss Fuse - 90min
 
 - Presentation of JBoss Fuse & AMQ 6.1
@@ -348,47 +347,195 @@ Remark : Check on the command line the result of that installation process
 
 - Presentation of Fuse Management Console - Hawtio
 
-* Steps - DEMO 1 - Use Fuse Management Console / Hawtio
+* Steps - DEMO 1 - Use Fuse Management Console / Hawtio (trace camel routes)
 
 - Open you web browser and point to the following URL address
 
   http://localhost:8181/
 
-Remark : The login/password 'admin/admin' should be commentted in the file etc/users.propoerties prior to start JBoss Fuse
+Remark : The login/password 'admin/admin' should be commented in the file etc/users.properties prior to start JBoss Fuse
 
 - Add you login/password - admin/admin
 - Verify that 'camel' plugin is there
 - Check content of the different plugins 'log', 'osgi', 'threads', 'dashboard'
+- Discover the camel plugin :
+  * route,
+  * context,
+  * attributes,
+  * source,
+  * diagram,
+  * operations,
+  * chart
+
+* Steps - DEMO 2 - Trace and Debug camel routes
+
 - Open the camelContext, next the route-1 and click on diagram
+
+  http://localhost:8181/hawtio/index.html#/camel/routes?tab=camel&nid=root-org.apache.camel-demo-camel-ws-routes-%22route1%22
+
 - Send a SOAP Message 'saveCustomerRequest, getAllCustomers' and check the counters changing within the route diagram
--
+- Visualize the code source
+
+  http://localhost:8181/hawtio/index.html#/camel/source?tab=camel&nid=root-org.apache.camel-demo-camel-ws-routes-%22route1%22
+
+- Next we will enable the tracing to get more info in the FMC console
+- Click on 'trace' tab and click on the button 'Start tracing'
+- Send a new SOAP Request - getAllCustomers
+- 3 entries have been created in the table of the tracing. they belong to the same exchangeID
+- Click on the the first and next on 'header' button, you should see the camel headers, SOAPAction
+- Navigate between the different entries, you should see in the diagram that the color change between
+  the different processor indicating where you stand
+- Stop the tracing (click on the button - stop tracing)
+
+- Now we will use the debug option
+- Select 'debug' tab and click on the button 'start debugging'
+
+  http://localhost:8181/hawtio/index.html#/camel/debugRoute?tab=camel&nid=root-org.apache.camel-demo-camel-ws-routes-%22route1%22
+
+- Click on the choice processor. The color of the processor turns to 'yellow' as a breakpoint has been added and is suspended
+- Send a SOAPMessage using curl. You should see that the response has not been received
+
+  curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T hands-on-lab/demo-camel-ws/src/main/resources/data/request-all.xml http://localhost:9090/training/WebService | xmllint --format -
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                   Dload  Upload   Total   Spent    Left  Speed
 
 
-Use hawtio to manage and discover your camel routes, endpoints,
-Publish messages to queues, ...
+- Return to your browser and look to the table (headers)
+- Next click to the button 'step into the next node'
+- You will move between the different processors
+- To finish to process a message, click on the resume button
+- To leave the debugger, click on 'stop' button
 
-* Steps - Demo 2 :
 
-Create a dashboard for your project to monitor specifically a camel route
-Edit a Camel Route and debug
-Trace a camel route
+* Steps - DEMO 2 - Create a dashboard for your project to monitor specifically a camel route
 
-* Steps - Demo 3:
-Install Insight + elasticsearch to collect statistics/metrics of the camel routes.
-Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes (using Message ID)
+- Select the 'dashboard' plugin and click on the 'manage' button
+- Click on the '+ create' button to add your camel dashboard, name it 'my-camel' in the dashboard table
+- Return to your camel plugin
+- Select the camel route1
 
+  http://localhost:8181/hawtio/index.html#/camel/profileRoute?tab=camel&nid=root-org.apache.camel-demo-camel-ws-routes-%22route1%22
+
+- Click on the 'profile' tab, you will see the statistics of your camel route
+- To use this information and add it to your personal dashboard, click on the button 'add this view to a dashboard'. This button is located on the panel of your tabs (right part)
+- We switch to the dashboard view,
+- Select your 'my-camel' dashboard by clicking on the checkbox and next Click on 'Add view to dashboard'
+- When this is done you should be redirected to the dashboadr - 'my-camel' and a small widget representing the profile of your camel is displayed
+- Increase the size of the widget
+- Send new requests and check the values
 
 == Session 4 :  Fabric, HA & Load Balancing - 60min
 
 - Presentation of Fuse Fabric & A-MQ
-- Demo :
-Deploy project of scenario 1 using fabric/profile in 2 containers
-Setup a Network of Brokers Topology and show how messages are persisted/processed (to support HA scenario)
-Turn on your Fabric/Fuse container into a load balancing platform to distribute workload (Web Services)
 
-15:45 - Session 5 : Complex Business Processing - 90 min
+* Steps - DEMO 1 - Deploy project (my-cool-camel-cxf) as a profile
+
+- Using the JBoss Fuse command line, create the fabric server
+
+  fabric:create
+
+- Add maven plugin 'fabric8:deploy' to the pom.xml file the project
+
+- And define the properties required to create the profile
+
+				<fabric8.profile>my-cool-profile</fabric8.profile>
+        		<fabric8.features>camel camel-cxf</fabric8.features>
+        		<fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
+
+- Add a new 'maven' configuration to JBDS and name it 'fabric8'
+- Select the 'demo-camel-ws' project, add the goal 'fabric8:deploy', save it
+
+Remark : the admin/password login/password must be added to your settings.xml file of your maven config in order to run the plugin.
+
+    [ERROR] Please add the following to your ~/.m2/settings.xml file (using the correct user/password values):
+    [ERROR]
+    [ERROR] <servers>
+    [ERROR] <server>
+    [ERROR] <id>fabric8.upload.repo</id>
+    [ERROR] <username>admin</username>
+    [ERROR] <password>admin</password>
+    [ERROR] </server>
+    [ERROR] </servers>
+
+Example of settings.xml file
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+   <servers>
+  	<server>
+  		<id>fabric8.upload.repo</id>
+  		<username>admin</username>
+  		<password>admin</password>
+  	</server>
+  </servers>
+  </settings>
+
+- Run the 'maven' config and wait till the build succeeds
+
+  Uploading: http://192.168.1.4:8181/maven/upload/com/redhat/fuse/demo-camel-ws/1.0/demo-camel-ws-1.0.pom
+  [INFO] About to invoke mbean io.fabric8:type=ProjectDeployer on jolokia URL: http://localhost:8181/jolokia with user: admin
+  [INFO] Got result: {"profileId":"my-cool-profile","versionId":"1.0"}
+
+- Open the Fuse Management Console. You should see that a new perspective has been added 'fabric', select it
+- Review concepts introduced by the instructor
+- Select wiki and navigate to the profile 'my-cool-demo' to verify that your bundle is well attached to the profile and that the profile is linked to the profile (camel & cxf)
+
+  http://localhost:8181/hawtio/index.html#/wiki/branch/1.0/view/fabric/profiles/my/cool/profile.profile
+
+- Next click on the button 'new' to add a new child container with this profile
+- Call the container 'my-cool-container'
+- Verify that the profile is 'my-cool-profile'.
+- Click on 'create and start container'
+- You will see that the container will created and the bundles currently deployed
+
+
+* Steps - DEMO 2
+Install Insight + elasticsearch to collect statistics/metrics of the camel routes.
+Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes (using Message ID)
+
+- Download fabric8 - http://fabric8.io/#/site/book/doc/index.md?chapter=getStarted_md
+
+- Select in the 'fabric' perspective, the container runtime and add the profile 'insight-core' and 'insight-kibana'
+- After a few moments, you should be able to verify that the 'insight' perspective has been added to the menu
+- Add to 'my-cool-container' the profile 'insight-camel' & 'insight-core'
+- Wait a few moments that the container is provisioned
+- Open next the perspective 'insight', click on 'camel events' tab and check the camel exchanges created
+- Navigate between the columns of the table of ES
+- Add or remove some columns
+- Check the detail of a camel exchange
+- Search about some exchanges using the Lucene FT Search
+
+ISSUES with camel metrics
+
+* Steps - DEMO 3
+Setup a Network of Brokers Topology and show how messages are persisted/processed (to support HA scenario)
+
+- We will follow instructions of the FuseByExample/projects to seyup 2 master/slave ActiveMQ brokers in a
+  network of brokers (west to east)
+* https://github.com/FuseByExample/external-mq-fabric-client
+* https://github.com/FuseByExample/external-mq-fabric-client/blob/master/docs/fabric-ha-setup-master-slave.md
+
+* Steps - DEMO 4
+
+Turn on your Fabric/Fuse container into a load balancing platform to distribute workload
+
+- Review the configuration of the cluster server (http://localhost:8181/hawtio/index.html#/wiki/branch/1.0/view/fabric/profiles/example/camel) and the camel route
+http://localhost:8181/hawtio/index.html#/wiki/branch/1.0/view/fabric/profiles/example/camel/cluster.server.profile/camel.xml
+- Do the same but for the client - http://localhost:8181/hawtio/index.html#/wiki/branch/1.0/view/fabric/profiles/example/camel/cluster.client.profile/camel.xml
+- Create 2 child containers using the 'cluster server' profile
+Remark : change 1 with 2 in the field 'Number of containers' and name the containers 'camel-cluster'
+- Click on 'Create and start containers'
+
+
+
+
+== Session 5 : Complex Business Processing - 90 min
 - Presentation of Drools Rule Language and Drools plugin in JBoss Developer Studio
-- Demo :
+
+*Steps - DEMO1
+
 Creation of a knowledge project with Rules using JBoss Developer Studio
 Add unit testing
 Run an debug the project locally
