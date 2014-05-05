@@ -1,11 +1,97 @@
-09:30 - Session 1 : Fuse Development - 90min
-- Session will start with verification of these prerequisites :
-Apache Maven, JDK 6-7, SOAPUi
-JBDS and integration module
-JBoss Fuse 6.1 & JBoss A-MQ 6.1
-Download and installation of the DEMO/QuickStarts code
-- Will continue with the Presentation of Fuse IDE plugin in JBoss Developer Studio, a graphical tool to design Camel routes... (Slides - 10 minutes)
-- Demo :
+:toc:
+:toc-placement!:
+
+= JBoss Fuse Integration Days - Hands on Lab Session
+
+toc::[]
+
+== Session 1 : Fuse Development - 90min
+
+* Prerequisites
+
+- Apache Maven 3.0.5,
+- JDK 6-7,
+- http://sourceforge.net/projects/soapui/files/soapui/[SOAPUi 5.0],
+- https://www.jboss.org/products/devstudio.html[JBDS and Integration Stack]
+
+----
+Help > Install New Software...
+Add...
+Insert the following for 'Location:' https://devstudio.jboss.com/updates/7.0/integration-stack/
+----
+
+Remark : SOAPUI can be also installed within JBDS
+
+- An eclipse update site is now available at http://www.soapui.org/eclipse/update, install the soapui-eclipse-plugin with the following steps:
+
+1. Select Help > Install New Software...
+2. In the Work with field, type http://www.soapui.org/eclipse/update and click Add...
+
+- https://www.jboss.org/products/fuse.html[JBoss Fuse 6.1 & JBoss A-MQ 6.1]
+
+* Download and installation of the DEMO/QuickStarts code
+
+* Steps - DEMO1
+
+- Start JBDS 7.1. GA
+- Create in your home directory a workspace wih the name `workspace-lab`
+- Select `New Fuse Project`
+- Next, select an archetype `camel-archetype-activemq`
+- Define the following values for :
+  - groupid : my,
+  - archetypeid : cool-demo,
+  - version : 1.0
+- Click on next button
+- When the project appears, switch to perspective 'Fuse integration'
+- Open the Camelcontext to navigate between the different camel routes (see menu - `routes) and review them
+- Start the camelContext using `Run as Local Camel Context`
+- Open JMX Browser and navigate to discover the ActiveMQ browser and Camel
+- Review the MBeans (routes, endpoints, ...)
+- Enable tracing
+- Drag and drop a message to an endpoint
+- Review statistics under Message log
+
+- Create a unit test and run it locally
+
+* Steps - DEMO2
+
+- Start JBDS 7.1. GA
+- Select the `workspace-lab`
+- Import the `demo-camel-ws` project (as a Existing Maven project)
+- Compile it using `mvn install` goal
+- Change project properties (select in the menu bar --> Project --> Properties)
+- Select Java Build Path, Click on Source and add folder 'target/generated/src/main/java' to include code created by cxf-codegen-plugin
+- Open Fuse integration perspective, review the camel route
+- Start the camelContext using `Run as Local Camel Context`
+- Open the view `soapUI Navigator` from the menu bar (Show view --> Other --> soapUI --> soapUI Navigator) (DO NOT WORK)
+- Start SOAPUI
+- Select New project and add the URL point to the WSDL file of the Web Service exposed by the Camel route `http://localhost:9090/training/WebService?wsdl`
+- When the project has been imported, select the service `getCustomersByName` and open `Request 1`. Replace the question mark symbol by `edHat`to search about it.
+- You will get a response
+
+    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+       <soap:Body>
+          <getCustomerByNameResponse xmlns="http://example.fuse.redhat.com/">
+             <return>
+                <name>RedHat</name>
+                <address>RedHat Office</address>
+                <numOrders>78</numOrders>
+                <revenue>5580.0</revenue>
+                <test>100.0</test>
+                <type>BUSINESS</type>
+             </return>
+          </getCustomerByNameResponse>
+       </soap:Body>
+    </soap:Envelope>
+- Test the service `getAllCustomers` and `saveCustomer`
+- A request1 example to save a new customer is available under `src/data/request-save` directory
+
+Remark : you can also use curl to send request and get the result
+
+curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/saveCustomerRequest" -T request-save.xml http://localhost:9090/training/WebService  | xmllint --format -
+
+
+
 We start to design a Camel project (combination of CXF, JMS endpoints with CBR Pattern) using maven camel - fuse archetype(s) in Fuse IDE
 Example could be extended to integrate Drools rules doing some calculation required for the routing, ...
 Next, we launch/run/debug the project locally and demonstrate what JBoss Dev Studio Integration let to do.
@@ -13,9 +99,8 @@ Connect to JMX Explorer and show Routes, Endpoints, Processors, add a message on
 Drag and drop messages, collect the metrics/stats
 Add unit test to cover camel route testing
 
-11:00 - Coffee break
+== Session 2 : Packaging and deployment in JBoss Fuse - 90min
 
-11:15 - Session 2 : Packaging and deployment in JBoss Fuse - 90min
 - Presentation of JBoss Fuse & AMQ 6.1
 - Demo :
 Start JBoss Fuse
@@ -26,9 +111,8 @@ Idem but using hot deploy approach.
 Access to the web services, queues and publish messages
 Display camel metrics within JBoss Fuse
 
-12:30 - Lunch
+== Session 3 : Management & Monitoring - 60min
 
-13:30 - Session 3 : Management & Monitoring - 60min
 - Presentation of Fuse Management Console - Hawtio
 - Demo 1 :
 What FMC/Hawtio propose - overall presentation : wiki, maven, jmx, cpu, dashboard, ...
@@ -42,9 +126,9 @@ Trace a camel route
 Install Insight + elasticsearch to collect statistics/metrics of the camel routes.
 Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes (using Message ID)
 
-14:30 - Coffee break
 
-14:45 - Session 4 :  Fabric, HA & Load Balancing - 60min
+== Session 4 :  Fabric, HA & Load Balancing - 60min
+
 - Presentation of Fuse Fabric & A-MQ
 - Demo :
 Deploy project of scenario 1 using fabric/profile in 2 containers

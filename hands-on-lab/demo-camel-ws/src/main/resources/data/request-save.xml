@@ -1,0 +1,15 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:exam="http://example.fuse.redhat.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <exam:saveCustomerRequest>
+            <exam:customer>
+                <exam:name>RedHat1</exam:name>
+                <exam:address>Sao Paulo, Brazil</exam:address>
+                <exam:numOrders>22</exam:numOrders>
+                <exam:revenue>1000.0</exam:revenue>
+                <exam:test>100.0</exam:test>
+                <exam:type>BUSINESS</exam:type>
+            </exam:customer>
+        </exam:saveCustomerRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
