@@ -366,20 +366,13 @@ WARNING: Error executing command: Could not start bundle mvn:com.redhat.fuse/dem
 * DEMO 1 - Use Fuse Management Console / Hawtio (trace camel routes)
 
 - Open your web browser and point to the following URL address `http://localhost:8181/`
-
++
 NOTE: The login/password `admin/admin` should be commented in the file etc/users.properties prior to start JBoss Fuse
-
++
 - Add you login/password - admin/admin
 - Verify that `camel` plugin is there
 - Check content of the different plugins `log`, `osgi`, `threads`, `dashboard`
-- Discover the camel plugin :
-  * route,
-  * context,
-  * attributes,
-  * source,
-  * diagram,
-  * operations,
-  * chart
+- Discover the camel plugin : route, context, attributes, source, diagram, operations, chart
 
 * DEMO 2 - Trace and Debug camel routes
 
@@ -460,9 +453,9 @@ NOTE: The login/password `admin/admin` should be commented in the file etc/users
 
 - Add a new `maven` configuration to JBDS and name it `fabric8`
 - Select the `demo-camel-ws` project, add the goal `fabric8:deploy`, save it
-
++
 NOTE: the admin/password login/password must be added to your settings.xml file of your maven config in order to run the plugin.
-
++
     [ERROR] Please add the following to your ~/.m2/settings.xml file (using the correct user/password values):
     [ERROR]
     [ERROR] <servers>
@@ -472,22 +465,22 @@ NOTE: the admin/password login/password must be added to your settings.xml file 
     [ERROR] <password>admin</password>
     [ERROR] </server>
     [ERROR] </servers>
++
+    Example of settings.xml file
 
-Example of settings.xml file
-
-  <?xml version="1.0" encoding="UTF-8"?>
-  <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-   <servers>
-  	<server>
-  		<id>fabric8.upload.repo</id>
-  		<username>admin</username>
-  		<password>admin</password>
-  	</server>
-  </servers>
-  </settings>
-
+   <?xml version="1.0" encoding="UTF-8"?>
+   <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <servers>
+   	<server>
+   		<id>fabric8.upload.repo</id>
+   		<username>admin</username>
+   		<password>admin</password>
+   	</server>
+   </servers>
+   </settings>
++
 - Run the `maven` config and wait till the build succeeds
 
   Uploading: http://192.168.1.4:8181/maven/upload/com/redhat/fuse/demo-camel-ws/1.0/demo-camel-ws-1.0.pom
