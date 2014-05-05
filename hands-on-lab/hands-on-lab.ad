@@ -547,7 +547,6 @@ NOTE: change 1 with 2 in the field `Number of containers` and name the container
   2014-05-05 17:13:54 INFOfabric-client >>> Response from Fabric Container : camel-cluster2
   2014-05-05 17:13:55 INFOfabric-client >>> Response from Fabric Container : camel-cluster1
 
-
 == Session 5 : Complex Business Processing - 90 min
 
 === Presentation of Drools Rule Language and Drools plugin in JBoss Developer Studio
