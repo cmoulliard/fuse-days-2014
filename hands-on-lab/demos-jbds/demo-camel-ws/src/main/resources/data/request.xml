@@ -1,0 +1,6 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header/>
+    <soap:Body>
+        <ns:getCustomerByName xmlns:ns="http://example.fuse.redhat.com/">RedHat</ns:getCustomerByName>
+    </soap:Body>
+</soap:Envelope>

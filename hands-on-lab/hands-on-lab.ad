@@ -507,17 +507,15 @@ Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes 
 
 - Download fabric8 - http://fabric8.io/#/site/book/doc/index.md?chapter=getStarted_md
 
-- Select in the `fabric` perspective, the container runtime and add the profile `insight-core` and `insight-kibana`
+- Select in the `fabric` perspective, the container `root` runtime and add the profile `insight-core` and `insight-kibana`
 - After a few moments, you should be able to verify that the `insight` perspective has been added to the menu
-- Add to `my-cool-container` the profile `insight-camel` & `insight-core`
+- Create a new child container `my-cool-insight` and add the profile `insight-camel` & `insight-core`
 - Wait a few moments that the container is provisioned
 - Open next the perspective `insight`, click on `camel events` tab and check the camel exchanges created
 - Navigate between the columns of the table of ES
 - Add or remove some columns
 - Check the detail of a camel exchange
 - Search about some exchanges using the Lucene FT Search
-
-ISSUES with camel metrics
 
 * DEMO 3
 Setup a Network of Brokers Topology and show how messages are persisted/processed (to support HA scenario)

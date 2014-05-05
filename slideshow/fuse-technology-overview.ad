@@ -27,7 +27,8 @@
 :title-speaker: Architect Engineer Committer
 :twitter: cmoulliard
 
-[data-background="images/redhat-logo-background-1024-768.png"]
+[data-background="images/redhat-mw-logo-background.png"]
+// [data-background="images/redhat-logo-background-1024-768.png"]
 // [data-background="images/redhat-logo-background-1280-800.png"]
 == *JBoss Fuse Technology Overview*
 
@@ -83,13 +84,19 @@ image::fuse/HistoryOfFuse.png[]
 
 == High level presentation
 
-image::fuse/jboss-fuse.png[width="80%",height="80%"]
+//image::fuse/jboss-fuse.png[width="80%",height="80%"]
+image::fuse/rh-jboss-fuse.png[]
+
+* Enables *integration everywhere* for a real-time enterprise
 
 // ************** High level presentation ************
 
 == High level presentation
 
-image::fuse/jboss-amq.png[width="80%",height="80%"]
+//image::fuse/jboss-amq.png[width="80%",height="80%"]
+image::fuse/rh-jboss-amq.png[]
+
+* An open source *messaging platform*
 
 // ************** High level presentation ************
 
