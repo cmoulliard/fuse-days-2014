@@ -1,0 +1,26 @@
+source: hands-on-lab/generated
+destination: hands-on-lab/pdf # or . or ~/Hyla or generated_content
+
+#
+# Styles
+# Supported :  liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
+#
+style: liberation
+
+backend: html5
+
+#
+# Generate command
+#
+rendering: html2pdf
+
+#
+# PDF options
+#
+file: hands-on-lab.html
+
+# cover_path: # Co(Un)mment this line to use it and Path to the HTML file containing the cover page
+# header_html_path: # Co(Un)mment this line to use it and add Path to the HTML file containing header/banner
+# footer_text:  # Co(Un)mment this line to use it and add Copyright Text
+
+# end hyla options

@@ -1,6 +1,6 @@
 :toc:
-:toc-placement!:
 :toclevels: 3
+:toc-placement!:
 :icons: font
 
 = JBoss Fuse Integration Days - Hands on Lab Session
@@ -33,7 +33,12 @@ Remark : SOAPUI can be also installed within JBDS
 
 === Installation of the code for the demos
 
-* https://github.com/cmoulliard/fuse-days-2014/tree/master/hands-on-lab[GitHub]
+* Clone the `hands on lab` git project and move to the directory `hands-on-lab`
+
+  git clone https://github.com/cmoulliard/fuse-days-2014.git
+
+  or use the code available on the
+
 * USB key
 
 === Demos
