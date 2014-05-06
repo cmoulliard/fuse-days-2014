@@ -11,12 +11,17 @@ toc::[]
 
 === Prerequisites
 
+- If not yet done, download and install the following softwares
+
 - http://maven.apache.org/download.cgi[Apache Maven 3.0.5],
 - http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html[JDK 7],
 - http://sourceforge.net/projects/soapui/files/soapui/[SOAPUi 5.0],
-- https://www.jboss.org/products/devstudio.html[JBDS and Integration Stack]
+- https://www.jboss.org/products/devstudio.html[JBDS]
+
+- Next install `integration stack` in JBDS according to the following steps
 
 ----
+Start JBDS and select from the menu
 Help > Install New Software...
 Add...
 Insert the following for `Location:` https://devstudio.jboss.com/updates/7.0/integration-stack/
