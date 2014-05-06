@@ -557,6 +557,74 @@ NOTE: change 1 with 2 in the field `Number of containers` and name the container
 
 - Creation of a knowledge project with Rules using JBoss Developer Studio
 - Import project 'demo-camel-drools'
+- Review the code and build it `mvn install`
+- Setup a JBoss Fuse - Fabric server and deploy the Drools project using a profile and fabric8:deploy plugin in a child container `my-cool-drools-container`
+- Open the container created and check the log file where you should see messages
 
-- Setup a JBoss Fuse - Fabric server and deploy the Drools project using a profile and fabric8:deploy plugin
-- Review the project, analyze the metrics
+    2014-05-06 09:49:51,657 | INFO  | imer://testRoute | Home                             | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Person Young Person is staying home
+    2014-05-06 09:50:01,659 | INFO  | imer://testRoute | Bar                              | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Person Old Person can go to the bar
+
+- Next we will add a new rule and modify the camel route
+- After selecting the 'drl' directory, Select from the menu `New -> Other -> Drools -> Rule Resource`
+- file name should be `favoriteCheese-rule.drl`
+- Type of resource -> `New rule`
+- Define the `Rule package name` to `org.drools.camel.example`
+- Click on `next` button
+- Add 2 new rules to define favoriteCheese and import the Person object
+
+    package org.drools.camel.example
+
+    import org.drools.camel.example.Person;
+
+    rule "Cheddar cheese for old person"
+        when
+          p : Person( age >= 21 )
+        then
+          p.setFavoriteCheese("cheddar");
+    end
+
+    rule "Gouda cheese for young person"
+        when
+          p : Person( age < 21 )
+        then
+          p.setFavoriteCheese("gouda");
+    end
+
+- Modify the camel route to control the `favorite cheese` selected
+
+                <choice>
+                    <when id="CanDrink">
+                        <simple>${body.canDrink}</simple>
+                        <log logName="Bar" message="${body.name} can go to the bar"/>
+                        <to uri="direct://cheese"/>
+                    </when>
+                    <otherwise>
+                        <log logName="Home" message="${body.name} is staying home"/>
+                        <to uri="direct://cheese"/>
+                    </otherwise>
+                </choice>
+            </route>
+
+            <route>
+                <from uri="direct://cheese"/>
+                <when>
+                    <simple>${body.favoriteCheese} == 'gouda'</simple>
+                    <log logName="Gouda" message="${body.name} prefers gouda cheese"/>
+                </when>
+                <when>
+                    <simple>${body.favoriteCheese} == 'cheddar'</simple>
+                    <log logName="Cheese" message="${body.name} prefers cheddar cheese"/>
+                </when>
+            </route>
+
+- Rebuild the project `mvn clean install`
+- Update the bundle within the `my-cool-drools-container`
+- Verify in the log the messages displayed
+
+    2014-05-06 09:57:36,960 | INFO  | imer://testRoute | Bar                              | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Old Person can go to the bar
+    2014-05-06 09:57:36,961 | INFO  | imer://testRoute | Cheese                           | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Old Person prefers cheddar cheese
+
+    2014-05-06 09:57:56,963 | INFO  | imer://testRoute | Home                             | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Young Person is staying home
+    2014-05-06 09:57:56,964 | INFO  | imer://testRoute | Gouda                            | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Young Person prefers gouda cheese
+
+== This is the end. We hope that you have enjoyed and appreciated !

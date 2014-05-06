@@ -8,7 +8,7 @@
     <artifactId>demo-camel-ws</artifactId>
     <name>Demo Camel CXF</name>
     <version>1.0</version>
-    <packaging>bundle</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <camel.version>2.12.0.redhat-610379</camel.version>
@@ -180,36 +180,6 @@
             </plugin>
 
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.apache.cxf</groupId>
-                                        <artifactId>cxf-codegen-plugin</artifactId>
-                                        <versionRange>[2.6.0,)</versionRange>
-                                        <goals>
-                                            <goal>wsdl2java</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore></ignore>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-                -->
-            </plugins>
-        </pluginManagement>
     </build>
 
 </project>
