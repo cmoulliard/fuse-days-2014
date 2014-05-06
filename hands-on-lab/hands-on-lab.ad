@@ -10,8 +10,8 @@ toc::[]
 
 === Prerequisites
 
-- Apache Maven 3.0.5,
-- JDK 6-7,
+- http://maven.apache.org/download.cgi[Apache Maven 3.0.5],
+- http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html[JDK 7],
 - http://sourceforge.net/projects/soapui/files/soapui/[SOAPUi 5.0],
 - https://www.jboss.org/products/devstudio.html[JBDS and Integration Stack]
 
@@ -28,7 +28,7 @@ Remark : SOAPUI can be also installed within JBDS
 1. Select Help > Install New Software...
 2. In the Work with field, type http://www.soapui.org/eclipse/update and click Add...
 
-- https://www.jboss.org/products/fuse.html[JBoss Fuse 6.1 & JBoss A-MQ 6.1]
+- https://www.jboss.org/products/fuse.html[JBoss Fuse 6.1] & https://www.jboss.org/products/amq.html[JBoss A-MQ 6.1]
 
 === Installation of the code for the demos
 
@@ -556,8 +556,7 @@ NOTE: change 1 with 2 in the field `Number of containers` and name the container
 * DEMO1
 
 - Creation of a knowledge project with Rules using JBoss Developer Studio
-- Add unit testing
-- Run an debug the project locally
-- Combine Drools calculation rules within a camel project
+- Import project 'demo-camel-drools'
+
 - Setup a JBoss Fuse - Fabric server and deploy the Drools project using a profile and fabric8:deploy plugin
 - Review the project, analyze the metrics

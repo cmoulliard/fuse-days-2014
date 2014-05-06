@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:kie="http://drools.org/schema/kie-spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://drools.org/schema/kie-spring http://drools.org/schema/kie-spring.xsd">
+
+    <bean id="kiePostProcessor" class="org.drools.osgi.spring.OsgiKModuleBeanFactoryPostProcessor">
+        <!-- you can optionally define the GAV for this artifact as it follows -->
+        <!--property name="release" value="yourGroup:yourArtifact:yourVersion"/-->
+    </bean>
+
+    <kie:kmodule id="camel-context">
+        <kie:kbase name="drl">
+            <kie:ksession name="ksession1" type="stateless">
+                <kie:batch>
+                    <kie:set-global identifier="list" >
+                        <bean class="java.util.ArrayList" />
+                    </kie:set-global>
+                </kie:batch>
+            </kie:ksession>
+        </kie:kbase>
+    </kie:kmodule>
+
+</beans>
