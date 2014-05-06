@@ -1,5 +1,6 @@
 :toc:
 :toc-placement!:
+:toclevels: 3
 :icons: font
 
 = JBoss Fuse Integration Days - Hands on Lab Session
@@ -37,7 +38,7 @@ Remark : SOAPUI can be also installed within JBDS
 
 === Demos
 
-* DEMO1 - Using Archetype
+==== Demo 1 - Using Camel Archetype with JBDS
 
 - Start JBDS 7.1. GA
 - Create in your home directory a workspace wih the name `workspace-lab`
@@ -61,7 +62,7 @@ Remark : SOAPUI can be also installed within JBDS
 
 - Create a unit test and run it locally
 
-* DEMO2 - Import project - CXF
+==== Demo 2 - Import project - Demo Camel CXF with JBDS
 
 - Start JBDS 7.1. GA
 - Select the `workspace-lab`
@@ -91,26 +92,27 @@ Remark : SOAPUI can be also installed within JBDS
           </getCustomerByNameResponse>
        </soap:Body>
     </soap:Envelope>
+
 - Test the service `getAllCustomers` and `saveCustomer`
 - A request1 example to save a new customer is available under `src/data/request-save` directory
 
 [IMPORTANT]
 ====
-you can also use curl to send request and get the result +
+you can also use *curl* to send request and get the result +
 
-curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getCustomerByName" -T hands-on-lab/demo-camel-ws/src/main/resources/data/request.xml  http://localhost:9090/training/WebService | xmllint --format - +
+curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getCustomerByName" -T hands-on-lab/demo-camel-ws-after/src/main/resources/data/request.xml  http://localhost:9090/training/WebService | xmllint --format - +
 
-curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/saveCustomerRequest" -T hands-on-lab/demo-camel-ws/src/main/resources/data/request-save.xml http://localhost:9090/training/WebService  | xmllint --format - +
+curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/saveCustomerRequest" -T hands-on-lab/demo-camel-ws-after/src/main/resources/data/request-save.xml http://localhost:9090/training/WebService  | xmllint --format - +
 
-curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T hands-on-lab/demo-camel-ws/src/main/resources/data/request-all.xml http://localhost:9090/training/WebService | xmllint --format -
+curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T hands-on-lab/demo-camel-ws-after/src/main/resources/data/request-all.xml http://localhost:9090/training/WebService | xmllint --format -
 ====
 
-* DEMO3 - Unit Test
+==== Demo 3 - Unit Test with JBDS
 
 - Use project created for my cool demo
 - Select in the File menu bar `camel test case`
 - Package name should be `my.cool.demo`
-- Browse to select the camel xml file located under your src/main/resources/META-INF/spring directory
+- Browse to select the camel xml file located under your src/main/resources/META-INF/spring` directory
 - Keep by default endpoints selected and click on `finish` button
 - Run the unit test using Junit
 - Check result
@@ -121,10 +123,10 @@ curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T 
 
 === Demos
 
-* Demo1 - Cleanup JBoss Fuse
+==== Demo 1 - Tailor your JBoss Fuse server
 
 - Edit file `etc/org.apache.karaf.features.cfg` located under /etc directory
-- Comment the line starting with the key `featruesBoot` and add the following features
+- Comment the line starting with the key `featuresBoot` and add the following features
 
   featuresBoot=jasypt-encryption,config,management,fabric,fabric-bundle,fabric-maven-proxy,patch,war,hawtio
 
@@ -152,14 +154,14 @@ NOTE: A new Karaf command has been added `cxr`
 
 cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpoint
 
-* Demo2 - Review JBoss Fuse commands
+==== Demo 2 - Review JBoss Fuse commands
 
 - Type on the keyboard `tab` key -> Display all 311 possibilities? (y or n)
 - Answer `yes`
 - Type `log:` tab to see the commands belonging to `log` family
 - Repeat with `OSGI`,`features`,`admin`,`log` and dicuss with instructor purpose of the command
 
-* Demo 3 - Transform project into a bundle
+==== Demo 3 - Transform project into a bundle
 
 - Change pom packaging of the camel cxf demo to bundle
 
@@ -211,7 +213,7 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 - Using `soapui`, send a SOAPUI request `getAllCustomers`
 - Look to the log file `log:display` or `ld` which is a shortcut
 
-* Demo4 - Deploy to
+==== Demo 4 - Deploy to a Fuse Container
 
 - Add the JBoss Fuse 6.1 server and deploy folder
 - Select `DeployTo` and `Deploy Folder configuration`
@@ -240,7 +242,7 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 
   rm -rf ../deploy/demo-camel-ws-1.0.jar
 
-* Demo 5 - Package the project using a features file
+==== Demo 5 - Package the project using a features file
 
 - To achieve this goal, we will create a feature xml file containing our bundle
 - Create the file features.xml under src/main/resources/respository directory
@@ -356,14 +358,13 @@ WARNING: Error executing command: Could not start bundle mvn:com.redhat.fuse/dem
     bean3                                 0            0            0            0            0            0            0            0
 
 
-
 == Session 3 : Management & Monitoring - 60min
 
 === Presentation of Fuse Management Console - Hawtio
 
 === Demos
 
-* DEMO 1 - Use Fuse Management Console / Hawtio (trace camel routes)
+==== Demo 1 - Use Fuse Management Console / Hawtio
 
 - Open your web browser and point to the following URL address `http://localhost:8181/`
 +
@@ -374,7 +375,7 @@ NOTE: The login/password `admin/admin` should be commented in the file etc/users
 - Check content of the different plugins `log`, `osgi`, `threads`, `dashboard`
 - Discover the camel plugin : route, context, attributes, source, diagram, operations, chart
 
-* DEMO 2 - Trace and Debug camel routes
+==== Demo 2 - Trace and Debug camel routes
 
 - Open the camelContext, next the route-1 and click on diagram
 
@@ -414,7 +415,7 @@ NOTE: The login/password `admin/admin` should be commented in the file etc/users
 - To leave the debugger, click on `stop` button
 
 
-* DEMO 3 - Create a dashboard for your project to monitor specifically a camel route
+==== Demo 3 - Create a dashboard for your project to monitor specifically a camel route
 
 - Select the `dashboard` plugin and click on the `manage` button
 - Click on the `+ create` button to add your camel dashboard, name it `my-camel` in the dashboard table
@@ -437,7 +438,7 @@ NOTE: The login/password `admin/admin` should be commented in the file etc/users
 
 === Demos
 
-* DEMO 1 - Deploy project (my-cool-camel-cxf) as a profile
+==== Demo 1 - Deploy project (my-cool-camel-cxf) as a profile
 
 - Using the JBoss Fuse command line, create the fabric server
 
@@ -500,9 +501,9 @@ NOTE: the admin/password login/password must be added to your settings.xml file 
 - You will see that the container will created and the bundles currently deployed
 
 
-* DEMO 2
+==== Demo 2 - ElasticSearch and Insight
 
-Install Insight + elasticsearch to collect statistics/metrics of the camel routes.
+Objective : Install Insight + elasticsearch to collect statistics/metrics of the camel routes.
 Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes (using Message ID)
 
 - Download fabric8 - http://fabric8.io/#/site/book/doc/index.md?chapter=getStarted_md
@@ -517,17 +518,18 @@ Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes 
 - Check the detail of a camel exchange
 - Search about some exchanges using the Lucene FT Search
 
-* DEMO 3
-Setup a Network of Brokers Topology and show how messages are persisted/processed (to support HA scenario)
+==== Demo 3 - HA and Network of brokers
+
+Objective : Setup a Network of Brokers Topology and show how messages are persisted/processed (to support HA scenario)
 
 - We will follow instructions of the FuseByExample/projects to seyup 2 master/slave ActiveMQ brokers in a
   network of brokers (west to east)
 * https://github.com/FuseByExample/external-mq-fabric-client
 * https://github.com/FuseByExample/external-mq-fabric-client/blob/master/docs/fabric-ha-setup-master-slave.md
 
-* DEMO 4
+==== Demo 4 - Loadbalancing
 
-Turn on your Fabric/Fuse container into a load balancing platform to distribute workload
+Objective : Turn on your Fabric/Fuse container into a load balancing platform to distribute workload
 
 - Review the configuration of the cluster server (http://localhost:8181/hawtio/index.html#/wiki/branch/1.0/view/fabric/profiles/example/camel) and the camel route
 http://localhost:8181/hawtio/index.html#/wiki/branch/1.0/view/fabric/profiles/example/camel/cluster.server.profile/camel.xml
@@ -553,7 +555,9 @@ NOTE: change 1 with 2 in the field `Number of containers` and name the container
 
 === Demos
 
-* DEMO1
+==== Demo 1 - Drools & Camel Project
+
+Objective : Discover Drools, Kie and Camel technologies
 
 - Creation of a knowledge project with Rules using JBoss Developer Studio
 - Import project 'demo-camel-drools'
@@ -563,6 +567,8 @@ NOTE: change 1 with 2 in the field `Number of containers` and name the container
 
     2014-05-06 09:49:51,657 | INFO  | imer://testRoute | Home                             | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Person Young Person is staying home
     2014-05-06 09:50:01,659 | INFO  | imer://testRoute | Bar                              | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Person Old Person can go to the bar
+
+==== Demo 2 - Add new Rule and extand the camel route
 
 - Next we will add a new rule and modify the camel route
 - After selecting the 'drl' directory, Select from the menu `New -> Other -> Drools -> Rule Resource`
@@ -627,4 +633,6 @@ NOTE: change 1 with 2 in the field `Number of containers` and name the container
     2014-05-06 09:57:56,963 | INFO  | imer://testRoute | Home                             | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Young Person is staying home
     2014-05-06 09:57:56,964 | INFO  | imer://testRoute | Gouda                            | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Young Person prefers gouda cheese
 
-== This is the end. We hope that you have enjoyed and appreciated !
+== This is the end.
+
+We hope that you have enjoyed and appreciated !
