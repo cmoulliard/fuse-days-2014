@@ -27,12 +27,13 @@ Add...
 Insert the following for `Location:` https://devstudio.jboss.com/updates/7.0/integration-stack/
 ----
 
-Remark : SOAPUI can be also installed within JBDS
+- Remark : SOAPUI can be also installed within JBDS. Follow these steps
 
-- An eclipse update site is now available at http://www.soapui.org/eclipse/update, install the soapui-eclipse-plugin with the following steps:
-
+----
+Start JBDS and select from the menu
 1. Select Help > Install New Software...
 2. In the Work with field, type http://www.soapui.org/eclipse/update and click Add...
+----
 
 - https://www.jboss.org/products/fuse.html[JBoss Fuse 6.1] & https://www.jboss.org/products/amq.html[JBoss A-MQ 6.1]
 
