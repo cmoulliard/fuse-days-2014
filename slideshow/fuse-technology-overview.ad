@@ -74,6 +74,7 @@ image::fuse/HistoryOfFuse.png[]
 * 2 products +++<i class="fa fa-arrow-right"></i>+++ JBoss Fuse & AMQ
 * Designed around Multi-Technology OSGI Container
 * Packaging of Open Sources projects :
+  - Karaf,
   - Camel,
   - Cxf,
   - ActiveMQ,
@@ -146,6 +147,20 @@ a|
 
 image::integration/jbi.jpeg[width="95%",float="right"] |
 |===
+
+// ************ Technology overview ***********
+== Integration - con't
+
+|===
+| .2+| image:integration/esb.png[width="95%",float="right"]
+a| * Provide *connectors / endpoints* to collect information and send it on the bus as messages
+* Allow to separate the *business layer* from those that will *transport* the information and *transform* (marshal) it |
+|===
+
+// ************ Technology overview ***********
+== Integration - con't
+
+image::integration/esb1.png[width="800",height="450"]
 
 // ************** Camel ************
 == Camel
