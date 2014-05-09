@@ -41,72 +41,12 @@ Architect, Engineer & Committer
 [.newline]
 13th of May - 2014
 
-// ************ AGENDA ************
-
-== Agenda
-
-* *Projects timeline*
-* High level presentation
-* Technology overview
-* Architectures design
-* Demos
-
 // ************** Projects timeline ********
 == Projects timeline
 
 * A few things about Fuse & OpenSource
 
 image::fuse/HistoryOfFuse.png[]
-
-// ************ AGENDA ************
-== Agenda
-
-* Projects timeline
-* *High level presentation*
-* Technology overview
-* Architectures design
-* Demos
-
-// ************** High level presentation ************
-
-== High level presentation
-
-* 2 products +++<i class="fa fa-arrow-right"></i>+++ JBoss Fuse & AMQ
-* Designed around Multi-Technology OSGI Container
-* Packaging of Open Sources projects :
-  - Karaf,
-  - Camel,
-  - Cxf,
-  - ActiveMQ,
-  - Fabric8,
-  - Hawtio
-
-// ************** High level presentation ************
-
-== High level presentation
-
-//image::fuse/jboss-fuse.png[width="80%",height="80%"]
-image::fuse/rh-jboss-fuse.png[]
-
-* Enables *integration everywhere* for a real-time enterprise
-
-// ************** High level presentation ************
-
-== High level presentation
-
-//image::fuse/jboss-amq.png[width="80%",height="80%"]
-image::fuse/rh-jboss-amq.png[]
-
-* An open source *messaging platform*
-
-// ************ AGENDA ************
-== Agenda
-
-* Projects timeline
-* High level presentation
-* *Technology overview*
-* Architectures design
-* Demos
 
 // ************ Technology overview ************
 == Integration
@@ -123,44 +63,107 @@ a| * Integration is +++&nbsp;<i class="fa fa-ellipsis-h"></i>&nbsp;+++ really ha
 |===
 
 // ************ Technology overview ***********
-== Integration - con't
+== Common pattern
 
 |===
 | .2+| image:integration/producer-consumer.png[]
-a| * Concept
-** +++<i class="fa fa-arrow-right"></i>+++ Decouple Producer from Consumer
-+
-** +++<i class="fa fa-arrow-right"></i>+++ Message transport information |
-|===
-
-// ************ Technology overview ***********
-== Integration - con't
-
-|===
-| .2+| image:integration/bus.png[width="95%",float="right"]
 a|
-[.newline]
-* +++&nbsp;<i class="fa fa-wrench"></i>&nbsp;+++ Layer to transport messages : BUS
+* +++<i class="fa fa-arrow-right"></i>+++ *Decouple* Producer from Consumer
++
+* +++<i class="fa fa-arrow-right"></i>+++ *Message* transport information
++
+* +++<i class="fa fa-arrow-right"></i>+++  Goal : *Isolate* applications from each/other, *integrate* them
+|
+|===
+
+// ************** ActiveMQ ************
+
+== Point to Point topology
+
+ - Producer *sends* messages to a queue (using JMS API).
+ - Consumer *listens* for messages from the queue
+ - Messages are stored until read (or expired)
+ - Messages can be persisted, are read *only once*.
+
+image::activemq/point-to-point.png[]
+
+// ************** ActiveMQ ************
+
+== Publish To Subscribe
+
+  - A client sends message to the topic.
+  - Broker sends message to *all subscribers* that are currently alive.
+  - Messages are consumed x times (relation *1 to many*)
+
+image::activemq/publish-subscribe.png[]
+
+// ************** ActiveMQ ************
+
+== Technology part of
+
+* ActiveMQ project +++<i class="fa fa-arrow-right"></i>+++ High performance, *reliable JMS* messaging fabric
+* Supporting JMS, C, C++, .Net, Stomp, AMQP *clients*
+* Protocols : TCP/SSL/HTTP/HTTPS/WebSocket ...
+
+image:activemq/broker-architecture.png[width="650",height="400"]
+
+// ************** ActiveMQ ************
+
+== Master/Slave
+
+* *High-Availability* / *Failover*
+* Brokers compete to acquire *lock* - FS/DB
+
+image:activemq/master-slave.png[widh="750",height="450"]
+
+// ************** ActiveMQ ************
+
+== Network of Brokers
+
+* *Forward* messages
+* Loadbalancing, isolate brokers - security, ...
+
+image:activemq/network-of-broker.png[]
+
+// ************** High level presentation ************
+
+== JBoss A-MQ
+
+* An open source *messaging platform*
+
+//image::fuse/jboss-amq.png[width="80%",height="80%"]
+image::fuse/rh-jboss-amq.png[]
+
+// ************ Technology overview ***********
+== What about Bus ?
+
+[cols="50,50"]
+|===
+| .2+| image:integration/bus1.png[width="95%",float="right"]
+a|
+* +++&nbsp;<i class="fa fa-cogs"></i>&nbsp;+++ *Complex use cases* +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ correlation, orchestration, routing, mediation, transformation
 
 [.newline]
-* +++&nbsp;<i class="fa fa fa-cog fa-spin"></i>&nbsp;+++  ESB, JBI, SCA
+* +++&nbsp;<i class="fa fa-wrench"></i>&nbsp;+++ Layer to *exchanges* messages +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ BUS
 
-image::integration/jbi.jpeg[width="95%",float="right"] |
+[.newline]
+* +++&nbsp;<i class="fa fa fa-cog fa-spin"></i>&nbsp;+++ Ideas Implemented into *ESB*|
 |===
 
 // ************ Technology overview ***********
-== Integration - con't
+== ESB & JBI
 
+[cols="40,60"]
 |===
-| .2+| image:integration/esb.png[width="95%",float="right"]
-a| * Provide *connectors / endpoints* to collect information and send it on the bus as messages
-* Allow to separate the *business layer* from those that will *transport* the information and *transform* (marshal) it |
+| .2+| image:integration/esb1.png[width="85%"]
+       image:integration/esb.png[width="45%"]
+a|
+* Services & Components communicate using *NMR* bus
+* Packaged as zip (=SU) in a big zip (=SA) including xml config, target service
+* Constraint : messages formated as *XML*
+* +++&nbsp;<i class="fa fa fa-cog fa-exclamation"></i>&nbsp;+++ EIP not included in the spec|
 |===
 
-// ************ Technology overview ***********
-== Integration - con't
-
-image::integration/esb1.png[width="800",height="450"]
 
 // ************** Camel ************
 == Camel
@@ -331,9 +334,9 @@ image::camel/components.png[width="85%"]
 
 // ************** Cxf ************
 
-== Apache CXF
+== Factory to build/run SOAP/REST services
 
-* Simplify 'creation & deployment of web/REST services'
+* Apache CXF +++<i class="fa fa-arrow-right"></i>+++ Simplify *creation & deployment* of web/REST services
 * 2 approaches “java +++<i class="fa fa-arrow-right"></i>+++ wsdl” or “wsdl +++<i class="fa fa-arrow-right"></i>+++ java”
 * Support :
  - JAX-WS : Web Services (XML/SOAP)
@@ -398,13 +401,21 @@ image::fuse/fabric-cxf.png[]
       </transform>
 ----
 
+// ************** High level presentation ************
+
+== Integration everywhere
+
+//image::fuse/jboss-fuse.png[width="80%",height="80%"]
+image::fuse/rh-jboss-fuse.png[]
+
+* Enables *integration everywhere* for a real-time enterprise
+
 // ************** Karaf ************
 
 == Apache Karaf image:integration/karaf-logo.png[float="right"]
 
-* Java Micro-Container
-* OSGI Runtime
-* Offer 'modularity' for Services
+* Java *OSGI* Runtime
+* Offer *modularity* for Integration
 * Multi-Technology platform
 
 image::integration/ship-containers.png[]
@@ -413,53 +424,76 @@ image::integration/ship-containers.png[]
 
 == Apache Karaf - con't
 
-* SSH server
-* Administration platform (local, remote, web, jmx)
-* Provisioning system (features)
-* Hot deployment and configuration management
-* Instances management
-* Security integration (JAAS)
+image:karaf/karaf.png[]
+
+* Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Camel, CXF, ActiveMQ, Spring, Fabric, ...
+* Modular platform (deploy or remove container/libraries)
 
 // ************** Karaf ************
 
 == Apache Karaf - con't
 
-image:integration/karaf-runtime.png[]
+* *SSH* server
+* Allow to *administrate/create* instances
+* Propose *Provisioning* solution features
+* *Hot* deployment
+* Configuration & Instances management
+* Security integration - JAAS
 
-* Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Camel, CXF, ActiveMQ, Spring, Fabric, ...
-* Modular platform (deploy or remove container/libraries)
+// ************** Camel ************
+== Apache Karaf  - con't
 
-// ************** ActiveMQ ************
+[.newline]
+* Karaf *DEMO* :
+** Admin
+** Provisioning
+** Hot Deployment
 
-== Apache ActiveMQ
+// ************** Karaf ************
 
-* High performance, reliable JMS messaging fabric
-* Supporting JMS, C, C++, .Net, Stomp clients
+== Apache Karaf - con't
 
-image:activemq/broker-architecture.png[]
+* Camel routes isolated from each other (classloader)
+* Bundle +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++  CamelContext boundaries +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++  Local BUS
+* Camel routes +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ can have different SLA (Threads, Policies, ...)
 
-// ************** ActiveMQ ************
+image:karaf/karaf1.png[]
 
-== Apache ActiveMQ - con't
+// ************** Karaf ************
 
-* Point to Point
- - Producer sends messages to a queue.
- - Consumer listens for messages from the queue
- - Messages are stored until read (or expired)
- - Messages can be persisted, are read only once.
+== Apache Karaf - con't
 
-image::activemq/point-to-point.png[]
+* Camel routes can be started/stopped/updated
+* +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Simplify maintenance process
 
-// ************** ActiveMQ ************
+image:karaf/karaf2.png[]
 
-== Apache ActiveMQ - con't
+// ************** Karaf ************
 
-* Publish To Subscribe
-  - A JMS client sends message to the topic.
-  - JMS broker sends message to all subscribers that are currently alive.
-  - Messages are consumed x times (relation 1 to many)
+== Apache Karaf - con't
 
-image::activemq/publish-subscribe.png[]
+* New routes can be *hot deployed*
+* like also "Beans/POJO, Web Services, ..."
+
+image:karaf/karaf3.png[]
+
+// ************** Karaf ************
+
+== Integration - con't
+
+* How can I manage complex infrastructure (config, ip, ...)
+* Combine Local/Remote/Virtual Machines/Iaas/Paas
+
+image:karaf/karaf4.png[]
+
+// ************** Karaf ************
+
+== Integration - con't
+
+* Can we support other Java containers
+* Web/JavaEE/MicroContainer/Docker ...
+
+image:karaf/karaf5.png[]
 
 // ************** Fabric ************
 
@@ -639,13 +673,6 @@ a|* Lightweight & **modular** HTML5 **web console** with **plugins** for managin
 [.newline]
 * image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/rest-api.png[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:fuse/jolokia.png[150,150]
 
-// ************ Hawtio *************
-
-== Hawtio - con't
-
-* Extend the dashboard & plugins
-
-* TODO
 
 // ************ Hawtio *************
 
@@ -712,23 +739,32 @@ image::integration/messaging-java-web.png[width="70%",height="70%"]
 
 image::integration/distributed.png[]
 
-// ************ AGENDA ************
-== Agenda
+// ************** High level presentation ************
 
-* Projects timeline
-* High level presentation
-* Technology overview
-* Architectures design
-* *Demos*
+== What is different between the 2 products
+
+* 2 products +++<i class="fa fa-arrow-right"></i>+++ JBoss Fuse & AMQ
+* Designed around Multi-Technology OSGI Container
+* Packaging of Open Sources projects :
+  - Karaf,
+  - Camel,
+  - Cxf,
+  - ActiveMQ,
+  - Fabric8,
+  - Hawtio
+
+
 
 // ************* DEMOS *******
 
 == Demos
 
- * Apache Camel & WebServices
- * Apache Karaf - POJO + Messaging + Web
- * Apache ActiveMQ - High Availability with Network of Brokers
- * Fabric8 - Virtualization of Camel endpoints / loadbalancing
+[cols="35,65"]
+|===
+| Apache Karaf   | POJO + Messaging + Web
+| Apache ActiveMQ| High Availability with Network of Brokers
+| Fabric8        | Virtualization of Camel endpoints / loadbalancing
+|===
 
 // *********************************
 == Questions

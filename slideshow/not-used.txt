@@ -25,3 +25,20 @@ image::fuse/advanced-1.png[]
 == High level presentation - con't
 
 image::fuse/advanced-2.png[]
+
+
+// ************ Technology overview ***********
+== Project supporting it
+
+* Implemented in Apache ServiceMix >3
+
+image::integration/jbi.jpeg[width="650",height="450"]
+
+// ************ Technology overview ***********
+== ESB revealed
+
+|===
+| .2+| image:integration/esb.png[width="95%",float="right"]
+a| * Provide *connectors / endpoints* to collect information and send it on the bus as messages
+* Allow to separate the *business layer* from those that will *transport* the information and *transform* (marshal) it |
+|===
