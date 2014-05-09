@@ -37,7 +37,7 @@ Red Hat JBoss Fuse Integration Partner Day
 
 [.newline]
 {author} +
-Architect, Engineer & Committer
+Principal Solution Architect / Apache Committer - Global Partner Enablement
 [.newline]
 13th of May - 2014
 
@@ -99,9 +99,9 @@ image::activemq/publish-subscribe.png[]
 
 // ************** ActiveMQ ************
 
-== Technology part of
+== ActiveMQ
 
-* ActiveMQ project +++<i class="fa fa-arrow-right"></i>+++ High performance, *reliable JMS* messaging fabric
+* Middleware broker +++<i class="fa fa-arrow-right"></i>+++ High performance, *reliable JMS* messaging fabric
 * Supporting JMS, C, C++, .Net, Stomp, AMQP *clients*
 * Protocols : TCP/SSL/HTTP/HTTPS/WebSocket ...
 
@@ -166,23 +166,23 @@ a|
 
 
 // ************** Camel ************
-== Camel
+== Apache Camel
 
 image::camel/camel-box-small.png[width="100%",float="right"]
 
-* OpenSource Java **Integration** Framework
+* Opensource +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Java **Integration** Framework
 
 [.newline]
-* Designed around : **D**omain **S**pecific **L**anguage
+* Designed around +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ **D**omain **S**pecific **L**anguage
 
 [.newline]
-* Implement **E**nterprise **I**ntegration **P**atterns
+* Implements **E**nterprise **I**ntegration **P**atterns
 
 image::eip/book.jpg[width="45%",float="right"]
 
 // ************** Camel ************
 //[data-background="white"]
-== Camel - con't
+== Enterprise Patterns
 
 * http://camel.apache.org/enterprise-integration-patterns.html[> 50 patterns] implemented
 * and more : Loadbalancer, Throttler, Delayer, ...
@@ -192,53 +192,55 @@ image::eip/patterns.png[width="100%",float="left"]
 image::eip/patterns-3.jpg[width="120%",float="left"]
 
 // ************** Camel ************
-== Camel - con't
+== Key concepts
 
 [cols="35,65"]
 |===
 | .2+|image:camel/factory.png[]
-a| * Key features
-** Component
-** Endpoint
-** Consumer
-** Producer|
+a|
+* Component
+* Endpoint
+* Consumer
+* Producer|
 |===
 
 // ************** Camel ************
-== Camel - con't
+== Route, processor
 
-* Key features : route, processor
+* Camel project +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ collection of routes
+* Route +++&nbsp;<i class="fa fa-angle-double-right"></i>&nbsp;+++ Processors + Interceptors
 
 image:camel/pipeline.png[]
 
 // ************** Camel ************
-== Camel - con't
+== Interceptor
 
-* Interceptor : trace, log, capture business events
+* To trace, log, capture business events
 
 [.newline]
 image:camel/pipeline2.png[]
 
 // ************** Camel ************
-== Camel - con't
+== Container
 
 [cols="45,65"]
 |===
 | .2+|image:camel/camel-features.png[]
-a| * Container for the routes +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ CamelContext |
+a| * Routes/Endpoints registered +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ CamelContext
+   * Policy, Threads can be configured |
 |===
 
 // ************** Camel ************
-== Camel - con't
+== Communication
 
 [cols="45,65"]
 |===
 | .2+|image:camel/camel-features2.png[]
-a| * Cross communication not allowed using direct, seda |
+a| * Cross communication not allowed between context |
 |===
 
 // ************** Camel ************
-== Camel - con't
+== Extend the BUS
 
 [cols="45,65"]
 |===
@@ -248,7 +250,7 @@ a| * But possible Using BUS like NMR, Broker, Shared Component with direct-vm, v
 
 
 // ************** Camel ************
-== Camel - con't
+== Convert
 
 [cols="65,35"]
 |===
@@ -264,7 +266,7 @@ a|* **Type Converter** Strategy
 |===
 
 // ************** Camel ************
-== Camel - con't
+== Convert
 
 * **Data Transformation** for complex use case
 
@@ -277,7 +279,7 @@ include::{sourcesdir}/org/devnation/camel/DataFormat.java[]
 * **Unmarshalling** : XML +++<i class="fa fa-arrow-right"></i>+++ Object (JAXB)
 
 // ************** Camel ************
-== Camel - con't
+== Data Format supported
 
 * http://camel.apache.org/dataformat.html[> 20 Data Format]
 
@@ -285,17 +287,17 @@ image::camel/dataformat-2.png[]
 
 
 // ************** Camel ************
-== Camel - con't
+== Fire / Forget pattern
 
 image::camel/inonly.png[width="65%"]
 
 // ************** Camel ************
-== Camel - con't
+== Request / Reply pattern
 
 image::camel/inout.png[width="75%"]
 
 // ************** Camel ************
-== Camel - con't
+== Java DSL
 
 * Fluent API
 
@@ -305,7 +307,7 @@ include::{sourcesdir}/org/devnation/camel/ExampleRouteBuilder.java[]
 ----
 
 // ************** Camel ************
-== Camel - con't
+== XML, XML
 
 * Alternative : Spring, Blueprint DSL
 
@@ -315,39 +317,41 @@ include::{resourcesdir}/META-INF/org/devnation/camel/example.xml[]
 ----
 
 // ************** Camel ************
-== Camel - con't
+== Facts
 
-* In memory bus / alternative to JBI, SCA, NMR
-* Transport objects : XML, File, Stream, Bytes
-* Predicate & Expression language (xslt, xpath, ...)
-* Sync/Async exchanges
+* *Small* bus / alternative to bigger bus like *JBI*, SCA, NMR
+* Support *object* : XML, File, Stream, Bytes
+* *Predicate* & *Expression* language (xslt, xpath, ...)
+* *Sync*/*Async* exchanges
 * Threads Management,
-* Tx Architecture
-* Error and exception handling
+* *Tx* Architecture
+* *Error* &  *exception* handling
 * Policy driven
-* Container agnostic
+* Container *agnostic*
 
 // ************** Camel ************
-== http://camel.apache.org/components.html[Camel - con't]
+== http://camel.apache.org/components.html[Components]
 
 image::camel/components.png[width="85%"]
 
 // ************** Cxf ************
 
-== Factory to build/run SOAP/REST services
+== Apache CXF
 
-* Apache CXF +++<i class="fa fa-arrow-right"></i>+++ Simplify *creation & deployment* of web/REST services
-* 2 approaches “java +++<i class="fa fa-arrow-right"></i>+++ wsdl” or “wsdl +++<i class="fa fa-arrow-right"></i>+++ java”
+* Goal +++<i class="fa fa-arrow-right"></i>+++ Simplify *creation & deployment* of web/REST services
+* 2 approaches *java +++<i class="fa fa-arrow-right"></i>+++ wsdl* or *wsdl +++<i class="fa fa-arrow-right"></i>+++ java*
 * Support :
- - JAX-WS : Web Services (XML/SOAP)
- - JAX-RS : REST service (JSON)
+ - *JAX-WS* : Web Services (XML/SOAP)
+ - *JAX-RS* : REST service (JSON)
  - SOAP 1.1, 1.2, WSDL 1.1, WS-Security, WS-Addressing, WS-RM
 
 image::fuse/fabric-cxf.png[]
 
 // ************** Cxf ************
 
-== Apache CXF - con't
+== Maven plugin
+
+* *cxf-codegen-plugin* & cxf-java2ws-plugin
 
 [source, xml]
 ----
@@ -377,7 +381,9 @@ image::fuse/fabric-cxf.png[]
 
 // ************** Cxf ************
 
-== Apache CXF - con't
+== Integration with Camel
+
+* Define a Camel CXF Endpoint, use it from your camel route +++<i class="fa fa-arrow-right"></i>+++ *<from uri="cxf:bean:reportIncident"/>*
 
 [source, xml]
 ----
@@ -403,55 +409,56 @@ image::fuse/fabric-cxf.png[]
 
 // ************** High level presentation ************
 
-== Integration everywhere
+== JBoss Fuse
 
 //image::fuse/jboss-fuse.png[width="80%",height="80%"]
 image::fuse/rh-jboss-fuse.png[]
 
-* Enables *integration everywhere* for a real-time enterprise
+* Enables *integration & Mediation* everywhere for a real-time enterprise
 
 // ************** Karaf ************
 
 == Apache Karaf image:integration/karaf-logo.png[float="right"]
 
 * Java *OSGI* Runtime
-* Offer *modularity* for Integration
-* Multi-Technology platform
+* Offer *modularity* for *Integration*
+* *Multi-Technology* platform
 
 image::integration/ship-containers.png[]
 
 // ************** Karaf ************
 
-== Apache Karaf - con't
+== Architecture
 
 image:karaf/karaf.png[]
 
 * Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Camel, CXF, ActiveMQ, Spring, Fabric, ...
-* Modular platform (deploy or remove container/libraries)
+* Modular platform +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ deploy or remove container/libraries
 
 // ************** Karaf ************
 
-== Apache Karaf - con't
-
-* *SSH* server
-* Allow to *administrate/create* instances
-* Propose *Provisioning* solution features
-* *Hot* deployment
-* Configuration & Instances management
-* Security integration - JAAS
-
-// ************** Camel ************
-== Apache Karaf  - con't
+== Core features
 
 [.newline]
-* Karaf *DEMO* :
+* *SSH* server
+* Allow to *administrate/create* instances
+* Provide *provisioning* solution features
+* *Hot* deployment
+* Configure & manage instances
+* Security integration - JAAS
+
+// ************** karaf ************
+== Karaf in action
+
+[.newline]
+* *DEMO* :
 ** Admin
 ** Provisioning
 ** Hot Deployment
 
 // ************** Karaf ************
 
-== Apache Karaf - con't
+== Integration container
 
 * Camel routes isolated from each other (classloader)
 * Bundle +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++  CamelContext boundaries +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++  Local BUS
@@ -461,7 +468,7 @@ image:karaf/karaf1.png[]
 
 // ************** Karaf ************
 
-== Apache Karaf - con't
+== Integration container
 
 * Camel routes can be started/stopped/updated
 * +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Simplify maintenance process
@@ -470,176 +477,166 @@ image:karaf/karaf2.png[]
 
 // ************** Karaf ************
 
-== Apache Karaf - con't
+== Integration container
 
 * New routes can be *hot deployed*
-* like also "Beans/POJO, Web Services, ..."
+* Like also "Beans/POJO, Web Services, ..."
 
 image:karaf/karaf3.png[]
 
 // ************** Karaf ************
 
-== Integration - con't
+== Integration complexity
 
-* How can I manage complex infrastructure (config, ip, ...)
-* Combine Local/Remote/Virtual Machines/Iaas/Paas
-
-image:karaf/karaf4.png[]
+[cols="40,60"]
+|===
+| .2+|image:karaf/karaf5.png[width="650"]
+a| * Karaf is not the only container
+   * Can we support
+   *other* Java container using *Fuse* ?
+   ** Web / JavaEE
+   ** Java Micro container
+   ** Docker ... |
+|===
 
 // ************** Karaf ************
 
-== Integration - con't
+== Integration everywhere
 
-* Can we support other Java containers
-* Web/JavaEE/MicroContainer/Docker ...
+[cols="30,70"]
+|===
+| .2+| image:karaf/karaf4.png[]
+a| * Infrastructure :
+** Local
+** Remote
+** Virtual Machines
+** Iaas/Paas
+** +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ *xPaas* |
+|===
 
-image:karaf/karaf5.png[]
+* Do you support such ecosystem ?
+* How can we manage *hybrid* inf. (config, ip, provisioning) ?
 
 // ************** Fabric ************
 
 == Fabric8
 
 * Opensource integration project - http://fabric8.io
-* Goals :
-   - Configuring, provisioning & running Fuse on any machines
-physical, virtual, private, public, cloud ...
-   - Virtualize services (endpoints), processes
-   - Propose ElasticSearch Storage engine (insight)
+* Mission +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Easy to deploy your java *integration* solutions and services on a number of machines, processes and JVMs
+
+image::fabric/fabric-diagram.png[]
+
+== Features
+
+- *Manage* container creation (locally, remotely, cloud, openshift, docker, ...)
+- *Visualise* what is running to understand your platform
+- *Monitor* whats running and easily scaling up or down specific profiles
+- Make configuration, composition or *version changes* in an all-in-one approach or via rolling upgrades
+- *Virtualize* services (endpoints), processes
+- Search and *storage* engine (insight) for logs, metrics
 
 // ************** Fabric ************
 
-== Fabric8 - con't
+== Karaf limitations
 
 [cols="50,50"]
 |===
 | .2+|image:fuse/fabric-3.png[]
-a|* Karaf can create new instances (locally) & administrate them (locally or remotely)
-
-+++&nbsp;<i class="fa fa-exclamation-triangle"></i>&nbsp;+++
-
-* Instances are not “cloned”
-* Configurations must be updated (manually)|
+a|* Karaf can create new instances (locally) & administrate them (locally or remotely)|
 |===
 
-// ************** Fabric ************
-
-== Fabric8 - con't
-
-* Fabric extend the possibilities
-
-image:fuse/fabric-4.png[]
+* Instances are *not cloned* +++&nbsp;<i class="fa fa-exclamation-triangle fa-4x"></i>&nbsp;+++
+* *Configurations* must be managed (manually, script)
 
 // ************** Fabric ************
 
-== Fabric8 - con't
+== Fabric extends the possibilities
 
-* Management rely on +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+image:fabric/fabric-diagram1.png[]
+
+// ************** Fabric ************
+
+== Coordinating system : Zoo
+
+* *Rely on* +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
 Zookeeper server (ensemble of 1,3, 5 or servers) +++&nbsp;<i class="fa fa-cloud"></i>&nbsp;+++
+* *Coordinating distributed* systems in a *reliable* way (electing leaders, implementing master/slave, sharding or federation of services).
 
 image:fuse/fabric-1.png[]
 
 // ************** Fabric ************
 
-== Fabric8 - con't
+== Fabric Agents
 
-& Fabric Agents
+* Are the *clients* of the Zookeeper server(s)
 
 image:fuse/fabric-2.png[]
 
 * They will communicate with Zk server to :
 
-+++&nbsp;<i class="fa fa-arrow-left"></i>&nbsp;+++ register container info (ports, services, endpoints, processes)
+* +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ register container info (ports, services, endpoints, processes)
 
-+++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ get their provisioning
+* +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ get their provisioning
 
 // ************** Fabric ************
 
-== Fabric8 - con't
-
-* Provisioning = Behavior of a container, achieved with 'Profiles'
-* Enveloppe(s) containing artifacts to be deployed or parameters to be configured
-* Can be versioned, facilitate mngt - rollback
+== Profiles
+* *Behavior* of a container
+* *Envelope(s)* containing *artifacts* to be deployed, *parameters* (system, jvm, services) to be configured
+* Can be *versioned*, facilitate mngt - rollback
 
 image::fuse/fabric-5.png[width="80%",height="80%"]
 
 // ************** Fabric ************
 
-== Fabric8 - con't
+== Virtualization & Load balancing
 
-* Virtualization +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Create “indirection” points
-* Load balancing and failover
-* Easy elastic scaling of services
-* High-availability, Replication
-
-// ************** Fabric ************
-
-== Fabric8 - con't
+* +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ Create *indirection* points, *Easy elastic scaling* of services (Camel, CXF, ...)
 
 image::fuse/fabric-camel.png[]
 
 // ************** Fabric ************
 
-== Fabric8 - con't
+== High Availability
+
+* New *topologies* (Replicated - *LevelDB* storage, *NPlus1*),
+* Broker *discovery*
 
 image::fuse/fabric-activemq.png[]
 
 // ************** Fabric ***********
 
-== Fabric8 - con't
+== Metrics
 
-* Insight Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
-* NoSQL storage for JSon documents
-* Designed around ElasticSearch
+* Fabric Insight Technology +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+[.newline]
+** NoSQL storage for JSon documents
+** Based on ElasticSearch
 
+[.newline]
 image::fuse/elasticsearch1.png[float="left"]
 image::fuse/nosql.jpeg[float"right"]
 
 // ************** Fabric ***********
 
-== Fabric8 - con't
+== Dashboard
 
-* Dashboard
+* *Kibana* is the web front end
 
 image::fuse/kibana3.png[]
 
-* Full Text Search features
+* *Full Text Search* features +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
 
 image::fuse/lucene_logo.png[]
 
 // ************** Fabric ***********
 
-== Fabric8 - con't
+== Info collected
 
-* Collect
-  - Logs,
-  - Camel metrics,
-  - JMX metrics,
-  - Own data metrics
-
-// ************** Fabric ***********
-
-== Fabric8 - insight
-
-image::fuse/elasticsearch2.png[400,600]
-
-// ************** Fabric ***********
-
-== Fabric8 - insight
-
-image::fuse/elasticsearch.png[80%,80%]
-
-// ************** Fabric ***********
-
-== Fabric8 - insight
-
-image::fuse/es-camel.png[80%,80%]
-
-// ************** Fabric ***********
-
-== Fabric8 - insight
-
-* Create a bean recuperating **Message/Exchange** using @Header, @Body
-* Store it using **org.fusesource.insight.storage.StorageService**
+[cols="70,30"]
+|===
+| .2+| image:fuse/elasticsearch2.png[400,350,float="right"]
+a|* Logs, *Camel* metrics, *JMX* metrics, your own *data/JSON* metrics
 
 [source, java]
 ----
@@ -657,6 +654,20 @@ public class StoreService {
         storageService.store(ES_TYPE, generateTimeStamp(), data);
     }
 ----
+|
+|===
+
+// ************** Fabric ***********
+
+== Analyzed using kibana
+
+image::fuse/elasticsearch.png[80%,80%]
+
+// ************** Fabric ***********
+
+== Insight Camel
+
+image::fuse/es-camel.png[80%,80%]
 
 // ************ Hawtio *************
 
@@ -676,84 +687,22 @@ a|* Lightweight & **modular** HTML5 **web console** with **plugins** for managin
 
 // ************ Hawtio *************
 
-== Hawtio - con't
-
-image:fuse/hawtio-1.png[]
-
-// ************ Hawtio *************
-
-== Hawtio - con't
+== Pluggable Management Console
 
 image:fuse/hawtio-2.png[]
 
 // ************ Hawtio *************
 
-== Hawtio - con't
+== Discover your camel routes
 
 image:fuse/hawtio-3.png[]
 
 // ************ Hawtio *************
 
-== Hawtio - con't
+== Manage your brokers
 
 image:fuse/hawtio-4.png[width="65%",height="65%"]
 image:fuse/hawtio-5.png[width="65%",height="65%"]
-
-// ************ AGENDA ************
-== Agenda
-
-* Projects timeline
-* High level presentation
-* Technology overview
-* *Architectures design*
-* Demos
-
-// ************* Architecture design *******
-
-== Messaging
-
-* The BUS operates the exchanges between the endpoints using Camel (local) or NMR (global)
-
-image::integration/messaging.png[width="70%",height="70%"]
-
-// ************* Architecture design *******
-
-== Messaging & Java Beans
-
-* Decoupling "services" from integration layer
-
-image::integration/messaging-java.png[width="70%",height="70%"]
-
-// ************* Architecture design *******
-
-== Messaging & Java & Web
-
-* Karaf runs Jetty Web Server
-* Web Project can be registered using OSGI HTTP Service
-
-image::integration/messaging-java-web.png[width="70%",height="70%"]
-
-// ************* Architecture design *******
-
-== Distributed
-
-image::integration/distributed.png[]
-
-// ************** High level presentation ************
-
-== What is different between the 2 products
-
-* 2 products +++<i class="fa fa-arrow-right"></i>+++ JBoss Fuse & AMQ
-* Designed around Multi-Technology OSGI Container
-* Packaging of Open Sources projects :
-  - Karaf,
-  - Camel,
-  - Cxf,
-  - ActiveMQ,
-  - Fabric8,
-  - Hawtio
-
-
 
 // ************* DEMOS *******
 
@@ -761,9 +710,9 @@ image::integration/distributed.png[]
 
 [cols="35,65"]
 |===
-| Apache Karaf   | POJO + Messaging + Web
-| Apache ActiveMQ| High Availability with Network of Brokers
-| Fabric8        | Virtualization of Camel endpoints / loadbalancing
+| JBoss Fuse              | POJO + Messaging + Web
+| JBoss A-MQ              | High Availability with Network of Brokers
+| JBoss Fuse + Fabric     | Virtualization of Camel endpoints / loadbalancing
 |===
 
 // *********************************

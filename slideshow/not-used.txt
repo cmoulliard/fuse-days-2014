@@ -42,3 +42,24 @@ image::integration/jbi.jpeg[width="650",height="450"]
 a| * Provide *connectors / endpoints* to collect information and send it on the bus as messages
 * Allow to separate the *business layer* from those that will *transport* the information and *transform* (marshal) it |
 |===
+
+
+* Create a bean recuperating **Message/Exchange** using @Header, @Body
+* Store it using **org.fusesource.insight.storage.StorageService**
+
+[source, java]
+----
+import org.apache.camel.Header;
+import org.fusesource.insight.storage.StorageService;
+import java.sql.Timestamp;
+import java.util.Date;
+
+public class StoreService {
+
+    private static String ES_TYPE = "insight-tweet";
+    private static StorageService storageService;
+
+    public static void store(@Header("tweet-full") String data) {
+        storageService.store(ES_TYPE, generateTimeStamp(), data);
+    }
+----
