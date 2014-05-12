@@ -18,7 +18,7 @@
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
 :revealjs_theme: conference-redhat
 :revealjs_vertical_alignment: false
-:revealjs_history: true
+:revealjs_history: false
 :sourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/slideshow/snippet/src/main/java/
 :source-highlighter: highlightjs
 //:source-highlighter: coderay, highlightjs, pygments
@@ -32,6 +32,8 @@
 // [data-background="images/redhat-logo-background-1280-800.png"]
 == *JBoss Fuse Technology Overview*
 
+[.cover]
+--
 [.newline]
 Red Hat JBoss Fuse Integration Partner Day
 
@@ -40,6 +42,7 @@ Red Hat JBoss Fuse Integration Partner Day
 Principal Solution Architect / Apache Committer - Global Partner Enablement
 [.newline]
 13th of May - 2014
+--
 
 // ************** Projects timeline ********
 == Projects timeline

@@ -188,3 +188,10 @@ ul, ol, div, p {
 .reveal small a {
 	font-size: 16pt !important;
 }
+
+.cover {
+    position:absolute;
+    top:350px;
+    left:50px;
+    right:50px;
+}
