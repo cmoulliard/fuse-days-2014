@@ -54,15 +54,15 @@ Principal Solution Architect / Apache Committer - Global Partner Enablement
 == Technology overview
 
 * What has been done
- - Transform jar into bundles
- - Refactor projects due to packages split
- - Add Bundle Activator & OSGIClassloader
- - Define a features XML file
+ - Transform *jar* into *bundles*
+ - Refactor projects due to *packages* overlapping
+ - Add Bundle Activator & OSGI Classloader
+ - Define a *features XML* file
 
 // *********** Technology overview ********
 == Technology overview - con't
 
-* What feature looks like
+* What *feature* looks like
 
 [source, xml]
 ----
@@ -118,9 +118,9 @@ Principal Solution Architect / Apache Committer - Global Partner Enablement
 == Technology overview - con't
 
 * KieModules
-- Unit of work, looks like maven modules
-- Container will discover META-INF/kmodule.xml
-- Load resources & compile rules in a KieContainer
+- *Unit of work*, looks like maven modules
+- *Container* will discover META-INF/kmodule.xml
+- *Load* resources & *compile rules* in a KieContainer
 
 [source,xml]
 ----
@@ -136,21 +136,21 @@ Principal Solution Architect / Apache Committer - Global Partner Enablement
 // *********** Technology overview ********
 == Technology overview - con't
 
-* Can be loaded when packaged as bundle, fragment bundle
+* Can be loaded when *packaged as bundle, fragment bundle
 
 image::drools/kie-simple.png[]
 
 // *********** Technology overview ********
 == Technology overview - con't
 
-* Using maven artifacts
+* OR using *maven artifacts*
 
 image::drools/kie-module-maven.png[]
 
 // *********** Technology overview ********
 == Technology overview - con't
 
-* ReleaseId to lookup in the maven repo and watch resources
+* *ReleaseId* to lookup in the maven repo and watch resources
 
 image::drools/kie-module-maven1.png[]
 
@@ -158,7 +158,7 @@ image::drools/kie-module-maven1.png[]
 == Technology overview - con't
 
 * Kie-Spring, Kie-Blueprint
-* Defined Schema and NameSpaceHandler
+* New *Schema* & *NameSpaceHandler* defined
 
 [source, xml]
 ----
@@ -228,7 +228,7 @@ public class KModuleFactoryBean
 == Technology overview - con't
 
 * Activator is not longer required
-* Bundles are scanned (status = resolved) to find beans
+* Bundles are *scanned* (status = resolved) to find beans
 
 [source, xml]
 ----
@@ -258,7 +258,7 @@ public class KModuleFactoryBean
 == Technology overview - con't
 
 * Kie-Camel +++<i class="fa fa-arrow-right"></i>+++ camel-drools component
-* Act as a 'consumer' or 'producer' +++<i class="fa fa-arrow-right"></i>+++ insert objects/facts OR execute / fire rules
+* Act as a *consumer* or *producer* +++<i class="fa fa-arrow-right"></i>+++ insert objects/facts OR execute / fire rules
 
 [source, java]
 ----
