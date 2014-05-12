@@ -26,6 +26,20 @@ image::fuse/advanced-1.png[]
 
 image::fuse/advanced-2.png[]
 
+// ************ Technology overview ************
+== Integration
+
+|===
+| .2+|image:integration/hub.jpeg[width="95%",float="right"]
+a| * Integration is +++&nbsp;<i class="fa fa-ellipsis-h"></i>&nbsp;+++ really hard
+
+[.newline]
+* +++&nbsp;<i class="fa fa-thumbs-down"></i>&nbsp;+++ protocols, standards, data formats, systems
+
+[.newline]
+* Long story since **C**ommon **O**bject **R**equest **B**roker **A**rchitecture
+|===
+
 
 // ************ Technology overview ***********
 == Project supporting it

@@ -136,7 +136,7 @@ Principal Solution Architect / Apache Committer - Global Partner Enablement
 // *********** Technology overview ********
 == Technology overview - con't
 
-* Can be loaded when *packaged as bundle, fragment bundle
+* Can be loaded when *packaged* as bundle, fragment bundle
 
 image::drools/kie-simple.png[]
 

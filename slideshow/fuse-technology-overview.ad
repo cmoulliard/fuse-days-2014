@@ -51,20 +51,6 @@ Principal Solution Architect / Apache Committer - Global Partner Enablement
 
 image::fuse/HistoryOfFuse.png[]
 
-// ************ Technology overview ************
-== Integration
-
-|===
-| .2+|image:integration/hub.jpeg[width="95%",float="right"]
-a| * Integration is +++&nbsp;<i class="fa fa-ellipsis-h"></i>&nbsp;+++ really hard
-
-[.newline]
-* +++&nbsp;<i class="fa fa-thumbs-down"></i>&nbsp;+++ protocols, standards, data formats, systems
-
-[.newline]
-* Long story since **C**ommon **O**bject **R**equest **B**roker **A**rchitecture
-|===
-
 // ************ Technology overview ***********
 == Common pattern
 
@@ -137,6 +123,14 @@ image:activemq/network-of-broker.png[]
 //image::fuse/jboss-amq.png[width="80%",height="80%"]
 image::fuse/rh-jboss-amq.png[]
 
+// ************** activemq ************
+== ActiveMQ in action
+
+[.newline]
+* *DEMO* :
+** Create dynamically a queue
+** Publish message
+
 // ************ Technology overview ***********
 == What about Bus ?
 
@@ -166,7 +160,6 @@ a|
 * Constraint : messages formated as *XML*
 * +++&nbsp;<i class="fa fa fa-cog fa-exclamation"></i>&nbsp;+++ EIP not included in the spec|
 |===
-
 
 // ************** Camel ************
 == Apache Camel
@@ -457,7 +450,6 @@ image:karaf/karaf.png[]
 * *DEMO* :
 ** Admin
 ** Provisioning
-** Hot Deployment
 
 // ************** Karaf ************
 
@@ -486,6 +478,13 @@ image:karaf/karaf2.png[]
 * Like also "Beans/POJO, Web Services, ..."
 
 image:karaf/karaf3.png[]
+
+// ************** karaf ************
+== Karaf & Camel in action
+
+[.newline]
+* *DEMO* :
+** Hot Deployment
 
 // ************** Karaf ************
 
