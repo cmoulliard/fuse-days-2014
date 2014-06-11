@@ -18,6 +18,8 @@ For offline installation we need also the Integration Stack and target platform 
 
 - Setup a FTP server (and register it as a service) on your machine and copy previously downloaded files under the pub directory (eg : /var/ftp/pub)
 
+    yum install vsftpd
+
 - Download an install Apache Archiva to run a Proxy Maven server using this link
 
     wget http://apache.cu.be/archiva/2.0.1/binaries/apache-archiva-2.0.1-bin.tar.gz
@@ -42,9 +44,9 @@ Start Apache Archiva and verify that it works locally ('http://localhost:8181') 
 
     cd ~/Temp/lab
     rm *.sh
-    wget ftp://192.168.1.7/pub/scripts/all_commands.sh
+    wget ftp://192.168.1.70/pub/scripts/all_commands.sh
     chmod +x *.sh
-    ./all_commands.sh ~/Temp/lab/ 192.168.1.7
+    ./all_commands.sh ~/Temp/lab/ 192.168.1.70
 
 - After the installation, you should be able to launch *JBDS* or *JBoss Server*. They have been created under the folder *software* defined
  after your location defined (eg : ~/Temp/lab/software)
