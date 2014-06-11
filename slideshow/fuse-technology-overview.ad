@@ -20,8 +20,8 @@
 :revealjs_vertical_alignment: false
 :revealjs_history: false
 :sourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/slideshow/snippet/src/main/java/
-:source-highlighter: highlightjs
-//:source-highlighter: coderay, highlightjs, pygments
+//:source-highlighter: coderay, highlightjs, pygments, prettify
+:source-highlighter: pygments
 :stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles
 :title-author: {title} {author}
 :title-speaker: Architect Engineer Committer
@@ -48,6 +48,7 @@ Principal Solution Architect / Apache Committer - Global Partner Enablement
 == Projects timeline
 
 * A few things about Fuse & OpenSource
+* Long *history* behind *Fuse*
 
 image::fuse/HistoryOfFuse.png[]
 
@@ -244,7 +245,6 @@ a| * Cross communication not allowed between context |
 a| * But possible Using BUS like NMR, Broker, Shared Component with direct-vm, vm |
 |===
 
-
 // ************** Camel ************
 == Convert
 
@@ -402,6 +402,13 @@ image::fuse/fabric-cxf.png[]
         <method bean="responseBean" method="getOK"/>
       </transform>
 ----
+
+// ************** camel & cxf ************
+== Camel & Cxf in action
+
+[.newline]
+* *DEMO* :
+** Camel & WebService
 
 // ************** High level presentation ************
 
