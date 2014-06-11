@@ -20,7 +20,7 @@ For offline installation we need also the Integration Stack and target platform 
 
     yum install vsftpd
 
-+ To enable the service and start it, run these Fedora instructions as a root user
+- To enable the FTP Server to run as a service and start it, run these Fedora instructions as a root user
 
     systemctl enable vsftpd.service
     systemctl start vsftpd.service
