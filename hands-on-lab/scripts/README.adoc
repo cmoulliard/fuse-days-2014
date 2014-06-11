@@ -27,7 +27,17 @@ For offline installation we need also the Integration Stack and target platform 
 +
 Start Apache Archiva and verify that it works locally ('http://localhost:8181') and that you can search for maven artifacts
   
-- Run the next command to download the scripts and install/configure JBDS & JBoss Fuse on your machine
+- Run next the following commands to download the scripts and install/configure JBDS & JBoss Fuse on your machine
 
-REMARK: Your maven settings will be modified to use the *Apache Archiva* server running on the FTP Server
+REMARKS: 
+- Your maven settings will be modified to use the *Apache Archiva* server running on the FTP Server
+- IP address of the FTP Server must be changed
+- Location where you would like to install the project can be different for you
+- Apache Maven 3.0.5 and Java JDK 7.x must be installed on your machine before to run the script
+
+    cd ~/Temp/lab
+    rm *.sh
+    wget ftp://192.168.1.7/pub/scripts/all_commands.sh
+    chmod +x *.sh
+    ./all_commands.sh ~/Temp/lab/ 192.168.1.7
 
