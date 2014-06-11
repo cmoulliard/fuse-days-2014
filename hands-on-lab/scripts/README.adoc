@@ -38,6 +38,8 @@ Start Apache Archiva and verify that it works locally ('http://localhost:8181') 
 - Apache Maven 3.0.5 and Java JDK 7.x must be installed on your machine before to run the script
 =====
 
+- Commands to be used in an Unix terminal 
+
     cd ~/Temp/lab
     rm *.sh
     wget ftp://192.168.1.7/pub/scripts/all_commands.sh
