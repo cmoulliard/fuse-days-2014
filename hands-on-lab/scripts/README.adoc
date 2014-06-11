@@ -22,7 +22,7 @@ For offline installation we need also the Integration Stack and target platform 
     wget http://apache.cu.be/archiva/2.0.1/binaries/apache-archiva-2.0.1-bin.tar.gz
 
 - Configure Apache Archiva as a standalone server and register it as a service (http://archiva.apache.org/docs/2.0.1/adminguide/standalone.html)
-- Import the *archiva.xml* configuration file into the directory where the standalone server has been installated (eg : /opt/apache-archiva/apache-archiva-2.0.1/conf) to replace the default
+- Import the link::archiva.xml configuration file into the directory where the standalone server has been installated (eg : /opt/apache-archiva/apache-archiva-2.0.1/conf) to replace the default
   configuration file. The imported file contains the remote maven repositories (JBoss, Fuse, Maven centeal) hosted by Archiva
   
 - Run the next command to download the scripts and install/configure JBDS & JBoss Fuse on your machine
