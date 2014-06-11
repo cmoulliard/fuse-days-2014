@@ -1,3 +1,5 @@
+:icons: font
+
 # Instructions
 
 - Download JBoss Fuse 6.1
