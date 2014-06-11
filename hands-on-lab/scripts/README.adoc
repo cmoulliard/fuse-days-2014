@@ -46,3 +46,7 @@ Start Apache Archiva and verify that it works locally ('http://localhost:8181') 
     chmod +x *.sh
     ./all_commands.sh ~/Temp/lab/ 192.168.1.7
 
+- After the installation, you should be able to launch *JBDS* or *JBoss Server*. They have been created under the folder *software* defined
+ after your location defined (eg : ~/Temp/lab/software)
+ 
+ 
