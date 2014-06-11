@@ -14,6 +14,6 @@ The JBoss Developer Studio (release 7.1.1.GA) must be downloaded manually from t
 
 For offline installation we need also the Integration Stack and target platform zip files which are available from this web site *https://devstudio.jboss.com/updates/7.0/index.html?#offline*. They can be downloaded using wget or curl tool on unix platform
 
-  wget https://devstudio.jboss.com/updates/7.0.0/jbdevstudio-integration-stack-updatesite-7.0.1.GA.zip
-  wget http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.32.0.Final/jbdevstudiotarget-4.32.0.Final.zip
+    wget https://devstudio.jboss.com/updates/7.0.0/jbdevstudio-integration-stack-updatesite-7.0.1.GA.zip
+    wget http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.32.0.Final/jbdevstudiotarget-4.32.0.Final.zip
 
