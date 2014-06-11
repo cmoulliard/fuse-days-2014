@@ -29,7 +29,7 @@ Start Apache Archiva and verify that it works locally ('http://localhost:8181') 
   
 - Run next the following commands to download the scripts and install/configure JBDS & JBoss Fuse on your machine
 
-REMARKS: 
+IMPORTANT: 
 - Your maven settings will be modified to use the *Apache Archiva* server running on the FTP Server
 - IP address of the FTP Server must be changed
 - Location where you would like to install the project can be different for you
