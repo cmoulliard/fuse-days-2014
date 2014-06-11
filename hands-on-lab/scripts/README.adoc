@@ -1,0 +1,31 @@
+# Instructions
+
+- Download JBoss Fuse 6.1
++
+The JBoss Fuse Server (release 6.1.0.redhat-379) must be downloaded manually from this web site *https://www.jboss.org/products/fuse/overview/*
+
+- Download JBoss Developer Studio 
++
+The JBoss Developer Studio (release 7.1.1.GA) must be downloaded manually from this web site *https://www.jboss.org/products/devstudio/overview/*
+
+- Download zip files containing bundles of Integration Stack, ...
++
+For offline installation we need also the Integration Stack and target platform zip files which are available from this web site *https://devstudio.jboss.com/updates/7.0/index.html?#offline*. They can be downloaded using wget or curl tool on unix platform
+
+    wget https://devstudio.jboss.com/updates/7.0.0/jbdevstudio-integration-stack-updatesite-7.0.1.GA.zip
+    wget http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.32.0.Final/jbdevstudiotarget-4.32.0.Final.zip
+
+- Setup a FTP server (and register it as a service) on your machine and copy previously downloaded files under the pub directory (eg : /var/ftp/pub)
+
+- Download an install Apache Archiva to run a Proxy Maven server using this link
+
+    wget http://apache.cu.be/archiva/2.0.1/binaries/apache-archiva-2.0.1-bin.tar.gz
+
+- Configure Apache Archiva as a standalone server and register it as a service (http://archiva.apache.org/docs/2.0.1/adminguide/standalone.html)
+- Import the archiva.xml configuration file into the directory where the standalone server has been installated (eg : /opt/apache-archiva/apache-archiva-2.0.1/conf) to replace the default
+  configuration file. The imported file contains the remote maven repositories (JBoss, Fuse, Maven centeal) hosted by Archiva)
+  
+- Run the next command to download the scripts and install/configure JBDS & JBoss Fuse on your machine
+
+REMARK: Your maven settings will be modified to use the *Apache Archiva* server running on the FTP Server
+
