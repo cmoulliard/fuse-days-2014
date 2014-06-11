@@ -42,7 +42,7 @@ Start Apache Archiva and verify that it works locally ('http://localhost:8181') 
 
 - Commands to be used in an Unix terminal 
 
-    cd ~/Temp/lab
+    cd ~/Temp/lab/scripts
     rm *.sh
     wget ftp://192.168.1.70/pub/scripts/all_commands.sh
     chmod +x *.sh
