@@ -9,6 +9,7 @@ style: liberation
 
 backend: html5
 attributes:
+   # :source-highlighter: coderay, highlightjs, pygments, prettify
    source-highlighter: coderay
    linkcss!: true
    data-uri: true
