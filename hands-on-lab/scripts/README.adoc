@@ -1,6 +1,6 @@
 # Instructions
 
-- Setup FTP server  copy files under pub directory
+- Setup a FTP server on your machine and copy hereafter files under the pub directory (eg : /var/ftp/pub)
 
 - Download JBoss Fuse 6.1
 +
