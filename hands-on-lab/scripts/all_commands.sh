@@ -45,5 +45,5 @@ chmod +x *.sh
 # Post Installation JBDS
 ./install_IS2.sh $WORKSPACE $JBDS_DIR_NAME $FTP_SERVER
 
-# Post Installation JBDS
+# Update Maven settings
 ./updateMavenSettings.sh $FTP_SERVER
