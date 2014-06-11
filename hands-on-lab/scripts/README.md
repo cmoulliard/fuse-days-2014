@@ -1,8 +1,8 @@
 # Instructions
 
-## Setup FTP server  copy files under pub directory
+* Setup FTP server  copy files under pub directory
 
-## Download required artifacts
+* Download required artifacts
 
 - Download JBoss Fuse 6.1 from jboss.org web site (release : 6.1.0.redhat-379)
 
