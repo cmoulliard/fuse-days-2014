@@ -20,15 +20,17 @@ toc::[]
 
 - Next install `integration stack` in JBDS according to the following steps
 
+[source, text]
 ----
 Start JBDS and select from the menu
 Help > Install New Software...
 Add...
-Insert the following for `Location:` https://devstudio.jboss.com/updates/7.0/integration-stack/
+Insert the following Location: https://devstudio.jboss.com/updates/7.0/integration-stack/
 ----
 
 - Remark : SOAPUI can be also installed within JBDS. Follow these steps
 
+[source, text]
 ----
 Start JBDS and select from the menu
 1. Select Help > Install New Software...
@@ -41,9 +43,14 @@ Start JBDS and select from the menu
 
 * Clone the `hands on lab` git project and move to the directory `hands-on-lab`
 
+
+[source, text]
+----
   git clone https://github.com/cmoulliard/fuse-days-2014.git
 
-  or use the code available on the
+----
+
+or use the code available on the
 
 * USB key
 
@@ -238,7 +245,7 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 - Select from the pom.xml file the option, deploy to -> `jbossfuse6.1`
 - mvn build will take place and deploy the jar file created under the `deploy` directory of your server
 - List the bundles deployed on the console and consult the log file
-- Do you something strange ? Have we missed to deploy something (camel, ...) ?
+- Do you see something strange ? Have we missed to deploy something (camel, ...) ?
 - Add the missing features
 
   features:install camel
@@ -329,7 +336,7 @@ NOTE: Check on the command line the result of that installation process
 WARNING: Error executing command: Could not start bundle mvn:com.redhat.fuse/demo-camel-ws/1.0 in feature(s) cool-camel-cxf-demo-1.0: Unresolved constraint in bundle demo-camel-ws [129]: Unable to resolve 129.0: missing requirement [129.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.camel)(version>=2.10.0)(!(version>=3.0.0)))
 
 - To solve the problem, issue the missing features should be added to the features file
-- Edit the file and replace the existing feature defintion by this one
+- Edit the file and replace the existing feature definition by this one
 
         <feature name="cool-camel-cxf-demo" version="${project.version}">
             <feature version="{camel.version}">camel</feature>
@@ -355,6 +362,8 @@ WARNING: Error executing command: Could not start bundle mvn:com.redhat.fuse/dem
 
   camel:route-profile route1
 
+[source, text]
+----
   Profile
   	Camel Context: camel-1
   Id                                  Count    Last (ms)   Delta (ms)    Mean (ms)     Min (ms)     Max (ms)   Total (ms)    Self (ms)
@@ -367,7 +376,7 @@ WARNING: Error executing command: Could not start bundle mvn:com.redhat.fuse/dem
     bean2                                14            1            0            0            0            2           12           12
     log3                                  0            0            0            0            0            0            0            0
     bean3                                 0            0            0            0            0            0            0            0
-
+----
 
 == Session 3 : Management & Monitoring - 60min
 
@@ -414,17 +423,18 @@ NOTE: The login/password `admin/admin` should be commented in the file etc/users
 - Click on the choice processor. The color of the processor turns to `yellow` as a breakpoint has been added and is suspended
 - Send a SOAPMessage using curl. You should see that the response has not been received
 
+[source, text]
+----
   curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T hands-on-lab/demo-camel-ws/src/main/resources/data/request-all.xml http://localhost:9090/training/WebService | xmllint --format -
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                    Dload  Upload   Total   Spent    Left  Speed
-
+----
 
 - Return to your browser and look to the table (headers)
 - Next click to the button `step into the next node`
 - You will move between the different processors
 - To finish to process a message, click on the resume button
 - To leave the debugger, click on `stop` button
-
 
 ==== Demo 3 - Create a dashboard for your project to monitor specifically a camel route
 
@@ -439,13 +449,13 @@ NOTE: The login/password `admin/admin` should be commented in the file etc/users
 - To use this information and add it to your personal dashboard, click on the button `add this view to a dashboard`. This button is located on the panel of your tabs (right part)
 - We switch to the dashboard view,
 - Select your `my-camel` dashboard by clicking on the checkbox and next Click on `Add view to dashboard`
-- When this is done you should be redirected to the dashboadr - `my-camel` and a small widget representing the profile of your camel is displayed
+- When this is done you should be redirected to the dashboard - `my-camel` and a small widget representing the profile of your camel is displayed
 - Increase the size of the widget
 - Send new requests and check the values
 
-== Session 4 :  Fabric, HA & Load Balancing - 60min
+== Session 5 :  Fabric & Insight
 
-=== Presentation of Fuse Fabric & A-MQ
+=== Presentation of Fuse Fabric
 
 === Demos
 
@@ -459,9 +469,9 @@ NOTE: The login/password `admin/admin` should be commented in the file etc/users
 
 - And define the properties required to create the profile
 
-				<fabric8.profile>my-cool-profile</fabric8.profile>
-        		<fabric8.features>camel camel-cxf</fabric8.features>
-        		<fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
+	<fabric8.profile>my-cool-profile</fabric8.profile>
+	<fabric8.features>camel camel-cxf</fabric8.features>
+	<fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
 
 - Add a new `maven` configuration to JBDS and name it `fabric8`
 - Select the `demo-camel-ws` project, add the goal `fabric8:deploy`, save it
@@ -511,10 +521,9 @@ NOTE: the admin/password login/password must be added to your settings.xml file 
 - Click on `create and start container`
 - You will see that the container will created and the bundles currently deployed
 
+==== Demo 2 - Metrics
 
-==== Demo 2 - ElasticSearch and Insight
-
-Objective : Install Insight + elasticsearch to collect statistics/metrics of the camel routes.
+Objective : Install Insight + ElasticSearch to collect statistics/metrics of the camel routes.
 Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes (using Message ID)
 
 - Download fabric8 - http://fabric8.io/#/site/book/doc/index.md?chapter=getStarted_md
@@ -522,6 +531,7 @@ Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes 
 - Select in the `fabric` perspective, the container `root` runtime and add the profile `insight-core` and `insight-kibana`
 - After a few moments, you should be able to verify that the `insight` perspective has been added to the menu
 - Create a new child container `my-cool-insight` and add the profile `insight-camel` & `insight-core`
+- Now we can install a camel project. Add the profile 'all' of *camel example loadbroker*
 - Wait a few moments that the container is provisioned
 - Open next the perspective `insight`, click on `camel events` tab and check the camel exchanges created
 - Navigate between the columns of the table of ES
@@ -529,7 +539,13 @@ Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes 
 - Check the detail of a camel exchange
 - Search about some exchanges using the Lucene FT Search
 
-==== Demo 3 - HA and Network of brokers
+== Session 4 : HA & Load Balancing
+
+=== Presentation of High-Availability topologies and Loadbalancing
+
+=== Demos
+
+==== Demo 1 - HA and Network of brokers
 
 Objective : Setup a Network of Brokers Topology and show how messages are persisted/processed (to support HA scenario)
 
@@ -538,7 +554,7 @@ Objective : Setup a Network of Brokers Topology and show how messages are persis
 * https://github.com/FuseByExample/external-mq-fabric-client
 * https://github.com/FuseByExample/external-mq-fabric-client/blob/master/docs/fabric-ha-setup-master-slave.md
 
-==== Demo 4 - Loadbalancing
+==== Demo 2 - Loadbalancing
 
 Objective : Turn on your Fabric/Fuse container into a load balancing platform to distribute workload
 
@@ -560,7 +576,7 @@ NOTE: change 1 with 2 in the field `Number of containers` and name the container
   2014-05-05 17:13:54 INFOfabric-client >>> Response from Fabric Container : camel-cluster2
   2014-05-05 17:13:55 INFOfabric-client >>> Response from Fabric Container : camel-cluster1
 
-== Session 5 : Complex Business Processing - 90 min
+== Session 6 : Complex Business Processing - 90 min
 
 === Presentation of Drools Rule Language and Drools plugin in JBoss Developer Studio
 
