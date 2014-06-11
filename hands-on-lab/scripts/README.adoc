@@ -19,6 +19,10 @@ For offline installation we need also the Integration Stack and target platform 
 - Setup a FTP server (and register it as a service) on your machine and copy previously downloaded files under the pub directory (eg : /var/ftp/pub)
 
     yum install vsftpd
++ To enable the service and start it, run these Fedora instructions as a root user
+
+    systemctl enable vsftpd.service
+    systemctl start vsftpd.service
 
 - Download an install Apache Archiva to run a Proxy Maven server using this link
 
