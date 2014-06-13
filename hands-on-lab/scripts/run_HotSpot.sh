@@ -1,7 +1,13 @@
 #!/bin/bash
 #
 # Documentation : http://nims11.wordpress.com/2012/04/27/hostapd-the-linux-way-to-create-virtual-wifi-access-point/
+# To run the script :
+# ./run_HotSpot.sh wlp0s26u1u2 em1
+# where wlp0s26u1u2 = ASUS AC56
+# where wlp3s0 = Lenovo Wifi card
+# where em1 = ethernet card
 #
+
 
 # Unblock wifi soft
 rfkill unblock wifi
