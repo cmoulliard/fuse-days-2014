@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Documentation : http://nims11.wordpress.com/2012/04/27/hostapd-the-linux-way-to-create-virtual-wifi-access-point/
+#
 
 # Unblock wifi soft
 rfkill unblock wifi
