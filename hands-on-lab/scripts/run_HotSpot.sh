@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Documentation : http://nims11.wordpress.com/2012/04/27/hostapd-the-linux-way-to-create-virtual-wifi-access-point/
+# Issue on centos : wlan wasn't started reported by hostapd - see trick here : https://bugs.launchpad.net/ubuntu/+source/wpa/+bug/1289047
 # To run the script :
 # ./run_HotSpot.sh wlp0s26u1u2 em1
 # where wlp0s26u1u2 = ASUS AC56
