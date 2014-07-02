@@ -38,7 +38,7 @@ public class MainApp {
         Properties props = System.getProperties();
         props.setProperty("hawtio.authenticationEnabled","false");
         props.setProperty("hawtio.config.repo","git@github.com:cmoulliard/hawtio-config.git");
-        props.setProperty("hawtio.offline","true"); // REQUIRE OTHERWISE LOG IS NOT WORKING !
+        props.setProperty("hawtio.offline","false"); // REQUIRED OTHERWISE LOGs DON't APPEAR INTO THE CONSOLE !
         props.setProperty("hawtio.dirname","/Users/chmoulli/Temp/hawtio/");
     }
 
