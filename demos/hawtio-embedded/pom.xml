@@ -11,6 +11,7 @@
     <properties>
         <hawtio.version>1.4.4</hawtio.version>
         <fabric8.version>1.1.0.CR1</fabric8.version>
+        <asciidoclet.version>0.1.4</asciidoclet.version>
     </properties>
 
     <dependencies>
@@ -32,6 +33,28 @@
             <artifactId>insight-log4j</artifactId>
             <version>${fabric8.version}</version>
         </dependency>
+
     </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- Test asciidoclet -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <source>1.7</source>
+                    <doclet>org.asciidoctor.Asciidoclet</doclet>
+                    <docletArtifact>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoclet</artifactId>
+                        <version>${asciidoclet.version}</version>
+                    </docletArtifact>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -7,6 +7,26 @@ import io.hawt.embedded.Main;
 import java.net.URL;
 import java.util.Properties;
 
+/**
+ * = Asciidoclet
+ *
+ * Sample comments that include +source code+.
+ *
+ * [source,java]
+ * --
+ * public class Asciidoclet extends Doclet {
+ *     private final Asciidoctor asciidoctor = Asciidoctor.Factory.create();
+ *
+ *     @SuppressWarnings("UnusedDeclaration")
+ *     public static boolean start(RootDoc rootDoc) {
+ *         new Asciidoclet().render(rootDoc);
+ *         return Standard.start(rootDoc);
+ *     }
+ * }
+ * --
+ *
+ * @author https://github.com/cmoullard[Charles Moulliard]
+ */
 public class MainApp {
 
     private static final String resource = "hawtio-default-1.4.4.war";
@@ -14,8 +34,10 @@ public class MainApp {
     public static void main(String[] args) throws Exception {
 
         MainApp myApp = new MainApp();
+
         // Get location of the WAR
-        String location = myApp.findResource(resource).getPath();
+        String hawtioWar = myApp.findResource(resource).getPath();
+
         // Configure settings
         myApp.settings();
 
@@ -24,7 +46,7 @@ public class MainApp {
         log4jQuery.start();
 
         Main main = new Main();
-        main.setWarLocation(location);
+        main.setWarLocation(String.valueOf(hawtioWar));
         // Run a Jetty Web Server with hawtio war
         main.run();
     }
