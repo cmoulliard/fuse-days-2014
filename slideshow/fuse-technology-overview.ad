@@ -13,13 +13,13 @@
 :imagesdir: images/
 :linkattrs:
 :linkcss:
-:project_dir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014
-:resourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/slideshow/snippet/src/main/resources
+:project_dir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014
+:resourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014/slideshow/snippet/src/main/resources
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
 :revealjs_theme: conference-redhat
 :revealjs_vertical_alignment: false
 :revealjs_history: false
-:sourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/slideshow/snippet/src/main/java/
+:sourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014/slideshow/snippet/src/main/java/
 //:source-highlighter: coderay, highlightjs, pygments, prettify
 :source-highlighter: pygments
 :stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles

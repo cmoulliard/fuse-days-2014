@@ -2,4 +2,5 @@ source: slideshow
 destination: slideshow/generated # or . or ~/Hyla or generated_content
 backend: revealjs
 rendering: adoc2html           # Render asciidoc, asciidoctor files to HTML using backend HTML5
-
+attributes:
+  source-highlighter: highlightjs

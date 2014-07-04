@@ -11,14 +11,22 @@ toc::[]
 
 === Prerequisites
 
-- If not yet done, download and install the following softwares
+- If not yet done, download and install the following software
 
-- http://maven.apache.org/download.cgi[Apache Maven 3.0.5],
-- http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html[JDK 7],
-- http://sourceforge.net/projects/soapui/files/soapui/[SOAPUi 5.0],
-- https://www.jboss.org/products/devstudio.html[JBDS]
+- Apache Maven / http://maven.apache.org/download.cgi[Apache Maven 3.0.5],
+- Java JDK 7 / http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html[JDK 7],
+- SOAPui / http://sourceforge.net/projects/soapui/files/soapui/[SOAPUi 5.0],
+- JBoss Developer Studio (JBDS) / https://www.jboss.org/products/devstudio.html[JBDS]
+- JBoss Fuse & JBoss AMQ / https://www.jboss.org/products/fuse.html[JBoss Fuse 6.1] & https://www.jboss.org/products/amq.html[JBoss A-MQ 6.1]
 
-- Next install `integration stack` in JBDS according to the following steps
+Remark :
+- The software required can be installed from one of the USB key available
+
+=== Post-Installation
+
+- After installing JBDS on your machine, the SOA/Integration tools must be deployed as it contains the Camel Editor like also
+  BRMS/BPMS tools when you would like to work with the Rules engine or Busisness process engine
+- Follow these steps defined hereafter
 
 [source, text]
 ----
@@ -28,7 +36,7 @@ Add...
 Insert the following Location: https://devstudio.jboss.com/updates/7.0/integration-stack/
 ----
 
-- Remark : SOAPUI can be also installed within JBDS. Follow these steps
+- Optional : SOAPUI can be also installed within JBDS. Follow these steps
 
 [source, text]
 ----
@@ -37,17 +45,32 @@ Start JBDS and select from the menu
 2. In the Work with field, type http://www.soapui.org/eclipse/update and click Add...
 ----
 
-- https://www.jboss.org/products/fuse.html[JBoss Fuse 6.1] & https://www.jboss.org/products/amq.html[JBoss A-MQ 6.1]
+=== Offline installation
+
+An installation script can also be used to install JBDS including also the 'integration tools', JBoss Fuse on your Unix machine from a local FTP server. This procedure
+will also update your maven settings.xml file (located under ~/.m2/settings.xml) to use a Proxy HTTP server running on the instructor machine.
+This installation procedure could be achieved for you without internet connection ("offline mode").
+
+Here is the step to follow :
+
+- Open a unix terminal
+- Create under your temp directory a lab/Scripts directory
+- Run the following command
+
+NOTE: The address of the FTP server will be provided by the instructor (e.g : 192.168.1.70)
+
+  cd ~/Temp/lab/scripts
+  wget ftp://192.168.1.70/pub/scripts/all_commands.sh
+  chmod +x *.sh
+  ./all_commands.sh ~/Temp/lab/ 192.168.1.70
 
 === Installation of the code for the demos
 
 * Clone the `hands on lab` git project and move to the directory `hands-on-lab`
 
-
 [source, text]
 ----
   git clone https://github.com/cmoulliard/fuse-days-2014.git
-
 ----
 
 or use the code available on the

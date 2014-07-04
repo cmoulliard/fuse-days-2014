@@ -7,29 +7,11 @@ import io.hawt.embedded.Main;
 import java.net.URL;
 import java.util.Properties;
 
-/**
- * = Asciidoclet
- *
- * Sample comments that include +source code+.
- *
- * [source,java]
- * --
- * public class Asciidoclet extends Doclet {
- *     private final Asciidoctor asciidoctor = Asciidoctor.Factory.create();
- *
- *     @SuppressWarnings("UnusedDeclaration")
- *     public static boolean start(RootDoc rootDoc) {
- *         new Asciidoclet().render(rootDoc);
- *         return Standard.start(rootDoc);
- *     }
- * }
- * --
- *
- * @author https://github.com/cmoullard[Charles Moulliard]
- */
+
 public class MainApp {
 
-    private static final String resource = "hawtio-default-1.4.4.war";
+/*    private static final String resource = "hawtio-default-1.4.4.war";*/
+    private static final String resource = "hawtio-default-1.5-SNAPSHOT.war";
 
     public static void main(String[] args) throws Exception {
 
@@ -47,6 +29,10 @@ public class MainApp {
 
         Main main = new Main();
         main.setWarLocation(String.valueOf(hawtioWar));
+
+        // Set Port Number
+        main.setPort(9090);
+
         // Run a Jetty Web Server with hawtio war
         main.run();
     }
@@ -60,8 +46,8 @@ public class MainApp {
         Properties props = System.getProperties();
         props.setProperty("hawtio.authenticationEnabled","false");
         props.setProperty("hawtio.config.repo","git@github.com:cmoulliard/hawtio-config.git");
-        props.setProperty("hawtio.offline","false"); // REQUIRED OTHERWISE LOGs DON't APPEAR INTO THE CONSOLE !
-        props.setProperty("hawtio.dirname","/Users/chmoulli/Temp/hawtio/");
+        props.setProperty("hawtio.offline","false");
+        props.setProperty("hawtio.dirname","/Temp/hawtio/");
     }
 
 }
