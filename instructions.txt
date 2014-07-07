@@ -15,7 +15,7 @@ open hands-on-lab/pdf/result.pdf
 ISSUE WITH PDF SIZE - Using wkhtml2pdf 0.12.0
 
 cd /Users/chmoulli/Downloads/wkhtmltox-0.12.1-b8ea0f4/bin
-./wkhtmltopdf /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/hands-on-lab/generated/hands-on-lab.html /Users/chmoulli/MyProjects/conferences/fuse-days-paris-2014/hands-on-lab/pdf/hands-on-lab.pdf
+./wkhtmltopdf /Users/chmoulli/MyProjects/conferences/fuse-days-2014/hands-on-lab/generated/hands-on-lab.html /Users/chmoulli/MyProjects/conferences/fuse-days-2014/hands-on-lab/pdf/hands-on-lab.pdf
 
 
 Remark : As during pdf creation the cover text overlaps the logo of the header, a <div> tag must be added after the first section like that

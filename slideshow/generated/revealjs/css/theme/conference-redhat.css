@@ -11,7 +11,8 @@
     width: 20px; height: 20px; font-size: 12px;
     font-weight: bold;
     line-height: 20px;
-    font-style: normal; position: relative; top: -2px; letter-spacing: -1px;
+    font-style: normal;
+    position: relative; top: -2px; letter-spacing: -1px;
 }
 .conum * { color: white !important; }
 .conum + b { display: none; }

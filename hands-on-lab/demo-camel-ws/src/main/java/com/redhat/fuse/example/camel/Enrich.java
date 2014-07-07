@@ -31,20 +31,6 @@ public class Enrich {
         customers.add(customer);
     }
 
-/*    public SaveCustomer createCustomer(@Body String name) {
-        Customer customer = new Customer();
-        customer.setName(name);
-        customer.setNumOrders(randomGenerator.nextInt(100));
-        customer.setRevenue(randomGenerator.nextInt(10000));
-        customer.setType(CustomerType.BUSINESS);
-        customer.setTest(BigDecimal.valueOf(100.00));
-        customer.getAddress().add("RedHat Office");
-
-        SaveCustomer result = new SaveCustomer();
-        result.setCustomer(customer);
-        return result;
-    }*/
-
     public GetAllCustomersResponse getCustomers() {
 
         GetAllCustomersResponse response = new GetAllCustomersResponse();
@@ -70,30 +56,6 @@ public class Enrich {
         return response;
 
     }
-
-/*    public GetCustomerByNameResponse getCustomerByName2(Exchange ex) {
-
-        MessageContentsList payload = (MessageContentsList) ex.getIn().getBody();
-        // String toSearch = (String) payload.get(0);
-        GetCustomerByName customerByName = (GetCustomerByName) payload.get(0);
-        String cSearch = customerByName.getName();
-
-        List<Customer> result = new ArrayList<Customer>();
-        // Search for Customer using name as key
-        for(Customer c : customers) {
-            if (c.getName().equals(cSearch)) {
-                result.add(c);
-                log.info(">> Customer find !");
-                break;
-            }
-        }
-
-        GetCustomerByNameResponse response = new GetCustomerByNameResponse();
-        response.getReturn().addAll(result);
-
-        return response;
-
-    }*/
 
     public SaveCustomerResponse saveCustomer(@Body SaveCustomerRequest c) {
 

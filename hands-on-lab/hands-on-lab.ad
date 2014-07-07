@@ -25,7 +25,7 @@ Remark :
 === Post-Installation
 
 - After installing JBDS on your machine, the SOA/Integration tools must be deployed as it contains the Camel Editor like also
-  BRMS/BPMS tools when you would like to work with the Rules engine or Busisness process engine
+  BRMS/BPMS tools when you would like to work with the Rules engine or Business process engine
 - Follow these steps defined hereafter
 
 [source, text]
@@ -45,28 +45,47 @@ Start JBDS and select from the menu
 2. In the Work with field, type http://www.soapui.org/eclipse/update and click Add...
 ----
 
+- To avoid that every participant download same maven artefacts from internet, a maven proxy server has been configured. To use it, you must change
+your maven settings.xml
+- Edit the ~/.m2/settings.xml and add the following lines to use the maven mirror server
+
+[source, xml]
+----
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+<mirrors>
+    <mirror>
+      <id>archiva.default</id>
+      <url>http://192.168.137.1:8080/repository/all/</url>
+      <mirrorOf>external:*</mirrorOf>
+    </mirror>
+</mirrors>
+</settings>
+----
+
 === Offline installation
 
-An installation script can also be used to install JBDS including also the 'integration tools', JBoss Fuse on your Unix machine from a local FTP server. This procedure
-will also update your maven settings.xml file (located under ~/.m2/settings.xml) to use a Proxy HTTP server running on the instructor machine.
+An installation script can also be used to install JBDS including also the 'integration tools', JBoss Fuse on your Unix machine from a local FTP server.
+This procedure will also update your maven settings.xml file (located under ~/.m2/settings.xml) to use a Proxy HTTP server running on the instructor machine.
 This installation procedure could be achieved for you without internet connection ("offline mode").
 
-Here is the step to follow :
+Here are the steps to follow :
 
 - Open a unix terminal
-- Create under your temp directory a lab/Scripts directory
+- Create under your temp directory a lab/scripts directory
 - Run the following command
 
-NOTE: The address of the FTP server will be provided by the instructor (e.g : 192.168.1.70)
+NOTE: The address of the FTP server will be provided by the instructor (e.g : 192.168.137.1)
 
   cd ~/Temp/lab/scripts
-  wget ftp://192.168.1.70/pub/scripts/all_commands.sh
+  wget ftp://192.168.137.1/pub/scripts/all_commands.sh
   chmod +x *.sh
-  ./all_commands.sh ~/Temp/lab/ 192.168.1.70
+  ./all_commands.sh ~/Temp/lab/ 192.168.137.1
 
 === Installation of the code for the demos
 
-* Clone the `hands on lab` git project and move to the directory `hands-on-lab`
+* Clone the `hands on lab` git project and move to the directory `hands-on-lab` containing the code of the demos. Demos is available in the folder 'demo-camel-ws'
 
 [source, text]
 ----
@@ -77,6 +96,9 @@ or use the code available on the
 
 * USB key
 
+- Copy file demo-camel-ws.zip on your machine
+- Unzip the file
+
 === Demos
 
 ==== Demo 1 - Using Camel Archetype with JBDS
@@ -84,7 +106,8 @@ or use the code available on the
 - Start JBDS 7.1. GA
 - Create in your home directory a workspace wih the name `workspace-lab`
 - Select `New Fuse Project`
-- Next, select an archetype `camel-archetype-activemq`
+- Skip first screen `Select project location`
+- Next, select the archetype `camel-archetype-activemq`
 - Define the following values for :
 
     groupid : my
@@ -93,15 +116,17 @@ or use the code available on the
 
 - Click on `next` button
 - When the project appears, switch to perspective `Fuse integration`
-- Open the Camelcontext to navigate between the different camel routes (see menu - `routes`) and review them
-- Start the camelContext using `Run as Local Camel Context`
-- Open JMX Browser and navigate to discover the ActiveMQ browser and Camel
+- Open the camel-context.xml file located under src/main/resources/META-INF/sporing directory
+  to navigate between the different camel routes (see menu - `routes`) and review them
+- Start the camelcontext using `Run as Local Camel Context`
+- Open JMX Browser and navigate to discover the MBeans of ActiveMQ browser and Camel
+- Rick click on button "Refresh" if the MBeans didn't appear in the list
 - Review the MBeans (routes, endpoints, ...)
 - Enable tracing
 - Drag and drop a message to an endpoint
 - Review statistics under Message log
 
-- Create a unit test and run it locally
+- When everything is done, shutdown the camel process
 
 ==== Demo 2 - Import project - Demo Camel CXF with JBDS
 
@@ -113,10 +138,10 @@ or use the code available on the
 - Select Java Build Path, Click on Source and add folder `target/generated/src/main/java` to include code created by cxf-codegen-plugin
 - Open Fuse integration perspective, review the camel route
 - Start the camelContext using `Run as Local Camel Context`
-- Open the view `soapUI Navigator` from the menu bar (Show view -> Other -> soapUI -> soapUI Navigator) (DO NOT WORK)
+- Open the view `soapUI Navigator` from the menu bar (Show view -> Other -> soapUI -> soapUI Navigator) OR
 - Start SOAPUI
 - Select New project and add the URL point to the WSDL file of the Web Service exposed by the Camel route `http://localhost:9090/training/WebService?wsdl`
-- When the project has been imported, select the service `getCustomersByName` and open `Request 1`. Replace the question mark symbol by `edHat`to search about it.
+- When the project has been imported, select the service `getCustomersByName` and open `Request 1`. Replace the question mark symbol by `RedHat` to search about it.
 - You will get a response
 
     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -150,12 +175,14 @@ curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T 
 
 ==== Demo 3 - Unit Test with JBDS
 
-- Use project created for my cool demo
-- Select in the File menu bar `camel test case`
+- Use project created for my cool demo (first demo)
+- To create the unit test, select `New` and `Camel Test Case` after selecting the project `cool-demo`
+- Accept the by default value and verify that the camel-context.xml file of your project
+  is well selected
 - Package name should be `my.cool.demo`
 - Browse to select the camel xml file located under your src/main/resources/META-INF/spring` directory
 - Keep by default endpoints selected and click on `finish` button
-- Run the unit test using Junit
+- Run the unit test using `Run As` and `Junit Test` options available under the java class of the unit test case created
 - Check result
 
 == Session 2 : Packaging and deployment in JBoss Fuse - 90min
@@ -166,14 +193,18 @@ curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T 
 
 ==== Demo 1 - Tailor your JBoss Fuse server
 
+- If this is not yet done, edit the file `etc/org.ops4j.pax.url.mvn.cfg` and verify that you use the proxy server of the lab
+
+  org.ops4j.pax.url.mvn.repositories= \
+     http://192.168.137.1:8080/repository/all
+
 - Edit file `etc/org.apache.karaf.features.cfg` located under /etc directory
 - Comment the line starting with the key `featuresBoot` and add the following features
 
   featuresBoot=jasypt-encryption,config,management,fabric,fabric-bundle,fabric-maven-proxy,patch,war,hawtio
 
-- (Re)Start `fuse` with the command `/fuse clean`
-- Check on the console that the number of bundles just correspond to what has been defined
-- Was before `250` and now `128`
+- Start `fuse` with the command `/fuse`
+- Check on the console that the number of bundles just corresponds to `128`
 
   ...
   [ 126] [Active     ] [            ] [   60] JLine (2.11.0)
@@ -191,7 +222,7 @@ curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T 
   [ 200] [Active     ] [Created     ] [       ] [   50] camel-cxf-transport (2.12.0.redhat-610379)
   [ 201] [Active     ] [Created     ] [       ] [   50] camel-cxf (2.12.0.redhat-610379)
 
-NOTE: A new Karaf command has been added `cxr`
+NOTE: A new Karaf command has been added `cxf`
 
 cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpoint
 
@@ -200,7 +231,7 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 - Type on the keyboard `tab` key -> Display all 311 possibilities? (y or n)
 - Answer `yes`
 - Type `log:` tab to see the commands belonging to `log` family
-- Repeat with `OSGI`,`features`,`admin`,`log` and dicuss with instructor purpose of the command
+- Repeat with `OSGI`,`features`,`admin`,`log` and dicuss with instructor purpose of the commands
 
 ==== Demo 3 - Transform project into a bundle
 
@@ -208,7 +239,7 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 
   <packaging>bundle</packaging>
 
-- Add Apache Felix Bundle plugin to generate METADA required by OSGI runtime
+- Add Apache Felix Bundle plugin to generate META-DATA required by OSGI runtime
 
   <!-- to generate the MANIFEST-FILE required by the bundle ->
   <plugin>
@@ -253,32 +284,30 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 
 - Using `soapui`, send a SOAPUI request `getAllCustomers`
 - Look to the log file `log:display` or `ld` which is a shortcut
+- Shutdown JBoss Fuse Server
 
-==== Demo 4 - Deploy to a Fuse Container
+==== Demo 4 - Deploy to a Fuse Container using JBDS
 
+- Before to run this exercise, the Fuse server must be restarted using this command
+  `./fuse clean` and next shutdown (ctrld-D) to restore it to its previous state.
+- Switch to JBDS  
 - Add the JBoss Fuse 6.1 server and deploy folder
 - Select `DeployTo` and `Deploy Folder configuration`
 - When the screen `Deploy Folders` appear, add the name `jbossfuse6.1`, point to your `deploy` folder
 
-  /Users/chmoulli/Fuse/Fuse-servers/jboss-fuse-6.1.0.redhat-379/deploy
+  ~/../jboss-fuse-6.1.0.redhat-379/deploy
 
 - Description should be the same as `name`
 - Add this config and click on `ok` button
 
 - Select from the pom.xml file the option, deploy to -> `jbossfuse6.1`
 - mvn build will take place and deploy the jar file created under the `deploy` directory of your server
+- Next, select the servers view and add JBoss Fuse 6.1
+- When this is done, click on the start button to launch it
+- Check log file of the "shell" console, understand the issue (maybe we miss some features)
+
 - List the bundles deployed on the console and consult the log file
-- Do you see something strange ? Have we missed to deploy something (camel, ...) ?
-- Add the missing features
-
-  features:install camel
-  features:install camel-cxf
-
-- Restart the bundle of your `cool-demo`
-
-  osgi:restart id_of_the_bundle
-
-- Verify if th web service is working.
+- Verify if the web service is working.
 - Remove the jar/bundle deployed
 
   rm -rf ../deploy/demo-camel-ws-1.0.jar
@@ -354,25 +383,7 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 
   features:install cool-camel-cxf-demo
 
-NOTE: Check on the command line the result of that installation process
-
-WARNING: Error executing command: Could not start bundle mvn:com.redhat.fuse/demo-camel-ws/1.0 in feature(s) cool-camel-cxf-demo-1.0: Unresolved constraint in bundle demo-camel-ws [129]: Unable to resolve 129.0: missing requirement [129.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.camel)(version>=2.10.0)(!(version>=3.0.0)))
-
-- To solve the problem, issue the missing features should be added to the features file
-- Edit the file and replace the existing feature definition by this one
-
-        <feature name="cool-camel-cxf-demo" version="${project.version}">
-            <feature version="{camel.version}">camel</feature>
-            <feature version="{camel.version}">camel-cxf</feature>
-            <bundle>mvn:com.redhat.fuse/demo-camel-ws/${project.version}</bundle>
-        </feature>
-
-- Build again `mvn clean install`
-- Refresh features definitions using this command on JBoss Fuse
-
-  refreshurl
-
-- Reinstall the project and test it (see previous demo)
+- Verify that the webservice is well working
 - Analyze the camel statistics (command line)
 
   camel:endpoint-list
