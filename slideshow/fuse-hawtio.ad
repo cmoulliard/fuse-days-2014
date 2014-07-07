@@ -19,7 +19,7 @@
 :revealjs_vertical_alignment: false
 :revealjs_history: true
 :sourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014/slideshow/snippet/src/main/java/
-:highlightjs-theme: dark
+:highlightjs-theme: solarized_light
 :stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles
 :title-author: {title} {author}
 :title-speaker: Architect Engineer Committer
@@ -47,44 +47,60 @@ Principal Solution Architect / Apache Committer - Global Partner Enablement
 
 [cols="85,15"]
 |===
-| .2+|image:fuse/hawtio-logo-bigger.png[,float="right"]
+| .2+|image:hawtio/hawtio_logo.svg[float="right",width="100%"]
 a|* Lightweight & **modular** HTML5 **web console** for managing Java **MBeans** and more ...
+
+[.newline]
 * 2 parts :
-  ** Front end : AngularJS / **JSon/REST**
+  ** Front end : HTML5 & AngularJS & **JSON / REST**
   ** Backend : Java Servlet & **jolokia** JMX gateway
 |===
 
 [.newline]
-* image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/rest-api.png[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:fuse/jolokia.png[150,150]
-
-
-// ************ Hawtio *************
-== How it looks
-
-image:fuse/hawtio-2.png[]
+* image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:hawtio/AngularJS-small.png[] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/rest-api.png[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:fuse/jolokia.png[150,150]
 
 // ************ Hawtio *************
 == Features
 
-* Container *agnostic* and can be used :
+* Can be used (Container *agnostic* !) :
   ** *Standalone* mode
   ** *Embedded*
   ** *Deployed* in a *Servlet*, *Application* container
   ** Deployed in an *OSGI* container
 * Security based - *JAAS* to authenticate users
-* Support *local* & *remote* connection (jmx proxy - jsr-160)
+* Support *local* & *remote* connection (https://jcp.org/en/jsr/detail?id=160[jsr-160])
 * Heart of the **new** **F**use **M**anagement **C**onsole
+
+// ************ Hawtio *************
+== How it looks
+
+image:hawtio/hawtio-console.png[]
+
+// ************ Hawtio *************
+== Demo
+
+[.newline]
+* Show hawtio - embedded mode
+* Connect remotely using Jolokia agent / JAAS
 
 // ************ Hawtio *************
 == Features - con't
 
 * *More* than JConsole
 * Config/resources are *Git* manageable
-* Proposes *Wiki* editors :
+* Includes *Wiki* editors :
    ** Markdown
    ** HTML
-   ** Camel routes
+   ** XML
+   ** Camel Routes
    ** Dozer for Java to Java mapping
+
+// ************ Hawtio *************
+== Demo
+
+[.newline]
+* How can I use Wiki editor
+* Resources managed with GIT repo
 
 // ************ Hawtio *************
 == Architecture
@@ -93,15 +109,23 @@ image:fuse/hawtio-2.png[]
   ** JS Model - View - Controller
 * *Jolokia*, the backend part
   ** Bridge for remote JMX access
-* Client communicates with an *agent* over HTTP(S) (GET or POST)
+* Client communicates through an *agent* over HTTP(S) (GET or POST)
 * Request/response *payload* represented in JSON
 
 // ************ Hawtio *************
 == Architecture - con't
 
-* JMX Mbeans (attributes/ operations) belong to a *domain* (Camel, ActiveMQ, OSGI, JVM, ...)
-* Managed by a *plugin* +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ collection of UI, REST requests, JS lib to do rendering
+* JMX MBeans (attributes/ operations) belong to a *domain* (Camel, ActiveMQ, OSGI, JVM, ...)
+* Managed by a *plugin* +++&nbsp<b><font face="Symbol">=</font></b>+++ collection of UI, REST requests, JS lib to do rendering
 * hawtio UI updated in *real time* based on what it can find in the *server side JVM* it connects to
+
+// ************ Hawtio *************
+== Demo
+
+* Have a look to Tomcat plugin
+* AngularJS part
+* Backend - jolokia mbean requests
+* Response back
 
 // ************ Hawtio *************
 == Example - Tomcat Plugin
@@ -116,12 +140,11 @@ image::hawtio/hawtio-tomcat-mbeans-applications.png[]
 // ************ Hawtio *************
 == Example - Front
 
-* HTML +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ Angular Controller
+* HTML, Javascript & Angular
 
 [source, html]
 ----
-<div class="row-fluid" ng-controller="Tomcat.TomcatController">
-
+<div class="row-fluid" ng-controller="Tomcat.TomcatController"> # <1>
   <div class="row-fluid">
     <div class="pull-left">
       <form class="form-inline no-bottom-margin">
@@ -141,6 +164,7 @@ image::hawtio/hawtio-tomcat-mbeans-applications.png[]
         </fieldset>
       </form>
 ----
+* Angular Controller +++<i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-inverse fa-stack-1x">1</i>+++
 
 // ************ Hawtio *************
 == Example - AngularJS mapping
@@ -153,19 +177,22 @@ module Tomcat {
 
   _module.config(["$routeProvider", ($routeProvider) => {
     $routeProvider.
-            when('/tomcat/server', {templateUrl: 'app/tomcat/html/server.html'}).
-            when('/tomcat/applications', {templateUrl: 'app/tomcat/html/applications.html'}).
-            when('/tomcat/connectors', {templateUrl: 'app/tomcat/html/connectors.html'}).
-            when('/tomcat/sessions', {templateUrl: 'app/tomcat/html/sessions.html'});
+      when('/tomcat/server', {templateUrl: 'app/tomcat/html/server.html'}).
+      when('/tomcat/applications', {templateUrl: 'app/tomcat/html/applications.html'}). # <1>
+      when('/tomcat/connectors', {templateUrl: 'app/tomcat/html/connectors.html'}). # <2>
+      when('/tomcat/sessions', {templateUrl: 'app/tomcat/html/sessions.html'});
   }]);
 ----
+* Mapping with Applications +++<i class="fa fa-circle fa-stack-1x"></i><i class="fa fa-inverse fa-stack-1x">1</i>+++
+* Mapping with Connectors +++<i class="fa fa-circle fa-stack-1x"></i><i class="fa fa-inverse fa-stack-1x">2</i>+++
+* ...
 
 // ************ Hawtio *************
 == Example - JSON Request
 
 [source, javascript]
 ----
-jolokia.request({
+jolokia.request({ # <1>
         type: 'exec',
         mbean: id,
         operation: op,
@@ -173,6 +200,8 @@ jolokia.request({
     },
     onSuccess($scope.onResponse, {error: $scope.onResponse}));
 ----
+* Jolokia Request calling mbean +++<i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-inverse fa-stack-1x">1</i>+++
+
 
 // ************ Hawtio *************
 == Example - JSON Search
@@ -188,16 +217,18 @@ function loadData() {
       if (!found) {
         var data = jolokia.request({type: "read", mbean: mbean, attribute: ["port", "scheme", "protocol"]});
 ...
-  jolokia.search("*:j2eeType=WebModule,*", onSuccess(render));
+  jolokia.search("*:j2eeType=WebModule,*", onSuccess(render)); # <1>
 }
 ----
+* Search for mbeans into +
+  the MBean server +++<i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-inverse fa-stack-1x">1</i>+++
 
 // ************ Hawtio *************
 == Example - JSON Response
 
 [source, javascript]
 ----
-function render(response) {
+function render(response) { # <1>
    response = Tomcat.filerTomcatOrCatalina(response);
 
    $scope.webapps = [];
@@ -214,13 +245,23 @@ function render(response) {
        var hostname = Core.extractTargetUrl($location, $scope.httpScheme, $scope.httpPort);
        obj.url = hostname + obj['path'];
 ----
+* Response parsing JSON result +
+  and mapping it with angular +++<i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-inverse fa-stack-1x">1</i>+++
+
+// ************ Hawtio *************
+== Design your own Dashboard
+
+* Create your own dashboard
+* Add View - Operating System
+* Add Donut - Heap Memory
+* Add Area Chart - SystemCPU Load
+* Add log, threads, ...
 
 // ************ Hawtio *************
 == Plugins, pluggable
 
-* *Plug-an-play* architecture :
-  ** Already more than > 25 plugins
-* Some are *Included* like jvm, threads, dashboard, camel, activemq, ...)
+* *Plug-an-play* architecture ( > 25 plugins )
+* Some are *Packaged* like jvm, threads, dashboard, camel, activemq, ...)
 * Some have a *server side* (git, maven, aether, log) purpose
 * *Reusable* for developers (branding, datatable, forms, ide, perspective, tree)
 
@@ -260,7 +301,7 @@ include::{resourcesdir}/OSGI-INF/blueprint/blueprint2.xml[]
 |===
 a| * Design Front end (AngularJS)
 * Send REST request to call Service |
-image:web2/angularjs.jpeg[80,80,float="right"]
+image:hawtio/AngularJS-small.png[float="right"]
 |===
 
 [source, javascript]
@@ -285,7 +326,7 @@ image::fuse/plugin-query.png[]
 
 == What's next
 
-* Cool & cool demos
+* James's presentation to watch more and more cool & cool demos
 
 // ************ Hawtio *************
 == Questions
@@ -299,4 +340,5 @@ a|* Twitter : @cmoulliard
 
 * More info +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
   - www.jboss.org/products/fuse.html
-  - www.redhat.com/products/jbossenterprisemiddleware/fuse/
+  - hawt.io
+  - faric8.io
