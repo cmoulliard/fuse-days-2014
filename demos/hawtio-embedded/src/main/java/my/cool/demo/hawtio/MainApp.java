@@ -33,6 +33,9 @@ public class MainApp {
         // Set Port Number
         main.setPort(9090);
 
+        // Start Camel
+        // myApp.startCamel();
+
         // Run a Jetty Web Server with hawtio war
         main.run();
     }
@@ -48,6 +51,11 @@ public class MainApp {
         props.setProperty("hawtio.config.repo","git@github.com:cmoulliard/hawtio-config.git");
         props.setProperty("hawtio.offline","false");
         props.setProperty("hawtio.dirname","/Temp/hawtio/");
+    }
+
+    private void startCamel() throws Exception {
+        CamelApp appCamel = new CamelApp();
+        appCamel.start();
     }
 
 }
