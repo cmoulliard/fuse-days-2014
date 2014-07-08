@@ -96,7 +96,7 @@ or use the code available on the
 
 * USB key
 
-- Copy file demo-camel-ws.zip on your machine
+- Copy file demos.zip on your machine
 - Unzip the file
 
 === Demos
@@ -193,30 +193,32 @@ curl -X POST -H "SOAPAction: http://example.fuse.redhat.com/getAllCustomers" -T 
 
 ==== Demo 1 - Tailor your JBoss Fuse server
 
-- If this is not yet done, edit the file `etc/org.ops4j.pax.url.mvn.cfg` and verify that you use the proxy server of the lab
+- If this is not yet done, edit this file `etc/org.ops4j.pax.url.mvn.cfg` part of the JBoss Fuse or AMQ distribution
+  and verify that you use the proxy server of the lab to download maven artifacts
 
   org.ops4j.pax.url.mvn.repositories= \
      http://192.168.137.1:8080/repository/all
 
-- Edit file `etc/org.apache.karaf.features.cfg` located under /etc directory
+- To tailor your Fuse server, we will edit the features file before to start the first time the server and just deploy what we want
+- Edit the file `etc/org.apache.karaf.features.cfg` located under /etc directory of the JBoss Fuse/AMQ distribution
 - Comment the line starting with the key `featuresBoot` and add the following features
 
   featuresBoot=jasypt-encryption,config,management,fabric,fabric-bundle,fabric-maven-proxy,patch,war,hawtio
 
-- Start `fuse` with the command `/fuse`
-- Check on the console that the number of bundles just corresponds to `128`
+- Start `fuse` with the command `/fuse` or fuse.bat` in Unix/Dos terminal
+- Check on the console that the number of bundles deployed corresponds to `128`
 
   ...
   [ 126] [Active     ] [            ] [   60] JLine (2.11.0)
   [ 127] [Active     ] [Created     ] [   60] hawtio :: Karaf terminal plugin (1.2.0.redhat-379)
   [ 128] [Active     ] [Created     ] [   60] hawtio :: hawtio-maven-indexer (1.2.0.redhat-379)
 
-- Add a new `features` like camel, camel-cxf
+- Deploy new `features/modules` camel and camel-cxf using these commands
 
   features:install camel
   features:install camel-cxf
 
-- Verify bundles deployed
+- Verify the bundles deployed but also new commands, OSGI services
 
   [ 199] [Active     ] [            ] [       ] [   50] Apache CXF Compatibility Bundle Jar (2.7.0.redhat-610379)
   [ 200] [Active     ] [Created     ] [       ] [   50] camel-cxf-transport (2.12.0.redhat-610379)
@@ -235,7 +237,8 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 
 ==== Demo 3 - Transform project into a bundle
 
-- Change pom packaging of the camel cxf demo to bundle
+- Return to your JBDS and open the demo-camel-ws project
+- Change the packaging of the pom.xml file of the camel cxf demo project to bundle
 
   <packaging>bundle</packaging>
 
@@ -270,29 +273,34 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
       </configuration>
   </plugin>
 
-- Build project `mvn clean install`
-- Deploy the project on JBoss Fuse
+- Build the project using the command `mvn clean install` (Right click on the pom.xml file and select `Run as --> mvn install`)
+- Deploy the project on JBoss Fuse using the OSGI install command
 
   osgi:install -s mvn:com.redhat.fuse/demo-camel-ws/1.0
 
+  Remark : Fuse supports different protocols (mvn, file, ftp, http, ...) to deploy your project (jar, bundle, war)
+
 - Verify that the bundle is deployed and status equals to `start`
-- Verify also that we have a CXF endpoint exposed (web browser -> `http://localhost:9090/training/WebService?wsdl`) but also using cxf command
+
+  osgi:list | grep -i demo
+
+- Verify also that we have a CXF WS endpoint running (web browser -> `http://localhost:9090/training/WebService?wsdl`) but also using cxf command
 
     cxf:list-endpoints
     Name                      State      Address                                                      BusID
     [CustomerServicePort    ] [Started ] [http://localhost:9090/training/WebService                 ] [demo-camel-ws-cxf1991170407           ]
 
-- Using `soapui`, send a SOAPUI request `getAllCustomers`
-- Look to the log file `log:display` or `ld` which is a shortcut
-- Shutdown JBoss Fuse Server
+- Using `soapui`, send a SOAPUI XML request by selecting the `getAllCustomers` Request generated and click on the send button
+- Look to the log file `log:display` or `ld` which is a shortcut to verify that SOAP request/response have been traced
+- Shutdown JBoss Fuse Server (`ctrl-D or osgi:shutdown)
 
 ==== Demo 4 - Deploy to a Fuse Container using JBDS
 
-- Before to run this exercise, the Fuse server must be restarted using this command
-  `./fuse clean` and next shutdown (ctrld-D) to restore it to its previous state.
-- Switch to JBDS  
-- Add the JBoss Fuse 6.1 server and deploy folder
-- Select `DeployTo` and `Deploy Folder configuration`
+- Before to run this exercise, remove the directory `data` of the JBoss Fuse / AMQ distribution. It contains the log files
+  but also the bundles previously deployed.
+- Switch to JBDS in order to configure it to use the JBoss Fuse 6.1 server and deploy projects into the
+  `deploy` folder (which is a folder scanned every 1s by Karaf to hot deploy jar, war, bundles, ... on the platform
+- Select `DeployTo` and `Deploy Folder configuration` available after right clicking on the demo camel ws project
 - When the screen `Deploy Folders` appear, add the name `jbossfuse6.1`, point to your `deploy` folder
 
   ~/../jboss-fuse-6.1.0.redhat-379/deploy
@@ -300,13 +308,20 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 - Description should be the same as `name`
 - Add this config and click on `ok` button
 
-- Select from the pom.xml file the option, deploy to -> `jbossfuse6.1`
+- Select from the pom.xml file the option deploy to -> `jbossfuse6.1`
 - mvn build will take place and deploy the jar file created under the `deploy` directory of your server
+
 - Next, select the servers view and add JBoss Fuse 6.1
-- When this is done, click on the start button to launch it
-- Check log file of the "shell" console, understand the issue (maybe we miss some features)
+- When this is done, click on the start button to launch the server
+- Select the `shell view`, open it and use the karaf shell
+
+Remarks :
+- When the ssh connection will be established, verify that the port number of the karaf instance to be connected is `8101`, the hostname is `0.0.0.0` and login/password `admin/admin`
+- The first time you will connect, you will get a pop up windows which will ask you if you accept the digital signature created to connect to karaf server. Reply by yes
 
 - List the bundles deployed on the console and consult the log file
+- Check if camel and camel-cf modules are well deployed. If this is not the case, deploy them
+- Deploy the web service using the command `Deploy to --> jbossfuse6.1` (Right click on the project of the camel demo ws)
 - Verify if the web service is working.
 - Remove the jar/bundle deployed
 
@@ -314,6 +329,10 @@ cxf:list-busses       cxf:list-endpoints    cxf:start-endpoint    cxf:stop-endpo
 
 ==== Demo 5 - Package the project using a features file
 
+- Before to run this exercise, remove the directory `data` of the JBoss Fuse / AMQ distribution. It contains the log files
+  but also the bundles previously deployed.
+
+- Switch to JBDS
 - To achieve this goal, we will create a feature xml file containing our bundle
 - Create the file features.xml under src/main/resources/respository directory
 
@@ -479,7 +498,7 @@ NOTE: The login/password `admin/admin` should be commented in the file etc/users
 
   http://localhost:8181/hawtio/index.html#/camel/profileRoute?tab=camel&nid=root-org.apache.camel-demo-camel-ws-routes-%22route1%22
 
-- Click on the `profile` tab, you will see the statistics of your camel route
+- Click on the `profile` tab that we have for the `route 1`, you will see the statistics of your camel route
 - To use this information and add it to your personal dashboard, click on the button `add this view to a dashboard`. This button is located on the panel of your tabs (right part)
 - We switch to the dashboard view,
 - Select your `my-camel` dashboard by clicking on the checkbox and next Click on `Add view to dashboard`
@@ -507,8 +526,10 @@ NOTE: The login/password `admin/admin` should be commented in the file etc/users
 	<fabric8.features>camel camel-cxf</fabric8.features>
 	<fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
 
-- Add a new `maven` configuration to JBDS and name it `fabric8`
-- Select the `demo-camel-ws` project, add the goal `fabric8:deploy`, save it
+- Add a new `maven` configuration to JBDS and name it `fabric8`.
+- Select the `demo-camel-ws` project. Right-click on the pom.xml file and select `Run as --> maven build ...`
+- In the pop-up window displayed, name your maven build as `fabric8` and add the goal `fabric8:deploy`.
+- Click on apply and button close
 +
 NOTE: the admin/password login/password must be added to your settings.xml file of your maven config in order to run the plugin.
 +
@@ -537,9 +558,9 @@ NOTE: the admin/password login/password must be added to your settings.xml file 
    </servers>
    </settings>
 +
-- Run the `maven` config and wait till the build succeeds
+- Launch `maven fabric8` and wait till the build succeeds
 
-  Uploading: http://192.168.1.4:8181/maven/upload/com/redhat/fuse/demo-camel-ws/1.0/demo-camel-ws-1.0.pom
+  Uploading: http://192.168.137.1:8080/maven/upload/com/redhat/fuse/demo-camel-ws/1.0/demo-camel-ws-1.0.pom
   [INFO] About to invoke mbean io.fabric8:type=ProjectDeployer on jolokia URL: http://localhost:8181/jolokia with user: admin
   [INFO] Got result: {"profileId":"my-cool-profile","versionId":"1.0"}
 
@@ -565,7 +586,7 @@ Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes 
 - Select in the `fabric` perspective, the container `root` runtime and add the profile `insight-core` and `insight-kibana`
 - After a few moments, you should be able to verify that the `insight` perspective has been added to the menu
 - Create a new child container `my-cool-insight` and add the profile `insight-camel` & `insight-core`
-- Now we can install a camel project. Add the profile 'all' of *camel example loadbroker*
+- Now we can install a camel project. Add the profile 'all' of *camel example loanbroker*
 - Wait a few moments that the container is provisioned
 - Open next the perspective `insight`, click on `camel events` tab and check the camel exchanges created
 - Navigate between the columns of the table of ES
@@ -583,7 +604,7 @@ Play with Full Text Search of ElasticSearch (Lucene) to query some Camel routes 
 
 Objective : Setup a Network of Brokers Topology and show how messages are persisted/processed (to support HA scenario)
 
-- We will follow instructions of the FuseByExample/projects to seyup 2 master/slave ActiveMQ brokers in a
+- We will follow instructions of the FuseByExample/projects to setup 2 master/slave ActiveMQ brokers in a
   network of brokers (west to east)
 * https://github.com/FuseByExample/external-mq-fabric-client
 * https://github.com/FuseByExample/external-mq-fabric-client/blob/master/docs/fabric-ha-setup-master-slave.md
@@ -629,7 +650,7 @@ Objective : Discover Drools, Kie and Camel technologies
     2014-05-06 09:49:51,657 | INFO  | imer://testRoute | Home                             | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Person Young Person is staying home
     2014-05-06 09:50:01,659 | INFO  | imer://testRoute | Bar                              | rg.apache.camel.util.CamelLogger  176 | 230 - org.apache.camel.camel-core - 2.12.0.redhat-610379 | Person Old Person can go to the bar
 
-==== Demo 2 - Add new Rule and extand the camel route
+==== Demo 2 - Add new Rule and extend the camel route
 
 - Next we will add a new rule and modify the camel route
 - After selecting the 'drl' directory, Select from the menu `New -> Other -> Drools -> Rule Resource`
