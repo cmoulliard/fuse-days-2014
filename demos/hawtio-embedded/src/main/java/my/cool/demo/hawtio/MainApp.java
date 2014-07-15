@@ -1,7 +1,6 @@
 package my.cool.demo.hawtio;
 
 import io.fabric8.insight.log.log4j.Log4jLogQuery;
-import io.fabric8.insight.log.log4j.Log4jLogQueryMBean;
 import io.hawt.embedded.Main;
 
 import java.net.URL;
@@ -10,7 +9,7 @@ import java.util.Properties;
 
 public class MainApp {
 
-/*    private static final String resource = "hawtio-default-1.4.4.war";*/
+    /* private static final String resource = "hawtio-default-1.4.4.war"; */
     private static final String resource = "hawtio-default-1.5-SNAPSHOT.war";
 
     public static void main(String[] args) throws Exception {

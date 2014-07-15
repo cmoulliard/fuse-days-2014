@@ -11,7 +11,6 @@
     <properties>
         <hawtio.version>1.4.4</hawtio.version>
         <fabric8.version>1.1.0.CR1</fabric8.version>
-        <asciidoclet.version>0.1.4</asciidoclet.version>
     </properties>
 
     <dependencies>
