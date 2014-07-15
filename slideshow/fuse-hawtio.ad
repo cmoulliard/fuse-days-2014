@@ -185,7 +185,7 @@ module Tomcat {
   }]);
 ----
 <1> Mapping with Applications
-<2> Mapping with Connectors +++<i class="fa fa-circle fa-stack-1x"></i><i class="fa fa-inverse fa-stack-1x">2</i>+++
+<2> Mapping with Connectors
 
 // ************ Hawtio *************
 == Example - JSON Request
@@ -200,8 +200,7 @@ jolokia.request({ <!--1-->
     },
     onSuccess($scope.onResponse, {error: $scope.onResponse}));
 ----
-<1> Jolokia Request calling mbean
-
+<1> A typical Jolokia Request
 
 // ************ Hawtio *************
 == Example - JSON Search
@@ -220,8 +219,8 @@ function loadData() {
   jolokia.search("*:j2eeType=WebModule,*", onSuccess(render)); <!--1-->
 }
 ----
-<1> Search for mbeans into +
-  the MBean server
+<1> Search for mbeans using a search query `"*:j2eeType=WebModule,*"`
+
 // ************ Hawtio *************
 == Example - JSON Response
 
@@ -245,7 +244,7 @@ function render(response) { <!--1-->
        obj.url = hostname + obj['path'];
 ----
 <1> Response parsing JSON result +
-  and mapping it with angular
+  and mapping it with angular objects $scope.*
 
 // ************ Hawtio *************
 == Design your own Dashboard
