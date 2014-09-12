@@ -1,0 +1,45 @@
+# DEMO 1 - Hawtio - Embedded / Jolokia
+
+* Open a terminal & start IntelliJ
+* Show and explain the code :
+  ** Resource path --> WAR
+  ** Add a simple camel project
+  ** Explain various variables
+* Start the project
+*
+
+
+= Jolokia
+
+* Open a terminal
+
+* Run this jmx4perl command to fetch all the JMX data from your jolokia agent
+
+* To get the info about the JVM
+    jmx4perl http://localhost:9090/hawtio/jolokia
+
+* List all MBeans
+
+    jmx4perl http://localhost:9090/hawtio/jolokia list
+
+* To read info of a specific node
+
+    jmx4perl http://localhost:9090/hawtio/jolokia read java.lang:type=Memory HeapMemoryUsage
+
+* Using your web browser
+
+READ Attributes
+
+    http://localhost:9090/hawtio/jolokia/read/java.lang:type=Memory/HeapMemoryUsage/used
+    http://localhost:9090/hawtio/jolokia/read/org.apache.camel:context=camel-1,name=%22route1%22,type=routes
+
+    http://localhost:9090/hawtio/jolokia/read/org.apache.camel:context=camel-1,name=%22route1%22,type=routes/ExchangesCompleted/
+
+Exec operations
+
+    http://localhost:9090/hawtio/jolokia/exec/java.lang:type=Memory/gc
+
+    http://localhost:9090/hawtio/jolokia/exec/org.apache.camel:context=camel-1,name=%22route1%22,type=routes/dumpRouteAsXml
+
+    http://localhost:9090/hawtio/jolokia/exec/org.apache.camel:context=camel-1,name=%22route1%22,type=routes/dumpStatsAsXml(boolean)/true
+
