@@ -33,13 +33,13 @@
 [.cover]
 --
 [.newline]
-Red Hat JBoss Fuse Integration Partner Day
+RedHat JBoss Fuse Integration Day
 
 [.newline]
 {author} +
-Principal Solution Architect / Apache Committer - Global Partner Enablement
+Architect, Engineer & Committer
 [.newline]
-9th of July - 2014
+15th of September - 2014
 --
 // ************ Hawtio *************
 
@@ -48,27 +48,66 @@ Principal Solution Architect / Apache Committer - Global Partner Enablement
 [cols="85,15"]
 |===
 | .2+|image:hawtio/hawtio_logo.svg[float="right",width="100%"]
-a|* Lightweight & **modular** HTML5 **web console** for managing Java **MBeans** and more ...
+a|* Pluggable & **modular** **web console** for managing the Java **MBeans** and more ...
 
 [.newline]
 * 2 parts :
-  ** Front end : HTML5 & AngularJS & **JSON / REST**
+  ** Front end : HTML5 with AngularJS & **JSON / REST**
   ** Backend : Java Servlet & **jolokia** JMX gateway
 |===
 
+// ************ Hawtio *************
+== JMX Tool
+
+[cols="40,60"]
+|===
+| .2+| image:hawtio/jsoncole.png[float="left",width="100%"]
+a|* JConsole, VisualVM +++<i class="fa fa-arrow-right"></i>+++ Developers tool (+++<i class="fa fa-ambulance"></i>+++)
++++</p></p>+++
+image:hawtio/visualVM.png[float="right",width="100%"]
+|===
+
+* Command line tools +++<i class="fa fa-arrow-right"></i>+++ jmxclient, jmxterm
+* Not so user friendly : +++<i class="fa fa-frown-o"></i>+++
+
+// ************ Hawtio *************
+== image:fuse/jolokia.png[float="left",width="35%"] Why Jolokia ?
+
+* Command line tools +++<i class="fa fa-arrow-right"></i>+++ jmx4perl, j4psh
+* JMX / HTTP Bridge
+* REST API : read attributes, execute operations +++<i class="fa fa-smile-o"></i>+++
+
+//[source,html]
+//----
+//http://localhost:9090/hawtio/jolokia/exec/org.apache.camel:context=camel-1,name=%22route1%22,type=routes/dumpStatsAsXml%28boolean%29/true
+//----
+
+image:hawtio/rest-api-jolokia-2.png[]
+
+// ************ Hawtio *************
+== Demo
+
 [.newline]
-* image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:hawtio/AngularJS-small.png[] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/rest-api.png[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:fuse/jolokia.png[150,150]
+* Command line Tool : j4psh
+* HTTP Get request to read attribute
+* HTTP Get request to exec an operation
+
+// ************ Hawtio *************
+== Front end
+
+[.newline]
+ image:web2/html5.jpeg[100,100] +++<i class="fa fa-plus"></i>+++ image:web2/javascript.jpeg[100,100] +++<i class="fa fa-plus"></i>+++ image:hawtio/AngularJS-small.png[] +++<i class="fa fa-plus"></i>+++ image:web2/rest-api.png[100,100]
 
 // ************ Hawtio *************
 == Features
 
-* Can be used (Container *agnostic* !) :
+* +++<i class="fa fa-exclamation"></i>+++ Container *agnostic* & can be used +++<i class="fa fa-cog fa-spin"></i>+++ :
   ** *Standalone* mode
   ** *Embedded* mode
-  ** *Deployed* in a *Servlet*, *Application* container
+  ** *Deployed* in a *Web*, *Application* container
   ** Deployed in an *OSGI* container
 * *JAAS* authentication supported
-* Offer *local* & *remote* connection (https://jcp.org/en/jsr/detail?id=160[JSR-160])
+* Offer *local* & *remote* connection (Alternative to https://jcp.org/en/jsr/detail?id=160[JSR-160])
 * Heart of the **new** **F**use **M**anagement **C**onsole
 
 // ************ Hawtio *************

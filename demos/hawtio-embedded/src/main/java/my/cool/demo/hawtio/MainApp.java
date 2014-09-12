@@ -9,8 +9,7 @@ import java.util.Properties;
 
 public class MainApp {
 
-    /* private static final String resource = "hawtio-default-1.4.4.war"; */
-    private static final String resource = "hawtio-default-1.5-SNAPSHOT.war";
+    private static final String resource = "hawtio-default-1.4.15.war";
 
     public static void main(String[] args) throws Exception {
 
@@ -33,7 +32,7 @@ public class MainApp {
         main.setPort(9090);
 
         // Start Camel
-        // myApp.startCamel();
+        myApp.startCamel();
 
         // Run a Jetty Web Server with hawtio war
         main.run();
