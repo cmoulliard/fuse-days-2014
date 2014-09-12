@@ -3,7 +3,7 @@
 if [ $# -eq 0 ]
   then
     echo "No arguments supplied"
-    echo "The Directory where JBDEV Studio must be installed should be provided as first parameter"
+    echo "The Directory where JBDEV Studio should be installed should be provided as first parameter"
     exit;
 fi
 
