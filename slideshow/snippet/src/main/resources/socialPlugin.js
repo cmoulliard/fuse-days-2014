@@ -217,7 +217,7 @@ var SOCIAL = (function (SOCIAL) {
             if (Core.isBlank($scope.keywords)) {
                 return;
             }
-            jolokia.request({
+            jolokia.request({ // <1>
                 type: 'exec',
                 mbean: SOCIAL.mbean,
                 operation: 'searchTweets',

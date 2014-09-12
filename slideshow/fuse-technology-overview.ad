@@ -691,7 +691,7 @@ a|* Lightweight & **modular** HTML5 **web console** with **plugins** for managin
 |===
 
 [.newline]
-* image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/rest-api.png[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:fuse/jolokia.png[150,150]
+* image:web2/html5.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/javascript.jpeg[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:web2/rest-api.png[100,100] +++&nbsp;<i class="fa fa-plus"></i>&nbsp;+++ image:hawtio/jolokia.png[150,150]
 
 
 // ************ Hawtio *************
