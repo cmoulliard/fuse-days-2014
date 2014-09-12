@@ -12,7 +12,7 @@ hyla generate -c hands-on-lab/content.yaml
 hyla generate -c hands-on-lab/pdf.yaml
 open hands-on-lab/pdf/result.pdf
 
-* ISSUE WITH PDF SIZE - Using wkhtml2pdf 0.12.0
+* There is an issue using hyla when we generate the PDF document as the document size is not correct. This problem can be resolved by using directly the tool wkhtml2pdf 0.12.0
 
     `
     cd /Users/chmoulli/Downloads/wkhtmltox-0.12.1-b8ea0f4/bin
