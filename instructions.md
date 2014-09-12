@@ -19,7 +19,7 @@ open hands-on-lab/pdf/result.pdf
     ./wkhtmltopdf /Users/chmoulli/MyProjects/conferences/fuse-days-2014/hands-on-lab/generated/hands-on-lab.html   /Users/chmoulli/MyProjects/conferences/fuse-days-2014/hands-on-lab/pdf/hands-on-lab.pdf
     ````    
 
-* As during pdf creation the cover text overlaps the logo of the header, a <div> tag must be added after the first section like that
+* As during pdf creation the cover text overlaps the logo of the header, a `<div>` tag must be added after the first section like that
     
     ````
     <section id="strong_jboss_fuse_technology_overview_strong" data-background="images/redhat-mw-logo-background.png">
@@ -35,4 +35,4 @@ open hands-on-lab/pdf/result.pdf
     </section>
     ````  
 
-* The <div> should also be used for displaying the cover page during slides presentation with RevealJS
+* The `<div>` should also be used for displaying the cover page during slides presentation with RevealJS
