@@ -103,8 +103,8 @@ image:hawtio/rest-api-jolokia-2.png[]
 * image:web2/html5.jpeg[100,100] +++<i class="fa fa-plus"></i>+++ image:web2/javascript.jpeg[100,100] +++<i class="fa fa-plus"></i>+++ image:hawtio/AngularJS-small.png[] +++<i class="fa fa-plus"></i>+++ image:web2/rest-api.png[100,100] +++<i class="fa fa-plus"></i>+++ image:hawtio/jolokia.png[200,200]
 
 [.newline]
-** Front end : HTML5 with AngularJS & **JSON / REST**
-** Backend : Java Servlet & **jolokia** JMX gateway
+** Front end : HTML5 with *AngularJS* & **JSON / REST**
+** Backend : Java Servlet & **Jolokia** JMX gateway
 
 // ************ Hawtio *************
 == What Front looks like
@@ -202,8 +202,8 @@ module Tomcat {
 == Jolokia Request
 
 * Javascript function called to execute a GET request of type *`exec`* or *`read`*
-* mbean and opearation are passed as parameters
-* onSuccess +++<i class="fa fa-arrow-right"></i>+++ calls function for the rendering
+* Mbean & Attributes OR Operation are passed as parameters
+* `onSuccess` +++<i class="fa fa-arrow-right"></i>+++ calls function for the rendering
 
 [source, javascript]
 ----
@@ -271,8 +271,8 @@ function render(response) { // <1>
 * *Plug-an-play* architecture ( > 25 plugins )
 * UI updated in *real time*
 * Some are *Packaged* : jvm, threads, dashboard, camel, activemq, ...
-* Some are *server side* : git, maven, aether, log desiged
-* Some are *external* : insight, elasticsearch, kibana
+* Some are *Server side* : git, maven, aether, log desiged
+* Some are *External* : insight, elasticsearch, kibana
 * *Reusable* for developers (branding, datatable, forms, ide, perspective, tree, ui)
 
 // ************ Hawtio *************
