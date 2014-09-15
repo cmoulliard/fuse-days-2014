@@ -1,4 +1,4 @@
-package org.devnation.camel;
+package my.cool.demo;
 
 import org.apache.camel.Header;
 import org.fusesource.insight.storage.StorageService;

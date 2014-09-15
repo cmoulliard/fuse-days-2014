@@ -1,4 +1,4 @@
-package org.devnation.camel;
+package my.cool.demo;
 
 import twitter4j.TwitterException;
 

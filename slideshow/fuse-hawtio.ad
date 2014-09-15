@@ -290,9 +290,7 @@ image:fuse/hawtio-5.png[width="65%",height="65%"]
 == Demo
 
 * Have a look to Tomcat plugin
-* AngularJS part
 * Backend - jolokia mbean requests
-* Response back
 
 // ************ Hawtio *************
 == Hawtio Features
@@ -370,6 +368,17 @@ include::{resourcesdir}/OSGI-INF/blueprint/blueprint2.xml[]
 // ************ Hawtio *************
 == My Plugin
 
+* Define some MBeans with attributes & operations
+* Example +++<i class="fa fa-arrow-right"></i>+++ userInfo(String), searchTweets(String)
+
+[source, java]
+----
+include::{sourcesdir}/my/cool/demo/SocialMedia.java[tag=snippetService]
+----
+
+// ************ Hawtio *************
+== My Plugin
+
 * Design Front end with your directives : *ng-controller*, *ng-submit*, *ng-model* & *ng-grid*
 
 [source, xml]
@@ -389,7 +398,6 @@ include::{resourcesdir}/searchtweets.html[]
 include::{resourcesdir}/socialPlugin.js[tag=snippetController]
 ----
 <1> Jolokia request to search `Tweets` using as operation type `searchTweets`
-
 
 // ************ Hawtio *************
 == My Plugin DEMO

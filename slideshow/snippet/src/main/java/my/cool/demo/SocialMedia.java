@@ -1,6 +1,5 @@
-package org.devnation.camel;
+package my.cool.demo;
 
-import org.devnation.camel.TwitterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import twitter4j.TwitterException;

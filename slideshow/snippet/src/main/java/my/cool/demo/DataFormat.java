@@ -1,4 +1,4 @@
-package org.devnation.camel;
+package my.cool.demo;
 
 import java.io.InputStream;
 import java.io.OutputStream;

@@ -1,4 +1,4 @@
-package org.devnation.camel;
+package my.cool.demo;
 
 import facebook4j.PostUpdate;
 import org.apache.camel.builder.RouteBuilder;

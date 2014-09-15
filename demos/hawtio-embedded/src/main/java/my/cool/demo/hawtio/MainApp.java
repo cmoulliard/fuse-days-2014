@@ -10,6 +10,7 @@ import java.util.Properties;
 public class MainApp {
 
     private static final String resource = "hawtio-default-1.4.4.war";
+    //private static final String resource = "hawtio-default-1.4.15.war";
 
     public static void main(String[] args) throws Exception {
 

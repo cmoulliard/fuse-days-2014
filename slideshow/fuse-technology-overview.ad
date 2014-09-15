@@ -268,7 +268,7 @@ a|* **Type Converter** Strategy
 
 [source, java]
 ----
-include::{sourcesdir}/org/devnation/camel/DataFormat.java[]
+include::{sourcesdir}/my/cool/demo//DataFormat.java[]
 ----
 
 * **Marshalling** : Object +++<i class="fa fa-arrow-right"></i>+++ XML (JAXB)
@@ -299,7 +299,7 @@ image::camel/inout.png[width="75%"]
 
 [source,java]
 ----
-include::{sourcesdir}/org/devnation/camel/ExampleRouteBuilder.java[]
+include::{sourcesdir}/my/cool/demo/ExampleRouteBuilder.java[]
 ----
 
 // ************** Camel ************

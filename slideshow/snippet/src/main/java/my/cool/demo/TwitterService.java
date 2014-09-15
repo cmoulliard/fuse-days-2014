@@ -1,4 +1,4 @@
-package org.devnation.camel;
+package my.cool.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import java.util.List;
 public class TwitterService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TwitterService.class);
-    private org.devnation.camel.TwitterFactory tf;
+    private TwitterFactory tf;
     private Twitter twitter;
 
     public List<String> searchTweets(String keywords) throws TwitterException {

@@ -5,7 +5,7 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
     ">
-    <bean id="quotesService" class="org.devnation.camel.QuotesService"/>"
+    <bean id="quotesService" class="my.cool.demo.camel.QuotesService"/>"
 
     <camelContext  xmlns="http://camel.apache.org/schema/spring">
         <route>
