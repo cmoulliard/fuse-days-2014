@@ -11,16 +11,11 @@
 :imagesdir: images/
 :linkattrs:
 :linkcss:
-:project_dir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014
-:resourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014/slideshow/snippet/src/main/resources
+:project_dir: /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014
+:resourcesdir: /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014/slideshow/snippet/src/main/resources
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
-:revealjs_theme: conference-redhat
-:revealjs_vertical_alignment: false
-:revealjs_history: false
-:sourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014/slideshow/snippet/src/main/java/
+:sourcesdir: /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014/slideshow/snippet/src/main/java/
 //:source-highlighter: coderay, highlightjs, pygments, prettify
-:source-highlighter: pygments
-:stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles
 :title-author: {title} {author}
 :title-speaker: Architect Engineer Committer
 :twitter: cmoulliard
@@ -28,18 +23,17 @@
 [data-background="images/redhat-mw-logo-background.png"]
 // [data-background="images/redhat-logo-background-1024-768.png"]
 // [data-background="images/redhat-logo-background-1280-800.png"]
-== *JBoss Fuse Technology Overview*
+== &nbsp;
 
 [.cover]
 --
-[.newline]
-Red Hat JBoss Fuse Integration Partner Day
+*JBoss Fuse Technology Overview*
 
 [.newline]
 {author} +
-Principal Solution Architect / Apache Committer - Global Partner Enablement
+Principal Solution Architect, Apache Committer
 [.newline]
-13th of May - 2014
+22th of April - 2015
 --
 
 // ************** Projects timeline ********
@@ -53,6 +47,7 @@ image::fuse/HistoryOfFuse.png[]
 // ************ Technology overview ***********
 == Common pattern
 
+[.noredheader]
 |===
 | .2+| image:integration/producer-consumer.png[]
 a|
@@ -133,7 +128,7 @@ image::fuse/rh-jboss-amq.png[]
 // ************ Technology overview ***********
 == What about Bus ?
 
-[cols="50,50"]
+[.noredheader,cols="50,50"]
 |===
 | .2+| image:integration/bus1.png[width="95%",float="right"]
 a|
@@ -149,7 +144,7 @@ a|
 // ************ Technology overview ***********
 == ESB & JBI
 
-[cols="40,60"]
+[.noredheader,cols="40,60"]
 |===
 | .2+| image:integration/esb1.png[width="85%"]
        image:integration/esb.png[width="45%"]
@@ -189,7 +184,7 @@ image::eip/patterns-3.jpg[width="120%",float="left"]
 // ************** Camel ************
 == Key concepts
 
-[cols="35,65"]
+[.noredheader,cols="35,65"]
 |===
 | .2+|image:camel/factory.png[]
 a|
@@ -218,7 +213,7 @@ image:camel/pipeline2.png[]
 // ************** Camel ************
 == Container
 
-[cols="45,65"]
+[.noredheader,cols="45,65"]
 |===
 | .2+|image:camel/camel-features.png[]
 a| * Routes/Endpoints registered +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++ CamelContext
@@ -228,7 +223,7 @@ a| * Routes/Endpoints registered +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp
 // ************** Camel ************
 == Communication
 
-[cols="45,65"]
+[.noredheader,cols="45,65"]
 |===
 | .2+|image:camel/camel-features2.png[]
 a| * Cross communication not allowed between context |
@@ -237,7 +232,7 @@ a| * Cross communication not allowed between context |
 // ************** Camel ************
 == Extend the BUS
 
-[cols="45,65"]
+[.noredheader,cols="45,65"]
 |===
 | .2+|image:camel/camel-features3.png[]
 a| * But possible Using BUS like NMR, Broker, Shared Component with direct-vm, vm |
@@ -246,7 +241,7 @@ a| * But possible Using BUS like NMR, Broker, Shared Component with direct-vm, v
 // ************** Camel ************
 == Convert
 
-[cols="65,35"]
+[.noredheader,cols="65,35"]
 |===
 | .2+|image:camel/type-converter.png[]
 a|* **Type Converter** Strategy
@@ -495,7 +490,7 @@ image:karaf/karaf3.png[]
 
 == Integration complexity
 
-[cols="40,60"]
+[.noredheader,cols="40,60"]
 |===
 | .2+|image:karaf/karaf5.png[width="650"]
 a| * Karaf is not the only container
@@ -510,7 +505,7 @@ a| * Karaf is not the only container
 
 == Integration everywhere
 
-[cols="30,70"]
+[.noredheader,cols="30,70"]
 |===
 | .2+| image:karaf/karaf4.png[]
 a| * Infrastructure :
@@ -546,7 +541,7 @@ image::fabric/fabric-diagram.png[]
 
 == Karaf limitations
 
-[cols="50,50"]
+[.noredheader,cols="50,50"]
 |===
 | .2+|image:fuse/fabric-3.png[]
 a|* Karaf can create new instances (locally) & administrate them (locally or remotely)|
@@ -640,7 +635,7 @@ image::fuse/lucene_logo.png[]
 
 == Info collected
 
-[cols="70,30"]
+[.noredheader,cols="70,30"]
 |===
 | .2+| image:fuse/elasticsearch2.png[400,350,float="right"]
 a|* Logs, *Camel* metrics, *JMX* metrics, your own *data/JSON* metrics
@@ -680,7 +675,7 @@ image::fuse/es-camel.png[80%,80%]
 
 == http://hawt.io[Hawtio]
 
-[cols="85,15"]
+[.noredheader,cols="85,15"]
 |===
 | .2+|image:fuse/hawtio-logo-bigger.png[,float="right"]
 a|* Lightweight & **modular** HTML5 **web console** with **plugins** for managing Java **MBeans**
@@ -725,7 +720,7 @@ image:fuse/hawtio-5.png[width="65%",height="65%"]
 // *********************************
 == Questions
 
-[cols="45,.<55"]
+[.noredheader,cols="45,.<55"]
 |===
 
 .2+|image:questions.png[]
