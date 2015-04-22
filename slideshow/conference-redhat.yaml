@@ -44,12 +44,12 @@ attributes:
   revealjs_theme: conference-redhat # GPE Reveal css theme
   revealjs_transition: none # default/cube/page/concave/zoom/linear/fade/none
   revealjs_display_slidenumber: true  # Comment/Uncomment the line but don't replace true by false
-  revealjs_history: false # Comment/Uncomment the line but don't replace true by false
-  revealjs_scrollbar: true # Support browser's scrollbar
+  revealjs_history: true # Comment/Uncomment the line but don't replace true by false
+  revealjs_scrollbar: false # Support browser's scrollbar
   revealjs_cover_image: /Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/hyla-1.0.7/lib/resources/assets/revealjs-redhat/image/1156515-Logo_RH_RGB_Reverse.png
   revealjs_footer_copyright: Copyright ©2015 Red Hat, Inc.
 
-  revealjs_slideshow: true # Attribute that we use to include/remove title cover for revealjs
+  revealjs_slideshow: false # Attribute that we use to include/remove title cover for revealjs
 
 # Uncomment this line when you want to display scripts for instructors
 
