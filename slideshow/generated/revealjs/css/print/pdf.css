@@ -105,7 +105,7 @@ ul, ol, div, p {
 	overflow: visible;
 	display: block;
 
-	text-align: left;
+	text-align: center;
 
 	-webkit-perspective: none;
 	   -moz-perspective: none;
@@ -187,11 +187,4 @@ ul, ol, div, p {
 }
 .reveal small a {
 	font-size: 16pt !important;
-}
-
-.cover {
-    position:absolute;
-    top:350px;
-    left:50px;
-    right:50px;
 }

@@ -1,0 +1,350 @@
+:allow-uri-read:
+:author: Charles Moulliard (@cmoulliard)
+:backend: revealjs
+:blog: http://cmoulliard.github.io
+:data-uri!:
+//:footer_copyright: Powered by http://asciidoctor.org[Asciidoctor], RevealJS and Hyla
+//:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
+:footer_copyright: Copyright ©2014 Red Hat, Inc.
+:header_image_path: redhat-logo.jpg
+
+:icons: font
+:idprefix:
+:imagesdir: images/
+:linkattrs:
+:linkcss:
+:project_dir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014
+:resourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014/slideshow/snippet/src/main/resources
+// Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
+:revealjs_theme: conference-redhat
+:revealjs_vertical_alignment: false
+:revealjs_history: false
+:sourcesdir: /Users/chmoulli/MyProjects/conferences/fuse-days-2014/slideshow/snippet/src/main/java/
+:source-highlighter: highlightjs
+//:source-highlighter: coderay, highlightjs, pygments
+:stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles
+:title-author: {title} {author}
+:title-speaker: Architect Engineer Committer
+:twitter: cmoulliard
+
+[data-background="images/redhat-mw-logo-background.png"]
+//[data-background="images/redhat-logo-background-1024-768.png"]
+// [data-background="images/redhat-logo-background-1280-800.png"]
+== *Fuse and BRMS*
+
+[.cover]
+--
+[.newline]
+Red Hat JBoss Fuse Integration Partner Day
+
+[.newline]
+{author} +
+Principal Solution Architect / Apache Committer - Global Partner Enablement
+[.newline]
+13th of May - 2014
+--
+
+// ************ AGENDA ************
+== Agenda
+
+* *Technology overview*
+* Demos
+
+// *********** Technology overview ********
+== Technology overview
+
+* What has been done
+ - Transform *jar* into *bundles*
+ - Refactor projects due to *packages* overlapping
+ - Add Bundle Activator & OSGI Classloader
+ - Define a *features XML* file
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* What *feature* looks like
+
+[source, xml]
+----
+<feature name="drools-module" version="6.1.0-SNAPSHOT" description="Drools core">
+        <feature version="6.1.0-SNAPSHOT">drools-common</feature>
+        <feature version="6.1.0-SNAPSHOT">kie</feature>
+        <bundle>mvn:org.drools/drools-core/6.1.0-SNAPSHOT</bundle>
+        <bundle>mvn:org.drools/drools-compiler/6.1.0-SNAPSHOT</bundle>
+        <bundle>mvn:org.drools/drools-osgi-integration/6.1.0-SNAPSHOT</bundle>
+</feature>
+----
+
+[source, xml]
+----
+<feature name="kie" version="6.1.0-SNAPSHOT">
+    <bundle>mvn:org.kie/kie-api/6.1.0-SNAPSHOT</bundle>
+    <bundle>mvn:org.kie/kie-internal/6.1.0-SNAPSHOT</bundle>
+</feature>
+----
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* Extended for Spring, Blueprint & Camel
+
+[source, xml]
+----
+<feature name="kie-spring" version="6.1.0-SNAPSHOT">
+    <feature version="6.1.0-SNAPSHOT">kie</feature>
+    <feature version="6.1.0-SNAPSHOT">drools-jpa</feature>
+    <feature version="6.1.0-SNAPSHOT">jbpm</feature>
+    <feature version="6.1.0-SNAPSHOT">jbpm-human-task</feature>
+    <bundle>mvn:org.kie/kie-spring/6.1.0-SNAPSHOT</bundle>
+</feature>
+----
+
+[source, xml]
+----
+<feature name="kie-camel" version="6.1.0-SNAPSHOT">
+    <feature version="6.1.0-SNAPSHOT">kie</feature>
+    <feature version="6.1.0-SNAPSHOT">kie-spring</feature>
+    <feature version="6.1.0-SNAPSHOT">jbpm</feature>
+    <feature version="2.10.3">camel</feature>
+    <feature version="2.10.3">camel-cxf</feature>
+    <feature version="[2.6,3.0)">cxf-specs</feature>
+    <feature version="[2.6,3.0)">cxf-core</feature>
+    <feature version="[2.6,3.0)">cxf-jaxrs</feature>
+    <bundle>mvn:org.kie/kie-camel/6.1.0-SNAPSHOT</bundle>
+</feature>
+----
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* KieModules
+- *Unit of work*, looks like maven modules
+- *Container* will discover META-INF/kmodule.xml
+- *Load* resources & *compile rules* in a KieContainer
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule
+        xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="kbase1">
+        <ksession name="ksession1"/>
+    </kbase>
+</kmodule>
+----
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* Can be loaded when *packaged* as bundle, fragment bundle
+
+image::drools/kie-simple.png[]
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* OR using *maven artifacts*
+
+image::drools/kie-module-maven.png[]
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* *ReleaseId* to lookup in the maven repo and watch resources
+
+image::drools/kie-module-maven1.png[]
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* Kie-Spring, Kie-Blueprint
+* New *Schema* & *NameSpaceHandler* defined
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://drools.org/schema/kie-spring"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:spring="http://www.springframework.org/schema/beans"
+            targetNamespace="http://drools.org/schema/kie-spring"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:import namespace="http://www.springframework.org/schema/beans"
+              schemaLocation="http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"/>
+
+  <xsd:element name="kmodule">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="kbase" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="id" use="required" type="xsd:ID"/>
+    </xsd:complexType>
+  </xsd:element>
+----
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* FactoryBeans
+
+[source,java]
+----
+package org.kie.spring.factorybeans;
+
+import org.drools.compiler.kproject.models.KieModuleModelImpl;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.InitializingBean;
+
+
+import java.util.List;
+
+public class KModuleFactoryBean
+        implements
+        FactoryBean<KieModuleModelImpl>,
+        InitializingBean {
+
+    KieModuleModelImpl kModule = null;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public KieModuleModelImpl getKModule() {
+        return kModule;
+    }
+
+    public void setKModule(KieModuleModelImpl kModule) {
+        this.kModule = kModule;
+    }
+----
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* Activator is not longer required
+* Bundles are *scanned* (status = resolved) to find beans
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:kie="http://drools.org/schema/kie-spring"
+       xsi:schemaLocation="
+       http://drools.org/schema/kie-spring http://drools.org/schema/kie-spring.xsd">
+
+  <bean id="kiePostProcessor" class="org.drools.osgi.spring.OsgiKModuleBeanFactoryPostProcessor"/>
+
+  <kie:kmodule id="example">
+    <kie:kbase name="drl_sample">
+      <kie:ksession name="ksession1" type="stateless">
+        <kie:batch>
+          <kie:set-global identifier="list" >
+            <bean class="java.util.ArrayList" />
+          </kie:set-global>
+        </kie:batch>
+      </kie:ksession>
+    </kie:kbase>
+  </kie:kmodule>
+----
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* Kie-Camel +++<i class="fa fa-arrow-right"></i>+++ camel-drools component
+* Act as a *consumer* or *producer* +++<i class="fa fa-arrow-right"></i>+++ insert objects/facts OR execute / fire rules
+
+[source, java]
+----
+public KieEndpoint(String endpointUri,
+                   String remaining,
+                   KieComponent component) throws URISyntaxException {
+    super( endpointUri,
+           component );
+    configure( component,
+               remaining );
+}
+
+public Consumer createConsumer(Processor processor) throws Exception {
+    return new KieConsumer( this,
+                               processor );
+}
+
+public Producer createProducer() throws Exception {
+    if ( Action.EXECUTE.equals( action ) ) {
+        return new KieExecuteProducer( this );
+    } else {
+        return new KieInsertProducer( this );
+    }
+}
+----
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* Insert Object/Fact
+
+[source,xml]
+----
+<from uri="direct://ruleOnBody"/>
+<to uri="kie:ksession1?action=insertBody">
+----
+
+* Fire command
+
+[source,xml]
+----
+<from uri="direct://ruleOnCommand"/>
+<bean method="insertAndFireAll" ref="droolsHelper"/>
+<to uri="kie:ksession1?action=execute">
+----
+
+// *********** Technology overview ********
+== Technology overview - con't
+
+* Example
+
+[source,xml]
+----
+  <camelContext xmlns="http://camel.apache.org/schema/spring">
+    <route>
+      <from uri="timer:testRoute?period=10s"/>
+      <bean method="createTestPerson" ref="personHelper"/>
+      <to uri="kie:ksession1?action=insertBody" id="AgeVerification"/>
+      <choice>
+        <when id="CanDrink">
+          <simple>${body.canDrink}</simple>
+          <log logName="Bar" message="Person ${body.name} can go to the bar"/>
+        </when>
+        <otherwise>
+          <log logName="Home" message="Person ${body.name} is staying home"/>
+        </otherwise>
+      </choice>
+    </route>
+----
+
+// ************ AGENDA ************
+== Agenda
+
+* Technology overview
+* *Demos*
+
+// *********************************
+== Questions
+
+[cols="45,.<55"]
+|===
+
+.2+|image:questions.png[]
+a|* Twitter : @cmoulliard
+|===
+
+* More info +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
+  - www.jboss.org/products/fuse.html
+  - www.redhat.com/products/jbossenterprisemiddleware/fuse/
