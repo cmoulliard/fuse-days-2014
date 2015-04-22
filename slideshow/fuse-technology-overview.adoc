@@ -419,7 +419,7 @@ image:karaf/karaf.png[]
 * Provide *provisioning* solution features
 * *Hot* deployment
 * Configure & manage instances
-* Security integration - JAAS
+* Security integration - *JAAS*
 
 // ************** karaf ************
 == Karaf in action
