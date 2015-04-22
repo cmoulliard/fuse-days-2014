@@ -21,7 +21,7 @@ attributes:
 
   # Code source highlight
   source-highlighter: highlightjs # prettify, pygments, coderay, highlightjs
-  highlightjs-theme: sunburst # highlightjs-theme: github, foundation, zenburn, dark, solarized_dark, solarized_light, foundation, zenburn, docco, atelier-heath.light, tomorrow-night-blue, tomorrow-night-eighties
+  highlightjs-theme: solarized_dark # highlightjs-theme: github, foundation, zenburn, dark, solarized_dark, solarized_light, foundation, zenburn, docco, atelier-heath.light, tomorrow-night-blue, tomorrow-night-eighties
 
   # Font Icons - http://fortawesome.github.io/Font-Awesome/icons/
   icon-arrow-left: <i class="fa fa-arrow-left"></i>
