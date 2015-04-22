@@ -35,20 +35,33 @@
 
 image::fuse/HistoryOfFuse.png[]
 
-// ************ Technology overview ***********
-== Common pattern
+// ************** High level presentation ************
 
-[.noredheader]
-|===
-| .2+| image:integration/producer-consumer.png[]
-a|
-* +++<i class="fa fa-arrow-right"></i>+++ *Decouple* Producer from Consumer
-+
-* +++<i class="fa fa-arrow-right"></i>+++ *Message* transport information
-+
-* +++<i class="fa fa-arrow-right"></i>+++  Goal : *Isolate* applications from each/other, *integrate* them
-|
-|===
+== JBoss A-MQ (xPaas)
+
+//image::fuse/jboss-amq.png[width="80%",height="80%"]
+image::fuse/rh-jboss-amq.png[]
+
+* An open source *messaging platform*
+
+// ************** High level presentation ************
+
+== JBoss Fuse (xPaas)
+
+//image::fuse/jboss-fuse.png[width="80%",height="80%"]
+image::fuse/rh-jboss-fuse.png[]
+
+* Enables *integration & Mediation* everywhere for a real-time enterprise
+
+// ************** ActiveMQ ************
+
+== ActiveMQ
+
+* Middleware broker +++<i class="fa fa-arrow-right"></i>+++ High performance, *Reliable JMS/AMQP/MQTT/STOMP* messaging fabric
+* Supporting JMS, C, C++, .Net, Stomp, AMQP *clients*
+* Protocols : TCP/SSL/HTTP/HTTPS/WebSocket ...
+
+image:activemq/broker-architecture.png[width="650",height="400"]
 
 // ************** ActiveMQ ************
 
@@ -71,15 +84,6 @@ image::activemq/point-to-point.png[]
 
 image::activemq/publish-subscribe.png[]
 
-// ************** ActiveMQ ************
-
-== ActiveMQ
-
-* Middleware broker +++<i class="fa fa-arrow-right"></i>+++ High performance, *reliable JMS* messaging fabric
-* Supporting JMS, C, C++, .Net, Stomp, AMQP *clients*
-* Protocols : TCP/SSL/HTTP/HTTPS/WebSocket ...
-
-image:activemq/broker-architecture.png[width="650",height="400"]
 
 // ************** ActiveMQ ************
 
@@ -99,15 +103,6 @@ image:activemq/master-slave.png[widh="750",height="450"]
 
 image:activemq/network-of-broker.png[]
 
-// ************** High level presentation ************
-
-== JBoss A-MQ
-
-* An open source *messaging platform*
-
-//image::fuse/jboss-amq.png[width="80%",height="80%"]
-image::fuse/rh-jboss-amq.png[]
-
 // ************** activemq ************
 == ActiveMQ in action
 
@@ -115,6 +110,7 @@ image::fuse/rh-jboss-amq.png[]
 * *DEMO* :
 ** Create dynamically a queue
 ** Publish message
+** Consume them
 
 // ************ Technology overview ***********
 == What about Bus ?
@@ -392,16 +388,7 @@ image::fuse/fabric-cxf.png[]
 
 [.newline]
 * *DEMO* :
-** Camel & WebService
-
-// ************** High level presentation ************
-
-== JBoss Fuse
-
-//image::fuse/jboss-fuse.png[width="80%",height="80%"]
-image::fuse/rh-jboss-fuse.png[]
-
-* Enables *integration & Mediation* everywhere for a real-time enterprise
+** Develop a Camel & WebService project (JBDS)
 
 // ************** Karaf ************
 
@@ -439,8 +426,7 @@ image:karaf/karaf.png[]
 
 [.newline]
 * *DEMO* :
-** Admin
-** Provisioning
+** Present karaf console & some commands
 
 // ************** Karaf ************
 
@@ -475,7 +461,7 @@ image:karaf/karaf3.png[]
 
 [.newline]
 * *DEMO* :
-** Hot Deployment
+** Hot Deployment of a camel blueprint route
 
 // ************** Karaf ************
 

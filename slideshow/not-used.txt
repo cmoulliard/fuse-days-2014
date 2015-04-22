@@ -1,3 +1,19 @@
+// ************ Technology overview ***********
+== Common pattern
+
+[.noredheader]
+|===
+| .2+| image:integration/producer-consumer.png[]
+a|
+* +++<i class="fa fa-arrow-right"></i>+++ *Decouple* Producer from Consumer
++
+* +++<i class="fa fa-arrow-right"></i>+++ *Message* transport information
++
+* +++<i class="fa fa-arrow-right"></i>+++  Goal : *Isolate* applications from each/other, *integrate* them
+|
+|===
+
+
 
 
 // ************** High level presentation ************

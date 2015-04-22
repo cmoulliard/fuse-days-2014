@@ -2,6 +2,12 @@
 
 hyla generate -c slideshow/conference-redhat.yaml
 
+# Demo 2
+
+Hot deployment
+
+cp /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014/demos/camel-demo-blueprint.xml /Users/chmoulli/Fuse/Fuse-servers/jboss-fuse-6.1.0.redhat-379/deploy
+
 # Generate the Hands on lab
 
 hyla generate -c hands-on-lab/content.yaml
