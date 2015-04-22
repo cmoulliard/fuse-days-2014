@@ -2,12 +2,10 @@
 :author: Charles Moulliard (@cmoulliard)
 :backend: revealjs
 :blog: http://cmoulliard.github.io
-:data-uri!:
 //:footer_copyright: Powered by http://asciidoctor.org[Asciidoctor], RevealJS and Hyla
 //:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
-:footer_copyright: Copyright ©2014 Red Hat, Inc.
+:footer_copyright: Copyright ©2015 Red Hat, Inc.
 :header_image_path: redhat-logo.jpg
-
 :icons: font
 :idprefix:
 :imagesdir: images/
