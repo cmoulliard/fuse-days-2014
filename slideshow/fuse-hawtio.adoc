@@ -1,51 +1,36 @@
-:allow-uri-read:
-:author: Charles Moulliard (@cmoulliard)
-:backend: revealjs
-:blog: http://cmoulliard.github.io
-:!data-uri:
-//:footer_copyright: Powered by http://asciidoctor.org[Asciidoctor], RevealJS and Hyla
-//:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
-:footer_copyright: Copyright ©2014 Red Hat, Inc.
-:header_image_path: redhat-logo.jpg
-:icons: font
-:idprefix:
-:imagesdir: images/
-:linkattrs:
-:linkcss:
+:footer_copyright: Copyright ©2015 Red Hat, Inc.
 :project_dir: /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014
 :resourcesdir: /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014/slideshow/snippet/src/main/resources
-              // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
-:revealjs_theme: conference-redhat
-:revealjs_vertical_alignment: false
-:revealjs_history: true
 :sourcesdir: /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014/slideshow/snippet/src/main/java/
-:highlightjs-theme: solarized_light
-:stylesdir: /Users/chmoulli/RedHat/GPE/content/hyla/resources/styles
+
+:author: Charles Moulliard (@cmoulliard)
+:blog: http://cmoulliard.github.io
 :title-author: {title} {author}
-:title-speaker: Architect Engineer Committer
+:talk-title: Hawtio - Modular web console for managing Java stuff
+:talk-date: 22th of April - 2015
+:title-speaker: Principal Solution Architect, Apache Committer
 :twitter: cmoulliard
 
 [data-background="images/redhat-mw-logo-background.png"]
 //[data-background="images/redhat-logo-background-1024-768.png"]
 // [data-background="images/redhat-logo-background-1280-800.png"]
-== *Hawtio - Modular web console for managing Java stuff*
+== &nbsp;
 
 [.cover]
 --
-[.newline]
-RedHat JBoss Fuse Integration Day
+*{talk-title}*
 
 [.newline]
 {author} +
-Architect, Engineer & Committer
+{title-speaker}
 [.newline]
-15th of September - 2014
+{talk-date}
 --
 // ************ Hawtio *************
 
 == http://hawt.io[Hawt.io]
 
-[cols="55,45"]
+[.noredheader,cols="55,45"]
 |===
 | .2+|image:hawtio/hawtio_logo.svg[float="right",width="100%"]
 image:hawtio/hawtio-project.png[]
@@ -57,7 +42,7 @@ a|* *OpenSource* project - Apache License
 // ************ Hawtio *************
 == JMX Tools
 
-[cols="40,60"]
+[.noredheader,cols="40,60"]
 |===
 | .2+| image:hawtio/jsoncole.png[float="left",width="100%"]
 a|* JConsole, VisualVM +++<i class="fa fa-arrow-right"></i>+++ Developers tool (+++<i class="fa fa-ambulance"></i>+++)
@@ -71,7 +56,7 @@ image:hawtio/visualVM.png[float="right",width="100%"]
 // ************ Hawtio *************
 == http://jolokia.org[Jolokia ?]
 
-[cols="60,40"]
+[.noredheader,cols="60,40"]
 |===
 a|* Command line tools +++<i class="fa fa-arrow-right"></i>+++ jmx4perl, j4psh
  * JMX / HTTP Bridge
@@ -123,6 +108,7 @@ image:hawtio/hawtio-sequence.png[]
 // ************ Hawtio *************
 == Domain
 
+[.noredheader]
 |===
 | .2+|image:hawtio/hawtio-tomcat-mbeans-applications.png[]
 a|* JMX Domain / context
@@ -136,7 +122,7 @@ a|* JMX Domain / context
 // ************ Hawtio *************
 == Plugin
 
-[cols="25,75"]
+[.noredheader,cols="25,75"]
 |===
 | .2+|image:hawtio/hawtio-tomcat-applications.png[width="100%"]
 a|* What is a *plugin* ?
