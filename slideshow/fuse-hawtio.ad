@@ -2,7 +2,7 @@
 :author: Charles Moulliard (@cmoulliard)
 :backend: revealjs
 :blog: http://cmoulliard.github.io
-:data-uri!:
+:!data-uri:
 //:footer_copyright: Powered by http://asciidoctor.org[Asciidoctor], RevealJS and Hyla
 //:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
 :footer_copyright: Copyright ©2014 Red Hat, Inc.
@@ -61,11 +61,11 @@ a|* *OpenSource* project - Apache License
 |===
 | .2+| image:hawtio/jsoncole.png[float="left",width="100%"]
 a|* JConsole, VisualVM +++<i class="fa fa-arrow-right"></i>+++ Developers tool (+++<i class="fa fa-ambulance"></i>+++)
-+++</p></p>+++
+* Proprietary `com` protocol (RMI/IIOP) +++</p></p>+++
 image:hawtio/visualVM.png[float="right",width="100%"]
 |===
 
-* Command line tools +++<i class="fa fa-arrow-right"></i>+++ jmxclient, jmxterm
+* Command line tools +++<i class="fa fa-arrow-right"></i>+++ jmxclient, jmxterm, mx4j
 * Not so user friendly : +++<i class="fa fa-frown-o"></i>+++
 
 // ************ Hawtio *************
@@ -95,10 +95,10 @@ image:hawtio/rest-api-jolokia-2.png[]
 * HTTP Get request to exec an operation
 
 // ************ Hawtio *************
-== Architecture
+== Move to HTML Architecture
 
 [.newline]
-* A combination of the most *powerful* technologies
+* Hawtio *=* A combination of the most *powerful web* technologies
 
 * image:web2/html5.jpeg[100,100] +++<i class="fa fa-plus"></i>+++ image:web2/javascript.jpeg[100,100] +++<i class="fa fa-plus"></i>+++ image:hawtio/AngularJS-small.png[] +++<i class="fa fa-plus"></i>+++ image:web2/rest-api.png[100,100] +++<i class="fa fa-plus"></i>+++ image:hawtio/jolokia.png[200,200]
 
