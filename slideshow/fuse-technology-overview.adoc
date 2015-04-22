@@ -720,11 +720,6 @@ image:hawtio/rest-api-jolokia-2.png[]
 ** Backend : Java Servlet & **Jolokia** JMX gateway
 
 // ************ Hawtio *************
-== What Front looks like
-
-image:hawtio/hawtio-console.png[]
-
-// ************ Hawtio *************
 == Communication ...
 
 ** *Web* client communicates to Jolokia *agent* over HTTP(S)
@@ -890,6 +885,11 @@ function render(response) { // <1>
 * *Reusable* for developers (branding, datatable, forms, ide, perspective, tree, ui)
 
 // ************ Hawtio *************
+== What Front looks like
+
+image:hawtio/hawtio-console.png[]
+
+// ************ Hawtio *************
 
 == Discover your camel routes
 
@@ -921,7 +921,7 @@ a|* Twitter : @cmoulliard
 
 * More info +++&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;+++
   - www.jboss.org/products/fuse.html
-  - www.redhat.com/products/jbossenterprisemiddleware/fuse/
+  - http://www.redhat.com/en/technologies/jboss-middleware
 
 
 
