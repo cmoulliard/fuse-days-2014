@@ -16,6 +16,11 @@ snippet_content: false
 attributes:
   linkcss!: true
   data-uri: true
+  allow-uri-read:
+  idprefix:
+  imagesdir: images/
+  linkattrs:
+  linkcss:
   scripts: jquery-1.11.2.min.js,gpe.min.js
   scriptsdir: revealjs-redhat/lib/js
 
@@ -45,7 +50,7 @@ attributes:
   revealjs_transition: none # default/cube/page/concave/zoom/linear/fade/none
   revealjs_display_slidenumber: true  # Comment/Uncomment the line but don't replace true by false
   revealjs_history: true # Comment/Uncomment the line but don't replace true by false
-  revealjs_scrollbar: false # Support browser's scrollbar
+  # revealjs_scrollbar: true # Support browser's scrollbar
   revealjs_cover_image: /Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/hyla-1.0.7/lib/resources/assets/revealjs-redhat/image/1156515-Logo_RH_RGB_Reverse.png
   revealjs_footer_copyright: Copyright ©2015 Red Hat, Inc.
 

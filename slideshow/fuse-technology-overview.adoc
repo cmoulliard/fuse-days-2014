@@ -1,19 +1,11 @@
-:allow-uri-read:
 :author: Charles Moulliard (@cmoulliard)
-:backend: revealjs
 :blog: http://cmoulliard.github.io
 //:footer_copyright: Powered by http://asciidoctor.org[Asciidoctor], RevealJS and Hyla
 //:footer_copyright: Powered by Asciidoctor, Hyla & RevealJS
 :footer_copyright: Copyright ©2015 Red Hat, Inc.
 :header_image_path: redhat-logo.jpg
-:icons: font
-:idprefix:
-:imagesdir: images/
-:linkattrs:
-:linkcss:
 :project_dir: /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014
 :resourcesdir: /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014/slideshow/snippet/src/main/resources
-// Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
 :sourcesdir: /Users/chmoulli/MyProjects/MyConferences/fuse-days-2014/slideshow/snippet/src/main/java/
 //:source-highlighter: coderay, highlightjs, pygments, prettify
 :title-author: {title} {author}
@@ -705,17 +697,6 @@ image:fuse/hawtio-3.png[]
 
 image:fuse/hawtio-4.png[width="65%",height="65%"]
 image:fuse/hawtio-5.png[width="65%",height="65%"]
-
-// ************* DEMOS *******
-
-== Demos
-
-[cols="35,65"]
-|===
-| JBoss Fuse              | POJO + Messaging + Web
-| JBoss A-MQ              | High Availability with Network of Brokers
-| JBoss Fuse + Fabric     | Virtualization of Camel endpoints / loadbalancing
-|===
 
 // *********************************
 == Questions

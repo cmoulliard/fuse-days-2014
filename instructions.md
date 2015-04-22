@@ -1,8 +1,6 @@
 # Generate the Slideshow
 
 hyla generate -c slideshow/conference-redhat.yaml
-hyla generate --backend revealjs -s slideshow -d slideshow/generated2 -r adoc2html -a data-uri! -a source-highlighter highlightjs
-
 
 # Generate the Hands on lab
 
