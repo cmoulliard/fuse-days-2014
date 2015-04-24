@@ -10,7 +10,7 @@
                 <simple>123</simple>
             </setHeader>
             <to uri="direct:demo"/>
-            <to uri="activemq:queue:demo"/>
+<!--            <to uri="activemq:queue:demo"/>-->
         </route>
 
         <route>
@@ -20,7 +20,7 @@
         </route>
     </camelContext>
 
-    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+<!--    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
         <property name="connectionFactory" ref="jmsConnectionFactory"/>
     </bean>
 
@@ -28,6 +28,6 @@
         <property name="brokerURL" value="tcp://localhost:61616"/>
         <property name="userName" value="admin"/>
         <property name="password" value="admin"/>
-    </bean>
+    </bean>-->
 
 </blueprint>
