@@ -30,7 +30,7 @@
 
   jmx4perl http://localhost:9090/hawtio/jolokia list
   
-* If JBoss Fuse server has been started in another unix terminal, we can also query it
+* If the JBoss Fuse server 6.1 has been started in another unix terminal, we can also query it as desmonstrated with the 2 next requests
 
 ** To list all the mbeans
   
