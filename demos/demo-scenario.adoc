@@ -92,15 +92,20 @@ When the PR will be applied, than we will be able to use this connect string htt
 
 ## REST
 
-Instead of using the jmx4perl or j4psh jolokia tools, we can also fetch data from the jokokia bridge servlet using REST requests
-The following requests have been executed within a unix terminal using the https://github.com/jakubroztocil/httpie[`httpie tool`]
+Instead of using the jmx4perl or j4psh jolokia tools, we can also fetch data from the jokokia bridge servlet using REST requests.
+The following requests have been executed within a unix terminal using thehttps://github.com/jakubroztocil/httpie[`httpie tool`]
 
-* READ Attributes & EXEC operations (java.lang)
+* Mbean +java.lang+
+
+** READ attribute
 
     http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/read/java.lang:type=Memory/HeapMemoryUsage/used
+    
+** EXEC an operation    
+
     http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/exec/java.lang:type=Memory/gc
 
-* READ Attributes & EXEC operations (org.apache.camel)
+* READ Attribute(s) & EXEC operation (org.apache.camel)
 
     Trick : Add backslash before double quoted text
     
@@ -116,6 +121,8 @@ The following requests have been executed within a unix terminal using the https
     Expires: Thu, 30 Apr 2015 07:58:06 GMT
     Pragma: no-cache
     Server: Jetty(8.1.14.v20131031)
+    
+*    
 
     {"timestamp":1430384286,"status":200,"request":{"mbean":"org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes","attribute":"ExchangesCompleted","type":"read"},"value":0}
 
