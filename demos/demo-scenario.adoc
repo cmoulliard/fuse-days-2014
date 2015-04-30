@@ -67,6 +67,9 @@
 * Run j4psh commands to fetch data from the jolokia agent
 
     connect http://localhost:9090/hawtio/jolokia
+    connect http://admin:admin@localhost:8181/hawtio/jolokia
+    
+WARNING: Due to a faulty reg expression, we cna't connect to a server requiring to pass a user:password within the http request. This PR should fix it - https://github.com/rhuss/jmx4perl/pull/47    
 
 * Get HeapMemoryUsage attribute
 
