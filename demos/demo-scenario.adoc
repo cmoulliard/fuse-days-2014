@@ -110,7 +110,7 @@ WARNING: Due to a faulty reg expression, we cna't connect to a server requiring 
 
 * READ Attributes & EXEC operations (org.apache.camel)
 
-    * Trick --> Add backslash before double quotes
+    Trick : Add backslash before double quoted text
     
     http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/list > result.json
 
