@@ -1,5 +1,11 @@
 # jmx4perl, j4psh, REST with Jolokia
 
+## `jmx4perl` Tool
+
+The +jmx4Perl+ uses the  Jolokia agent which has been deployed within the JBoss Fuse server or +hawtio+ console. It plays the role of a proxy, which on one side communicates with the MBeanServer within
+in the application server and transfers JMX related information via HTTP and JSON to the client (i.e. this module). Here are the instructions to be followed to use the +hawtio-embed+ project available
+ here or a Jboss Fuse server instance.
+ 
 ## Prerequisite - install jmx4perl tool of the jolokia project
 
 * See doc here : http://jolokia.org/tutorial.html (Install Jmx4Perl and j4psh)
@@ -15,12 +21,8 @@
   install JMX::Jmx4Perl
   
   If you issues during test execution you can skip test processing using `force install CPAN_MODULE`
-  
-## Use `jmx4perl`
-
-The +jmx4Perl+ uses the  Jolokia agent which has been deployed within the JBoss Fuse server or +hawtio+ console. It plays the role of a proxy, which on one side communicates with the MBeanServer within
-in the application server and transfers JMX related information via HTTP and JSON to the client (i.e. this module). Here are the instructions to be followed to use the +hawtio-embed+ project available
- here or a Jboss Fuse server instance
+   
+## Grab data
 
 * Open 2 unix terminals and move to the project containing the hawtio embedded jetty server
 
@@ -45,7 +47,7 @@ in the application server and transfers JMX related information via HTTP and JSO
   jmx4perl http://admin:admin@localhost:8181/hawtio/jolokia read java.lang:type=Runtime SpecVersion
   1.7
 
-## j4psh
+## j4psh shell command
 
 The +j4psh+ jolokia perl tool is installed with +jmx4perl+ and provides a JMX command line shell to connect to a JMX server and next to navigate within the tree using
 +cd+ instruction or +ls+ to list the mbeans defined at a specific level. To get the information of an attribute, you can use the +cat+ instruction. 
@@ -97,7 +99,7 @@ When the PR will be applied, than we will be able to use this connect string htt
              firstExchangeFailureExchangeId="" lastExchangeCompletedTimestamp="2014-09-12T20:55:07.238+0200"
              lastExchangeCompletedExchangeId="ID-Dabou-local-60864-1410547505770-0-122" lastExchangeFailureTimestamp="" lastExchangeFailureExchangeId=""/>
 
-## REST
+## REST HTTPie requests
 
 Instead of using the jmx4perl or j4psh jolokia tools, we can also fetch data from the jokokia bridge servlet using REST requests.
 The syntax of the REST Jolokia requests is described https://jolokia.org/reference/html/protocol.html[here].
