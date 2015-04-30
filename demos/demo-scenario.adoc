@@ -95,6 +95,10 @@ When the PR will be applied, than we will be able to use this connect string htt
 Instead of using the jmx4perl or j4psh jolokia tools, we can also fetch data from the jokokia bridge servlet using REST requests.
 The following requests have been executed within a unix terminal using thehttps://github.com/jakubroztocil/httpie[`httpie tool`]
 
+* Read +all mbeans+ info and save the JSON result into a file 
+    
+  http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/list > result.json
+
 * Mbean +java.lang+
 
 ** READ attribute
@@ -105,11 +109,11 @@ The following requests have been executed within a unix terminal using thehttps:
 
     http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/exec/java.lang:type=Memory/gc
 
-* READ Attribute(s) & EXEC operation (org.apache.camel)
+* Mbean +org.apache.camel+
 
-    Trick : Add backslash before double quoted text
-    
-    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/list > result.json
+WARN : Add backslash before double quoted text
+
+** READ ExchangesCompleted of a Camel Route ("route3") defined for the CamelContext (camel-demo-blueprint.xml)
 
     http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/read/org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes/ExchangesCompleted/
     HTTP/1.1 200 OK
@@ -122,9 +126,9 @@ The following requests have been executed within a unix terminal using thehttps:
     Pragma: no-cache
     Server: Jetty(8.1.14.v20131031)
     
-*    
-
     {"timestamp":1430384286,"status":200,"request":{"mbean":"org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes","attribute":"ExchangesCompleted","type":"read"},"value":0}
+
+** Execute the dumpStatsAsXml operation and setting the boolean value to true
 
     http http://admin:admin@localhost:8181/hawtio/jolokia/exec/org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes/dumpStatsAsXml\(boolean\)/true
     HTTP/1.1 200 OK
