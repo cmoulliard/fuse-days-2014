@@ -1,4 +1,4 @@
-# DEMO - jmx4perl, j4psh, REST with Jolokia
+# jmx4perl, j4psh, REST with Jolokia
 
 ## Prerequisite - install jmx4perl tool of the jolokia project
 
