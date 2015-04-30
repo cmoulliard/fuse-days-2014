@@ -93,7 +93,8 @@ When the PR will be applied, than we will be able to use this connect string htt
 ## REST
 
 Instead of using the jmx4perl or j4psh jolokia tools, we can also fetch data from the jokokia bridge servlet using REST requests.
-The following requests have been executed within a unix terminal using thehttps://github.com/jakubroztocil/httpie[`httpie tool`]
+The syntax of the REST Jolokia requests is described https://jolokia.org/reference/html/protocol.html[here].
+The following requests have been executed within a unix terminal using the https://github.com/jakubroztocil/httpie[`httpie tool`]
 
 * Read +all mbeans+ info and save the JSON result into a file 
     
