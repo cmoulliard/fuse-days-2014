@@ -44,6 +44,10 @@
 
 ## j4psh
 
+The +j4psh+ jolokia perl tool is installed with +jmx4perl+ tool and provide a JMX command line shell to connect to a JMX server and next to navigate within the tree using 
++cd+ instruction or +ls+ to list the mbeans defined at a specific level. To get the information of an attribute, you can use the +cat+ instruction. A https://www.youtube.com/watch?v=y9TuGzxD2To[demo has been recorded] and explain how tou can
+navigate within the mbeans to get the information or execute an operation.
+
 * Open 2 terminals
 
   cd ~/MyProjects/MyConferences/fuse-days-2014/demos/hawtio-embedded
