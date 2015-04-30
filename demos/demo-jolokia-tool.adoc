@@ -16,7 +16,7 @@
   
   If you issues during test execution you can skip test processing using `force install CPAN_MODULE`
   
-## Use `jmx4pel`
+## Use `jmx4perl`
 
 * Open 2 unix terminals and move to the project containing the hawtio embedded jetty server
 
