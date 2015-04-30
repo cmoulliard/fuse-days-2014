@@ -55,7 +55,7 @@ A https://www.youtube.com/watch?v=y9TuGzxD2To[demo has been recorded by Roland H
 
 * Open 2 terminals
 
-  cd ~/MyProjects/MyConferences/fuse-days-2014/demos/hawtio-embedded
+  cd hawtio-embedded
 
 * Start the embedded client
 
