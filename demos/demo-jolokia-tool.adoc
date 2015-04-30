@@ -6,7 +6,7 @@ The +jmx4Perl+ uses the  Jolokia agent which has been deployed within the JBoss 
 in the application server and transfers JMX related information via HTTP and JSON to the client (i.e. this module). Here are the instructions to be followed to use the +hawtio-embed+ project available
  here or a Jboss Fuse server instance.
  
-## Prerequisite - install jmx4perl tool of the jolokia project
+## Prerequisite
 
 * See doc here : http://jolokia.org/tutorial.html (Install Jmx4Perl and j4psh)
 
