@@ -4,11 +4,61 @@
 
 * See doc here : http://jolokia.org/tutorial.html (Install Jmx4Perl and j4psh)
 
+## Install jmx4perl
+
+* Open a Unix terminal and start this command
+
+  perl -MCPAN -e shell
+
+* When cpan prompt appears, execute this intsruction to install jmx4perl
+
+  install JMX::Jmx4Perl
+  
+  If you issues during test execution you can skip test processing using `force install CPAN_MODULE`
+  
+## jmx4perl
+
+* Open 2 unix terminals and move to the project containing the embedded jetty server
+
+  cd ~/MyProjects/MyConferences/fuse-days-2014/demos/hawtio-embedded
+  
+* Start the embedded client
+  
+  mvn exec:java
+      
+* Try out jmx4perl
+
+  jmx4perl http://localhost:9090/hawtio/jolokia list
+  
+  or using Fuse 6.1
+  
+  jmx4perl http://admin:admin@localhost:8181/hawtio/jolokia list
+  
+* To get Camel info 
+  
+  jmx4perl http://admin:admin@localhost:8181/hawtio/jolokia list
+  
+  jmx4perl http://admin:admin@localhost:8181/hawtio/jolokia read java.lang:type=Runtime SpecVersion
+  1.7
+  
+  jmx4perl http://admin:admin@localhost:8181/hawtio/jolokia read java.lang:name=CodeCacheManager,type=MemoryManager
+  Use of uninitialized value in subroutine entry at /usr/local/ActivePerl-5.20/lib/URI/Escape.pm line 184.
+      {
+        MemoryPoolNames => [
+          'Code Cache'
+        ],
+        Name => 'CodeCacheManager',
+        ObjectName => {
+          objectName => 'java.lang:name=CodeCacheManager,type=MemoryManager'
+        },
+        Valid => '[true]'
+      }
+
 ## j4psh
 
 * Open 2 terminals
 
-    cd /Users/chmoulli/MyProjects/conferences/fuse-days-2014/demos/hawtio-embedded
+    cd ~/MyProjects/MyConferences/fuse-days-2014/demos/hawtio-embedded
 
 * Start the embedded client
 
@@ -52,17 +102,40 @@
 
 * READ Attributes & EXEC operations (java.lang)
 
-    http://localhost:9090/hawtio/jolokia/read/java.lang:type=Memory/HeapMemoryUsage/used
-    http://localhost:9090/hawtio/jolokia/exec/java.lang:type=Memory/gc
-
+    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/read/java.lang:type=Memory/HeapMemoryUsage/used
+    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/exec/java.lang:type=Memory/gc
 
 * READ Attributes & EXEC operations (org.apache.camel)
 
-    http://localhost:9090/hawtio/jolokia/read/org.apache.camel:context=camel-1,name=%22route1%22,type=routes
-    http://localhost:9090/hawtio/jolokia/read/org.apache.camel:context=camel-1,name=%22route1%22,type=routes/ExchangesCompleted/
+    * Trick --> Add backslash before double quotes
+    
+    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/list > result.json
 
-    http://localhost:9090/hawtio/jolokia/exec/org.apache.camel:context=camel-1,name=%22route1%22,type=routes/dumpRouteAsXml
-    http://localhost:9090/hawtio/jolokia/exec/org.apache.camel:context=camel-1,name=%22route1%22,type=routes/dumpStatsAsXml(boolean)/true
+    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/read/org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes/ExchangesCompleted/
+    HTTP/1.1 200 OK
+    Access-Control-Allow-Origin: *
+    Cache-Control: no-cache
+    Content-Length: 194
+    Content-Type: text/plain;charset=UTF-8
+    Date: Thu, 30 Apr 2015 08:58:06 GMT
+    Expires: Thu, 30 Apr 2015 07:58:06 GMT
+    Pragma: no-cache
+    Server: Jetty(8.1.14.v20131031)
+
+    {"timestamp":1430384286,"status":200,"request":{"mbean":"org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes","attribute":"ExchangesCompleted","type":"read"},"value":0}
+
+    http http://admin:admin@localhost:8181/hawtio/jolokia/exec/org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes/dumpStatsAsXml\(boolean\)/true
+    HTTP/1.1 200 OK
+    Access-Control-Allow-Origin: *
+    Cache-Control: no-cache
+    Content-Length: 967
+    Content-Type: text/plain;charset=UTF-8
+    Date: Thu, 30 Apr 2015 09:16:30 GMT
+    Expires: Thu, 30 Apr 2015 08:16:30 GMT
+    Pragma: no-cache
+    Server: Jetty(8.1.14.v20131031)
+
+    {"timestamp":1430385390,"status":200,"request":{"operation":"dumpStatsAsXml(boolean)","mbean":"org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes","arguments":["true"],"type":"exec"},"value":"<stats exchangesCompleted=\"0\" exchangesFailed=\"426\" failuresHandled=\"0\" redeliveries=\"0\" externalRedeliveries=\"0\" minProcessingTime=\"0\" maxProcessingTime=\"0\" totalProcessingTime=\"0\" lastProcessingTime=\"0\" deltaProcessingTime=\"0\" meanProcessingTime=\"0\" resetTimestamp=\"2015-04-30T10:41:00.577+0200\" firstExchangeCompletedTimestamp=\"\" firstExchangeCompletedExchangeId=\"\" firstExchangeFailureTimestamp=\"2015-04-30T10:41:01.594+0200\" firstExchangeFailureExchangeId=\"ID-dabou-local-49325-1430383026073-1-2\" lastExchangeCompletedTimestamp=\"\" lastExchangeCompletedExchangeId=\"\" lastExchangeFailureTimestamp=\"2015-04-30T11:16:27.838+0200\" lastExchangeFailureExchangeId=\"ID-dabou-local-49325-1430383026073-1-852\"\/>"}
 
 # DEMO 2 - Embedded Hawtio
 
