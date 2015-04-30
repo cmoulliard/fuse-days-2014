@@ -1,0 +1,10 @@
+# DEMO - Tomcat
+
+* Open a terminal
+* Change to Tomcat Directory
+
+  cd /Users/chmoulli/MyApplications/apache-tomcat-7.0.35/bin
+  ./startup.sh
+
+* Open browser : http://localhost:8080/
+* Show the Tomcat Plugin & JMX Mbean

@@ -1,4 +1,4 @@
-# DEMO 1 - jmx4perl, j4psh, REST
+# DEMO - jmx4perl, j4psh, REST with Jolokia
 
 ## Prerequisite - install jmx4perl tool of the jolokia project
 
@@ -142,78 +142,3 @@ WARN : Add backslash before double quoted text
     Server: Jetty(8.1.14.v20131031)
 
     {"timestamp":1430385390,"status":200,"request":{"operation":"dumpStatsAsXml(boolean)","mbean":"org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes","arguments":["true"],"type":"exec"},"value":"<stats exchangesCompleted=\"0\" exchangesFailed=\"426\" failuresHandled=\"0\" redeliveries=\"0\" externalRedeliveries=\"0\" minProcessingTime=\"0\" maxProcessingTime=\"0\" totalProcessingTime=\"0\" lastProcessingTime=\"0\" deltaProcessingTime=\"0\" meanProcessingTime=\"0\" resetTimestamp=\"2015-04-30T10:41:00.577+0200\" firstExchangeCompletedTimestamp=\"\" firstExchangeCompletedExchangeId=\"\" firstExchangeFailureTimestamp=\"2015-04-30T10:41:01.594+0200\" firstExchangeFailureExchangeId=\"ID-dabou-local-49325-1430383026073-1-2\" lastExchangeCompletedTimestamp=\"\" lastExchangeCompletedExchangeId=\"\" lastExchangeFailureTimestamp=\"2015-04-30T11:16:27.838+0200\" lastExchangeFailureExchangeId=\"ID-dabou-local-49325-1430383026073-1-852\"\/>"}
-
-# DEMO 2 - Embedded Hawtio
-
-* Open 2 terminals
-
-    cd /Users/chmoulli/MyProjects/conferences/fuse-days-2014/demos/hawtio-embedded
-
-* Start the embedded client
-
-    mvn exec:java
-
-* Show and explain the code :
-
-  ** Resource path --> WAR
-  ** Add a simple camel project
-  ** Explain various variables
-  ** Show the preferences, logs, jmx tree
-
-* Open a second terminal
-* cd to JBoss Fuse
-      cd /Users/chmoulli/Fuse/Fuse-servers/jboss-fuse-6.1.0.redhat-379/bin
-      ./karaf
-* Verify that JBoss Fuse is working
-* Demonstrate remote control
-
-# DEMO 3 - Tomcat (Perhaps not required)
-
-* Open a terminal
-* Change to Tomcat Directory
-
-  cd /Users/chmoulli/MyApplications/apache-tomcat-7.0.35/bin
-  ./startup.sh
-
-* Open browser : http://localhost:8080/
-* Show the Tomcat Plugin & JMX Mbean
-
-# Demo 4 - WIKI & GIT
-
-* Open a Unix terminal
-
-    cd /Users/chmoulli/MyProjects/conferences/fuse-days-2014/demos/hawtio-embedded
-
-* Start the embedded client
-
-    mvn exec:java
-
-* Show Wiki
-** Create a markdown document
-** Do some modifications
-**
-
-
-# DEMO x - NOT USED
-
-## Prerequisite - install jmx4perl
-
-* See doc here : http://jolokia.org/tutorial.html (Install Jmx4Perl and j4psh)
-
-## Demo
-
-* Open 2 terminals
-* cd /Users/chmoulli/MyProjects/conferences/fuse-days-2014/demos/hawtio-embedded
-* Start the embedded client
-    mvn exec:java
-
-* Run this jmx4perl command to fetch all the JMX data from your jolokia agent
-* To get the info about the JVM
-
-    jmx4perl http://localhost:9090/hawtio/jolokia
-
-    jmx4perl http://localhost:9090/hawtio/jolokia read java.lang:type=Memory HeapMemoryUsage
-
-* List all MBeans
-
-    jmx4perl http://localhost:9090/hawtio/jolokia list

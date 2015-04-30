@@ -1,0 +1,14 @@
+# Demo - WIKI & GIT
+
+* Open a Unix terminal
+
+    cd /Users/chmoulli/MyProjects/conferences/fuse-days-2014/demos/hawtio-embedded
+
+* Start the embedded client
+
+    mvn exec:java
+
+* Show Wiki
+** Create a markdown document
+** Do some modifications
+**

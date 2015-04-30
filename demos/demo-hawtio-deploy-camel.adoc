@@ -1,0 +1,24 @@
+# DEMO - Embedded Hawtio
+
+* Open 2 terminals
+
+    cd /Users/chmoulli/MyProjects/conferences/fuse-days-2014/demos/hawtio-embedded
+
+* Start the embedded client
+
+    mvn exec:java
+
+* Show and explain the code :
+
+  ** Resource path --> WAR
+  ** Add a simple camel project
+  ** Explain various variables
+  ** Show the preferences, logs, jmx tree
+
+* Open a second terminal
+
+* cd to JBoss Fuse
+      cd /Users/chmoulli/Fuse/Fuse-servers/jboss-fuse-6.1.0.redhat-379/bin
+      ./karaf
+* Verify that JBoss Fuse is working
+* Demonstrate remote control
