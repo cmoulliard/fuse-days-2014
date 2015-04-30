@@ -36,7 +36,9 @@ in the application server and transfers JMX related information via HTTP and JSO
 
   jmx4perl http://localhost:9090/hawtio/jolokia list
   
-* If the JBoss Fuse server 6.1 has been started in another unix terminal, we can also query it as demonstrated with the 2 next requests
+* If the JBoss Fuse server 6.1 has been started in another unix terminal, we can also query it as demonstrated with the 2 next requests.
+
+NOTE : As Fuse 6.2 will support RBAC, it is most probable that requests proposed here will not work
 
 ** To list all the mbeans
   
