@@ -74,7 +74,7 @@ When the PR will be applied, than we will be able to use this connect string htt
 
 Another possibility is to configure the .j4p config file to add a server definition as such :
 
-You only need to add a http://search.cpan.org/~roland/jmx4perl/scripts/check_jmx4perl#Server[Server] into your default ~/.j4p configuration, e.g.
+You only need to add a Server into your default ~/.j4p configuration, e.g.
 
 [source]
 ----
@@ -84,6 +84,8 @@ You only need to add a http://search.cpan.org/~roland/jmx4perl/scripts/check_jmx
   Password s!cr!t
 </Server>
 ----
+
+Doc about server :  http://search.cpan.org/~roland/jmx4perl/scripts/check_jmx4perl#<Server>
 
 You then can connect in j4psh with a simple "connect fuse".
 
