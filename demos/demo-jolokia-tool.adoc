@@ -72,6 +72,23 @@ When the PR will be applied, than we will be able to use this connect string htt
 
   connect http://admin:admin@localhost:8181/hawtio/jolokia
 
+Another possibility is to configure the .j4p config file to add a server definition as such :
+
+You only need to add a [<Server>](http://search.cpan.org/~roland/jmx4perl/scripts/check_jmx4perl#<Server>) into your default ~/.j4p configuration, e.g.
+
+[source]
+----
+<Server fuse>
+  Url  http://localhost:8181
+  User admin
+  Password s!cr!t
+</Server>
+----
+
+You then can connect in j4psh with a simple "connect fuse".
+
+The password can be even http://search.cpan.org/~roland/jmx4perl/scripts/jmx4perl#encrypt[encrypted].  
+
 * When we are connected to the server, we can navigate within the tree and fetch the data or execute some operations
 * Get HeapMemoryUsage attribute
 
@@ -100,6 +117,12 @@ When the PR will be applied, than we will be able to use this connect string htt
              firstExchangeCompletedExchangeId="ID-Dabou-local-60864-1410547505770-0-2" firstExchangeFailureTimestamp=""
              firstExchangeFailureExchangeId="" lastExchangeCompletedTimestamp="2014-09-12T20:55:07.238+0200"
              lastExchangeCompletedExchangeId="ID-Dabou-local-60864-1410547505770-0-122" lastExchangeFailureTimestamp="" lastExchangeFailureExchangeId=""/>
+
+## REST Curl requests
+
+* Read +all mbeans+ info and save the JSON result into a file 
+
+  curl -i http://admin:admin@localhost:8181/hawtio/jolokia/list > result.json            
 
 ## REST HTTPie requests
 
