@@ -161,11 +161,11 @@ The following requests have been executed within a unix terminal using the https
 
 ** READ attribute
 
-    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/read/java.lang:type=Memory/HeapMemoryUsage/used
+    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/read/java.lang:type=Memory/HeapMemoryUsage/used User-Agent:curl
     
 ** EXEC an operation    
 
-    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/exec/java.lang:type=Memory/gc
+    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/exec/java.lang:type=Memory/gc User-Agent:curl
 
 * Mbean +org.apache.camel+
 
@@ -173,7 +173,7 @@ WARN : Add backslash before double quoted text
 
 ** READ ExchangesCompleted of a Camel Route ("route3") defined for the CamelContext (camel-demo-blueprint.xml)
 
-    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/read/org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes/ExchangesCompleted/
+    http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/read/org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes/ExchangesCompleted/ User-Agent:curl
     HTTP/1.1 200 OK
     Access-Control-Allow-Origin: *
     Cache-Control: no-cache
@@ -188,7 +188,7 @@ WARN : Add backslash before double quoted text
 
 ** Execute the dumpStatsAsXml operation and setting the boolean value to true
 
-    http http://admin:admin@localhost:8181/hawtio/jolokia/exec/org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes/dumpStatsAsXml\(boolean\)/true
+    http http://admin:admin@localhost:8181/hawtio/jolokia/exec/org.apache.camel:context=camel-demo-blueprint.xml,name=\"route3\",type=routes/dumpStatsAsXml\(boolean\)/true User-Agent:curl
     HTTP/1.1 200 OK
     Access-Control-Allow-Origin: *
     Cache-Control: no-cache
