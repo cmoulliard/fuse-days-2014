@@ -5,7 +5,7 @@ So, all the other tools like jmx4perl, j4psh or httpie will not work as they wil
 
 A possible workaround described by Gregor is to pass as parameter the information required to emulate a coookie session.
 
-````
+----
 http://curl.haxx.se/docs/http-cookies.html
 
 $ curl --cookie-jar curlcookies.txt -X POST http://admin:admin@localhost:8181/hawtio/auth/login
@@ -17,7 +17,8 @@ localhost	FALSE	/hawtio	FALSE	0	JSESSIONID	1o9sty81ng9o4h74zxlcvg2zu
 
 in curlcookies.txt file. We can then use this file to send correct cookies back to server, thus participating in Java session:
 $ curl -v --cookie curlcookies.txt -X GET http://localhost:8181/hawtio/jolokia
-````
+----
+
 ## `jmx4perl` Tool
 
 The +jmx4Perl+ uses the  Jolokia agent which has been deployed within the JBoss Fuse server or +hawtio+ console. It plays the role of a proxy, which on one side communicates with the MBeanServer within
