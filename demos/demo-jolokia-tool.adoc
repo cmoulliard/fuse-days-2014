@@ -270,7 +270,7 @@ next requests
         ]
     }
 
-    http --session=admin -a admin:admin http://localhost:8181/hawtio/jolokia/list
+    http --session=admin http://localhost:8181/hawtio/jolokia/list
     
     HTTP/1.1 200 OK
     Access-Control-Allow-Origin: *
@@ -284,3 +284,11 @@ next requests
     X-Frame-Options: SAMEORIGIN
      
     {"timestamp":1430740966,"status":200,"request":{"type":"list"},"value":{"JMImplementation":{"type=MBeanServerDelegate":{"desc":"Represents  the MBean server from the management point of view.","attr":{"ImplementationVendor":{"desc":"the JMX implementation vendor (the vendor of ...
+    
+    http --session=admin http://localhost:8181/hawtio/jolokia/version
+    
+    http --session=admin http://localhost:8181/hawtio/jolokia/search/java.lang:*
+    {"timestamp":1430741751,"status":200,"request":{"mbean":"java.lang:*","type":"search"},"value":["java.lang:type=Compilation","java.lang:type=Memory","java.lang:name=PS Eden Space,type=MemoryPool","java.lang:name=PS Survivor Space,type=MemoryPool","java.lang:name=Code Cache,type=MemoryPool","java.lang:name=PS MarkSweep,type=GarbageCollector","java.lang:type=Runtime","java.lang:name=PS Perm Gen,type=MemoryPool","java.lang:type=ClassLoading","java.lang:name=PS Scavenge,type=GarbageCollector","java.lang:type=OperatingSystem","java.lang:type=Threading","java.lang:name=PS Old Gen,type=MemoryPool","java.lang:name=CodeCacheManager,type=MemoryManager"]}
+    
+    http --session=admin http://localhost:8181/hawtio/jolokia/list/java.lang/type=Memory
+    {"timestamp":1430741842,"status":200,"request":{"path":"java.lang\/type=Memory","type":"list"},"value":{"desc":"Information on the management interface of the MBean","op":{"gc":{"ret":"void","desc":"gc","args":[]}},"attr":{"Verbose":{"desc":"Verbose","type":"boolean","rw":true},"ObjectPendingFinalizationCount":{"desc":"ObjectPendingFinalizationCount","type":"int","rw":false},"NonHeapMemoryUsage":{"desc":"NonHeapMemoryUsage","type":"javax.management.openmbean.CompositeData","rw":false},"HeapMemoryUsage":{"desc":"HeapMemoryUsage","type":"javax.management.openmbean.CompositeData","rw":false},"ObjectName":{"desc":"ObjectName","type":"javax.management.ObjectName","rw":false}}}}
