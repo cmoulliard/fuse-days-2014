@@ -31,11 +31,11 @@ The +jmx4Perl+ uses the  Jolokia agent which has been deployed within the JBoss 
 in the application server and transfers JMX related information via HTTP and JSON to the client (i.e. this module). Here are the instructions to be followed to use the +hawtio-embed+ project available
  here or a Jboss Fuse server instance.
  
-## Prerequisite
+### Prerequisite
 
 * See doc here : http://jolokia.org/tutorial.html (Install Jmx4Perl and j4psh)
 
-## Install jmx4perl
+### Install jmx4perl
 
 * Open a Unix terminal and start this command
 
@@ -47,7 +47,7 @@ in the application server and transfers JMX related information via HTTP and JSO
   
   If you issues during test execution you can skip test processing using `force install CPAN_MODULE`
    
-## Grab data
+### Grab data
 
 * Open 2 unix terminals and move to the project containing the hawtio embedded jetty server
 
@@ -151,7 +151,7 @@ The password can be even http://search.cpan.org/~roland/jmx4perl/scripts/jmx4per
 
   curl -i http://admin:admin@localhost:8181/hawtio/jolokia/list > result.json            
 
-## REST HTTPie requests
+## HTTPie requests
 
 Instead of using the jmx4perl or j4psh jolokia tools, we can also fetch data from the jokokia bridge servlet using REST requests.
 The syntax of the REST Jolokia requests is described https://jolokia.org/reference/html/protocol.html[here].
