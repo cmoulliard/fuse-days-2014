@@ -1,6 +1,6 @@
 # jmx4perl, j4psh, curl, REST with Jolokia
 
-Since `hawtio-1.2-redhat-403`, only the curl agent is supported and supposed to perform a basic authentication against Fuse platform (https://issues.jboss.org/browse/ENTESB-2418).
+Since `hawtio-1.2-redhat-403`, only the curl agent is supported and supposed to perform a basic authentication against Fuse platform 6.2 (https://issues.jboss.org/browse/ENTESB-2418).
 So, all the other tools like jmx4perl, j4psh or httpie will not work as they will receive a error 403 from the hawtio web container.
 
 A possible workaround described by Gregor is to pass as parameter the information required to emulate a coookie session.
@@ -18,6 +18,8 @@ localhost	FALSE	/hawtio	FALSE	0	JSESSIONID	1o9sty81ng9o4h74zxlcvg2zu
 in curlcookies.txt file. We can then use this file to send correct cookies back to server, thus participating in Java session:
 $ curl -v --cookie curlcookies.txt -X GET http://localhost:8181/hawtio/jolokia
 ----
+
+or to specify for httpie that we are using the curl agent `User-Agent:curl`
 
 ## `jmx4perl` Tool
 
@@ -153,7 +155,7 @@ The following requests have been executed within a unix terminal using the https
 
 * Read +all mbeans+ info and save the JSON result into a file 
     
-  http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/list > result.json
+  http --pretty=all http://admin:admin@localhost:8181/hawtio/jolokia/list User-Agent:curl > result.json
 
 * Mbean +java.lang+
 
