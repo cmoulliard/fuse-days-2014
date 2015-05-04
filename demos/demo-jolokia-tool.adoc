@@ -1,3 +1,7 @@
+:toc: macro
+
+toc::[]
+
 # jmx4perl, j4psh, curl, REST with Jolokia
 
 Since `hawtio-1.2-redhat-403`, only the curl agent is supported and supposed to perform a basic authentication against Fuse platform 6.2 (https://issues.jboss.org/browse/ENTESB-2418).
