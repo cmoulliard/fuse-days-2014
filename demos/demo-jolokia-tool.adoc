@@ -334,7 +334,7 @@ http --session=admin -a admin:admin http://localhost:8181/hawtio/jolokia/list/io
 
 ## Enable Debug option of Jolokia
 
-Jolokia propose a Config mbean where we can change the Debug boolean value (true/false). When the debugger is switched to on, then we can call the +debugInfo+ operation to collect the responses 
+Jolokia proposes a Config mbean where we can change the Debug boolean value (true/false). When the debugger is switched to on, then we can call the +debugInfo+ operation to collect the responses
 returned by jolokia
 
 ----
@@ -342,9 +342,11 @@ http --session=admin http://localhost:8181/hawtio/jolokia/write/jolokia:type=Con
 http --session=admin http://localhost:8181/hawtio/jolokia/read/jolokia:type=Config
 
 http --session=admin http://localhost:8181/hawtio/jolokia/exec/jolokia:type=Config/debugInfo
+----
 
 Example using jolokia-osgi 1.2.3 deployed Apache Karaf 2.3.11
 
+----
 http http://localhost:8181/jolokia/write/jolokia:type=Config/Debug/true
 
 {"timestamp":1430831827,"status":200,"request":{"mbean":"jolokia:type=Config","value":"true","attribute":"Debug","type":"write"},"value":false}
