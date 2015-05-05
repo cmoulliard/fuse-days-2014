@@ -320,16 +320,6 @@ Domain : io.fabric8, Type : type=ProfileManagement
 
 ----
 http --session=admin -a admin:admin http://localhost:8181/hawtio/jolokia/list/io.fabric8/type=ProfileManagement/attr
-HTTP/1.1 200 OK
-Access-Control-Allow-Origin: *
-Cache-Control: no-cache
-Content-Length: 194
-Content-Type: text/plain;charset=UTF-8
-Date: Tue, 05 May 2015 07:36:30 GMT
-Expires: Tue, 05 May 2015 06:36:30 GMT
-Pragma: no-cache
-Server: Jetty(8.1.16.v20140903)
-X-Frame-Options: SAMEORIGIN
 
 {"timestamp":1430811390,"status":200,"request":{"path":"io.fabric8\/type=ProfileManagement\/attr","type":"list"},"value":{"Versions":{"desc":"Versions","type":"[Ljava.lang.String;","rw":false}}}
 ----
@@ -338,16 +328,6 @@ X-Frame-Options: SAMEORIGIN
 
 ----
 http --session=admin -a admin:admin http://localhost:8181/hawtio/jolokia/list/io.fabric8/type=ProfileManagement/op
-HTTP/1.1 200 OK
-Access-Control-Allow-Origin: *
-Cache-Control: no-cache
-Content-Length: 1598
-Content-Type: text/plain;charset=UTF-8
-Date: Tue, 05 May 2015 07:36:36 GMT
-Expires: Tue, 05 May 2015 06:36:36 GMT
-Pragma: no-cache
-Server: Jetty(8.1.16.v20140903)
-X-Frame-Options: SAMEORIGIN
 
 {"timestamp":1430811396,"status":200,"request":{"path":"io.fabric8\/type=ProfileManagement\/op","type":"list"},"value":{"getVersion":{"ret":"javax.management.openmbean.CompositeData","desc":"getVersion","args":[{"desc":"p0","name":"p0","type":"java.lang.String"}]},"deleteVersion":{"ret":"void","desc":"deleteVersion","args":[{"desc":"p0","name":"p0","type":"java.lang.String"}]},"deleteProfile":{"ret":"void","desc":"deleteProfile","args":[{"desc":"p0","name":"p0","type":"java.lang.String"},{"desc":"p1","name":"p1","type":"java.lang.String"},{"desc":"p2","name":"p2","type":"boolean"}]},"createVersion":{"ret":"javax.management.openmbean.CompositeData","desc":"createVersion","args":[{"desc":"p0","name":"p0","type":"javax.management.openmbean.CompositeData"}]},"updateProfile":{"ret":"javax.management.openmbean.CompositeData","desc":"updateProfile","args":[{"desc":"p0","name":"p0","type":"javax.management.openmbean.CompositeData"}]},"getProfile":{"ret":"javax.management.openmbean.CompositeData","desc":"getProfile","args":[{"desc":"p0","name":"p0","type":"java.lang.String"},{"desc":"p1","name":"p1","type":"java.lang.String"}]},"createProfile":{"ret":"javax.management.openmbean.CompositeData","desc":"createProfile","args":[{"desc":"p0","name":"p0","type":"javax.management.openmbean.CompositeData"}]},"createVersionFrom":{"ret":"javax.management.openmbean.CompositeData","desc":"createVersionFrom","args":[{"desc":"p0","name":"p0","type":"java.lang.String"},{"desc":"p1","name":"p1","type":"java.lang.String"},{"desc":"p2","name":"p2","type":"javax.management.openmbean.TabularData"}]}}}
 -----
