@@ -332,7 +332,7 @@ http --session=admin -a admin:admin http://localhost:8181/hawtio/jolokia/list/io
 {"timestamp":1430811396,"status":200,"request":{"path":"io.fabric8\/type=ProfileManagement\/op","type":"list"},"value":{"getVersion":{"ret":"javax.management.openmbean.CompositeData","desc":"getVersion","args":[{"desc":"p0","name":"p0","type":"java.lang.String"}]},"deleteVersion":{"ret":"void","desc":"deleteVersion","args":[{"desc":"p0","name":"p0","type":"java.lang.String"}]},"deleteProfile":{"ret":"void","desc":"deleteProfile","args":[{"desc":"p0","name":"p0","type":"java.lang.String"},{"desc":"p1","name":"p1","type":"java.lang.String"},{"desc":"p2","name":"p2","type":"boolean"}]},"createVersion":{"ret":"javax.management.openmbean.CompositeData","desc":"createVersion","args":[{"desc":"p0","name":"p0","type":"javax.management.openmbean.CompositeData"}]},"updateProfile":{"ret":"javax.management.openmbean.CompositeData","desc":"updateProfile","args":[{"desc":"p0","name":"p0","type":"javax.management.openmbean.CompositeData"}]},"getProfile":{"ret":"javax.management.openmbean.CompositeData","desc":"getProfile","args":[{"desc":"p0","name":"p0","type":"java.lang.String"},{"desc":"p1","name":"p1","type":"java.lang.String"}]},"createProfile":{"ret":"javax.management.openmbean.CompositeData","desc":"createProfile","args":[{"desc":"p0","name":"p0","type":"javax.management.openmbean.CompositeData"}]},"createVersionFrom":{"ret":"javax.management.openmbean.CompositeData","desc":"createVersionFrom","args":[{"desc":"p0","name":"p0","type":"java.lang.String"},{"desc":"p1","name":"p1","type":"java.lang.String"},{"desc":"p2","name":"p2","type":"javax.management.openmbean.TabularData"}]}}}
 ----
 
-* Enable Debug option of Jolokia
+## Enable Debug option of Jolokia
 
 Jolokia propose a Config mbean where we can change the Debug boolean value (true/false). When the debugger is switched to on, then we can call the +debugInfo+ operation to collect the responses 
 returned by jolokia
@@ -358,7 +358,7 @@ http http://localhost:8181/jolokia/exec/jolokia:type=Config/debugInfo
 {"timestamp":1430831836,"status":200,"request":{"operation":"debugInfo","mbean":"jolokia:type=Config","type":"exec"},"value":"1430831832: Execution time: 1 ms\n1430831832: Response: {\"timestamp\":1430831832,\"status\":200,\"request\":{\"mbean\":\"jolokia:type=Config\",\"type\":\"read\"},\"value\":{\"HistoryMaxEntries\":10,\"Debug\":true,\"MaxDebugEntries\":100,\"HistorySize\":82}}\n"}
 ----
 
-* Send a Post request to jolokia
+## Send a Post request to jolokia
 
 The syntax of the POST requests is defined https://jolokia.org/reference/html/protocol.html#post-request[here]
 
