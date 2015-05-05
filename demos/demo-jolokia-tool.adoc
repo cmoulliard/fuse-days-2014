@@ -396,3 +396,13 @@ and for Fuse 6.x
 ----
 http --session=admin POST http://localhost:8181/hawtio/jolokia  < jol-req1.json
 ----
+
+Example of some requests to get a Profile, the Profiles, ... 
+
+http --session=admin http://localhost:8181/hawtio/jolokia < versions-exec-op.json
+http --session=admin http://localhost:8181/hawtio/jolokia < getprofile-exec-op.json
+http --session=admin http://localhost:8181/hawtio/jolokia < getprofiles-exec-op.json
+http --session=admin http://localhost:8181/hawtio/jolokia < read-default-profile-exec-op.json
+http --session=admin http://localhost:8181/hawtio/jolokia < getprofileFeatures-exec-op.json
+
+----

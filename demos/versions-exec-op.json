@@ -1,0 +1,5 @@
+{
+  "operation": "versions()",
+  "mbean": "io.fabric8:type=Fabric",
+  "type": "exec"
+}

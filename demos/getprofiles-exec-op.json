@@ -1,0 +1,12 @@
+{
+  "operation": "getProfiles(java.lang.String, java.util.List)",
+  "mbean": "io.fabric8:type=Fabric",
+  "arguments": [
+    "1.0",
+    [
+      "id",
+      "hidden"
+    ]
+  ],
+  "type": "exec"
+}

@@ -1,0 +1,9 @@
+{
+  "operation": "getProfile(java.lang.String, java.lang.String)",
+  "mbean": "io.fabric8:type=Fabric",
+  "arguments": [
+    "1.0",
+    "default"
+  ],
+  "type": "exec"
+}

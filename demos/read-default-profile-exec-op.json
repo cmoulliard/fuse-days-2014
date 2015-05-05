@@ -1,0 +1,9 @@
+{
+  "operation": "read",
+  "mbean": "hawtio:type=GitFacade,repo=fabric",
+  "arguments": [
+    "1.0",
+    "fabric\/profiles\/default.profile"
+  ],
+  "type": "exec"
+}
