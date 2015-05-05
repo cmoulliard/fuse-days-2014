@@ -372,6 +372,23 @@ http --session=admin http://localhost:8181/hawtio/jolokia/exec/jolokia:type=Conf
 {"timestamp":1430834617,"status":200,"request":{"operation":"debugInfo","mbean":"jolokia:qualifier=hawtio,type=Config","type":"exec"},"value":"1430834534: Execution time: 0 ms\n1430834534: Response: {\"timestamp\":1430834534,\"status\":200,\"request\":{\"operation\":\"debugInfo\",\"mbean\":\"jolokia:qualifier=hawtio,type=Config\",\"type\":\"exec\"},\"value\":\"\"}\n1430834541: Execution time: 1 ms\n1430834541: Response: {\"timestamp\":1430834541,\"status\":200,\"request\":{\"mbean\":\"jolokia:qualifier=hawtio,type=Config\",\"type\":\"read\"},\"value\":{\"HistoryMaxEntries\":10,\"Debug\":true,\"MaxDebugEntries\":100,\"HistorySize\":82}}\n1430834543: Execution time: 0 ms\n1430834543: Response: {\"timestamp\":1430834543,\"status\":200,\"request\":{\"operation\":\"debugInfo\",\"mbean\":\"jolokia:qualifier=hawtio,type=Config\",\"type\":\"exec\"},\"value\":\"1430834534: Execution time: 0 ms\\n1430834534: Response: {\\\"timestamp\\\":1430834534,\\\"status\\\":200,\\\"request\\\":{\\\"operation\\\":\\\"debugInfo\\\",\\\"mbean\\\":\\\"jolokia:qualifier=hawtio,type=Config\\\",\\\"type\\\":\\\"exec\\\"},\\\"value\\\":\\\"\\\"}\\n1430834541: Execution time: 1 ms\\n1430834541: Response: {\\\"timestamp\\\":1430834541,\\\"status\\\":200,\\\"request\\\":{\\\"mbean\\\":\\\"jolokia:qualifier=hawtio,type=Config\\\",\\\"type\\\":\\\"read\\\"},\\\"value\\\":{\\\"HistoryMaxEntries\\\":10,\\\"Debug\\\":true,\\\"MaxDebugEntries\\\":100,\\\"HistorySize\\\":82}}\\n\"}\n"}
 ----
 
+The next version of jolokia 1.4 will support OSGI Config Admin and will allow us to pass the jolokia parameters using the +etc/org.jolokia.osgi.cfg+ config file or directly from the 
+Apache Karaf console using the +config:edit+ command.
+
+.org.jolokia.osgi.cfg file
+----
+ # Debugging state after startup. This can be changed via the Config MBean (jolokia:type=Config) at runtime
+org.jolokia.debug=true
+
+# User used for authentication with HTTP Basic Authentication. If not given, no authentication is used.
+org.jolokia.user= 
+ 
+# Password used for authentication with HTTP Basic Authentication.
+org.jolokia.password= 
+ 
+...
+----
+
 ## Send a Post request to jolokia
 
 The syntax of the POST requests is defined https://jolokia.org/reference/html/protocol.html#post-request[here]
