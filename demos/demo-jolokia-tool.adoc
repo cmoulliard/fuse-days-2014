@@ -314,8 +314,7 @@ next requests
 
 ## Httpie Search
 
-Domain : io.fabric8
-Type : type=ProfileManagement
+Domain : io.fabric8, Type : type=ProfileManagement
 
 * Get attributes
 
