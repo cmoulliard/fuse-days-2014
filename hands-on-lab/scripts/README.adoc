@@ -15,6 +15,7 @@ For offline installation we need also the Integration Stack and target platform 
 
     wget https://devstudio.jboss.com/updates/7.0.0/jbdevstudio-integration-stack-updatesite-7.0.1.GA.zip
     wget http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.32.0.Final/jbdevstudiotarget-4.32.0.Final.zip
+    wget http://download.jboss.org/jbosstools/updates/integration/luna/integration-stack/fuse-tooling/jbosstools-integration-stack-fuse-tooling-7.3.2.zip
 
 - Setup a FTP server (and register it as a service) on your machine and copy previously downloaded files under the pub directory (eg : /var/ftp/pub)
 
